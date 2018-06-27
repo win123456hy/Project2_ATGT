@@ -35,6 +35,12 @@ public class Categorys {
     public Categorys() {
     }
 
+    public Categorys(int CategoryID, String CategoryName, String CategoryDescription) {
+        this.CategoryID = CategoryID;
+        this.CategoryName = CategoryName;
+        this.CategoryDescription = CategoryDescription;
+    }
+
     public String getCategoryDescription() {
         return CategoryDescription;
     }

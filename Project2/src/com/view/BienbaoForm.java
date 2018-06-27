@@ -1,6 +1,8 @@
 package com.view;
 
 import Model.Trafficsigns;
+import com.dao.getCategoryForAdmin;
+import com.model.Categorys;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.bind.annotation.XmlElement;
@@ -12,6 +14,7 @@ import javax.xml.bind.annotation.XmlElement;
 public class BienbaoForm extends javax.swing.JFrame {
     
     private ArrayList<Trafficsigns> list;
+    private ArrayList<Categorys> cate=new ArrayList<>();
     DefaultTableModel model;
     /**
      * Creates new form QnA
@@ -21,6 +24,12 @@ public class BienbaoForm extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         list = new ArrayList<>();
         model = (DefaultTableModel) table.getModel();
+        
+        getCategoryForAdmin admin=new getCategoryForAdmin();
+        cate=admin.CategoryTest();
+        for (int i = 0; i < cate.size(); i++) {
+            CbCategory.addItem(cate.get(i).getCategoryName());
+        }
     }
 
     /**
@@ -112,7 +121,6 @@ public class BienbaoForm extends javax.swing.JFrame {
             }
         });
 
-        CbCategory.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         CbCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CbCategoryActionPerformed(evt);
