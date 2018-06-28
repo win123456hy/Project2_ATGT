@@ -212,7 +212,7 @@ public class ReviewAnswered extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Login l=new Login();
+        Home l=new Home();
         l.setVisible(true);
         deleteAnswered a=new deleteAnswered();
         a.delete(exx.getExamID());
