@@ -115,7 +115,7 @@ public class LearnLaw extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void back_hocluatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_hocluatMouseClicked
-        Login lo = new Login();
+        Home lo = new Home();
             lo.setVisible(true);
               this.dispose();
     }//GEN-LAST:event_back_hocluatMouseClicked
