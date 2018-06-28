@@ -131,7 +131,7 @@ public class ResultTest extends javax.swing.JFrame {
         deleteAnswered a=new deleteAnswered();
          Exams e= exam.getExamx(1);
         a.delete(e.getExamID());
-        Login l=new Login();
+        Home l=new Home();
         l.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
