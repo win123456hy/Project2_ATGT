@@ -3,9 +3,7 @@ package com.view;
 
 
 
-import com.dao.getCategoryForAdmin;
 import com.model.Law;
-import com.model.Categorys;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,19 +15,12 @@ import javax.swing.table.DefaultTableModel;
 public class LuatForm extends javax.swing.JFrame {
 
     private ArrayList<Law> list;
-     private ArrayList<Categorys> cate=new ArrayList<>();
     DefaultTableModel model;
     public LuatForm() {
         initComponents();
         this.setLocationRelativeTo(null);
         list = new ArrayList<>();
         model = (DefaultTableModel) Luattable.getModel();
-        
-        getCategoryForAdmin admin=new getCategoryForAdmin();
-        cate= admin.CategoryTest();
-        for (int i = 0; i < cate.size(); i++) {
-        cbCategory.addItem(cate.get(i).getCategoryName());
-        }
     }
 
     /**
@@ -113,6 +104,7 @@ public class LuatForm extends javax.swing.JFrame {
 
         jButton3.setText("xoa");
 
+        cbCategory.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbCategoryActionPerformed(evt);
