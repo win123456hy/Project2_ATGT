@@ -5,7 +5,7 @@
  */
 package com.dao;
 
-import Model.Trafficsigns;
+import com.model.Trafficsigns;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +30,7 @@ public class BienbaoDAO {
         try {
        
             PreparedStatement pre= conn.prepareStatement(  sql);
-       pre.setString(1, traffic.getTrafficTitle() );
+            pre.setString(1, traffic.getTrafficTitle() );
        
       
         } catch (Exception e) {

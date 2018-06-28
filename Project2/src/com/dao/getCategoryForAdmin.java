@@ -40,10 +40,6 @@ public class getCategoryForAdmin {
                  
                    list.add(new Categorys(id,name,dess));
                 }
-              
-                
-        
-   
              return list;
         } catch (SQLException ex) {
             return null;

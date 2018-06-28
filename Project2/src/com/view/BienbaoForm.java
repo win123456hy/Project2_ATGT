@@ -1,11 +1,13 @@
 package com.view;
 
-import Model.Trafficsigns;
+import com.dao.GetTrafficsignsforAdmin;
+import com.model.Trafficsigns;
 import com.dao.getCategoryForAdmin;
 import com.model.Categorys;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.bind.annotation.XmlElement;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -15,7 +17,9 @@ public class BienbaoForm extends javax.swing.JFrame {
     
     private ArrayList<Trafficsigns> list;
     private ArrayList<Categorys> cate=new ArrayList<>();
+    private ArrayList<Trafficsigns> traffic= new ArrayList<>();
     DefaultTableModel model;
+   // public ArrayList<Trafficsigns> 
     /**
      * Creates new form QnA
      */
@@ -29,6 +33,13 @@ public class BienbaoForm extends javax.swing.JFrame {
         cate=admin.CategoryTest();
         for (int i = 0; i < cate.size(); i++) {
             CbCategory.addItem(cate.get(i).getCategoryName());
+            
+            GetTrafficsignsforAdmin traffictable= new GetTrafficsignsforAdmin();
+            traffic= traffictable.getSigns();
+            table.setAutoResizeMode(table.AUTO_RESIZE_LAST_COLUMN);
+            for (int j = 0; j < traffic.size(); j++) {
+               model.addRow(new Object[]{j+1,traffic.get(j).getTrafficTitle(), traffic.get(j).getTrafficDetails(),traffic.get(j).getTrafficLink(),cate.get(j).getCategoryName() });
+            }
         }
     }
 
@@ -67,15 +78,20 @@ public class BienbaoForm extends javax.swing.JFrame {
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title", "Details", "Link", "Category"
+                "ID", "Title", "Details", "Link", "Category"
             }
         ));
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table);
 
         jLabel2.setText("Title");
@@ -225,7 +241,7 @@ public class BienbaoForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLinkActionPerformed
-        // TODO add your handling code here:
+ 
     }//GEN-LAST:event_txtLinkActionPerformed
 
     private void ADDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ADDActionPerformed
@@ -241,7 +257,7 @@ public class BienbaoForm extends javax.swing.JFrame {
 
 
     private void CbCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbCategoryActionPerformed
-        // TODO add your handling code here:
+  
     }//GEN-LAST:event_CbCategoryActionPerformed
 
     private void ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetActionPerformed
@@ -266,10 +282,10 @@ public class BienbaoForm extends javax.swing.JFrame {
              
          }
          else{
-          model.setValueAt(txtTitle.getText(),table.getSelectedRow(),0);
-          model.setValueAt(txtDetails.getText(),table.getSelectedRow(),1);
-          model.setValueAt(txtLink.getText(),table.getSelectedRow(),2);  
-          model.setValueAt(CbCategory.getSelectedItem().toString(),table.getSelectedRow(),3);
+          model.setValueAt(txtTitle.getText(),table.getSelectedRow(),1);
+          model.setValueAt(txtDetails.getText(),table.getSelectedRow(),2);
+          model.setValueAt(txtLink.getText(),table.getSelectedRow(),3);  
+          model.setValueAt(CbCategory.getSelectedItem().toString(),table.getSelectedRow(),4);
          } 
     }//GEN-LAST:event_UppdateActionPerformed
 
@@ -287,6 +303,12 @@ public class BienbaoForm extends javax.swing.JFrame {
             model.removeRow(table.getSelectedRow());
          }   
     }//GEN-LAST:event_DeleteActionPerformed
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        int i= table.getSelectedRow();
+        model = (DefaultTableModel) table.getModel();
+       // String 
+    }//GEN-LAST:event_tableMouseClicked
 
     /**
      * @param args the command line arguments
