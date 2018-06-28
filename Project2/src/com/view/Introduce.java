@@ -122,7 +122,7 @@ public class Introduce extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void back_gioithieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_gioithieuMouseClicked
-       Home lo = new Home();
+       Login lo = new Login();
        lo.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_back_gioithieuMouseClicked
