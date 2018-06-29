@@ -1,8 +1,10 @@
 package com.view;
 
-import Model.Trafficsigns;
+import com.model.Trafficsigns;
 import com.dao.getCategoryForAdmin;
 import com.model.Categorys;
+import com.dao.BienbaoDAO;
+import java.awt.GridBagConstraints;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.bind.annotation.XmlElement;
@@ -24,14 +26,20 @@ public class BienbaoForm extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         list = new ArrayList<>();
         model = (DefaultTableModel) table.getModel();
-        
         getCategoryForAdmin admin=new getCategoryForAdmin();
         cate=admin.CategoryTest();
         for (int i = 0; i < cate.size(); i++) {
             CbCategory.addItem(cate.get(i).getCategoryName());
         }
+        BienbaoDAO bienbao= new BienbaoDAO();
+        list= bienbao.getlistTrafficsign();
+        for (int j = 0; j < list.size(); j++) {
+            
+              model.addRow(new Object[]{j++,list.get(j).getTrafficTitle(),list.get(j).getTrafficDetails(), list.get(j).getTrafficLink(), cate.get(j).getCategoryName(), list.get(j).getTrafficSignID() });
+        }
+       
     }
-
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,13 +75,13 @@ public class BienbaoForm extends javax.swing.JFrame {
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title", "Details", "Link", "Category"
+                "Title", "Details", "Link", "Category", "ID"
             }
         ));
         jScrollPane1.setViewportView(table);
@@ -231,7 +239,7 @@ public class BienbaoForm extends javax.swing.JFrame {
     private void ADDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ADDActionPerformed
         Trafficsigns b = new Trafficsigns();
         if(txtTitle.getText().trim().equals("")){
-            erormsg.setText("Khong duoc de trong");
+            erormsg.setText("Title khong duoc de trong");
         }
         else{
            model.addRow(new Object[]{txtTitle.getText(),txtDetails.getText(),txtLink.getText(),CbCategory.getSelectedItem().toString()}); 
@@ -261,7 +269,7 @@ public class BienbaoForm extends javax.swing.JFrame {
              erormsg.setText("Khong co du lieu");
          }
          else{
-           erormsg.setText("Chon Luat can sua");
+           erormsg.setText("Chon Bien bao can sua");
          }
              
          }
@@ -319,7 +327,7 @@ public class BienbaoForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LuatForm().setVisible(true);
+                new BienbaoForm().setVisible(true);
             }
         });
     }
