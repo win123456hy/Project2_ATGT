@@ -64,7 +64,7 @@ public class BienbaoDAO {
         
         
         
-    return null;
+    return list;
     }
       
 }
