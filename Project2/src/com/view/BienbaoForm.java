@@ -31,21 +31,15 @@ public class BienbaoForm extends javax.swing.JFrame {
         for (int i = 0; i < cate.size(); i++) {
             CbCategory.addItem(cate.get(i).getCategoryName());
         }
-       list= new BienbaoDAO().getlistTrafficsign();
+        BienbaoDAO bienbao= new BienbaoDAO();
+        list= bienbao.getlistTrafficsign();
+        for (int j = 0; j < list.size(); j++) {
+            
+              model.addRow(new Object[]{j++,list.get(j).getTrafficTitle(),list.get(j).getTrafficDetails(), list.get(j).getTrafficLink(), cate.get(j).getCategoryName(), list.get(j).getTrafficSignID() });
+        }
        
-       showTable();
     }
-     public void showTable() {
-        for (Trafficsigns t : list) {
-            for (Categorys c : cate) {
-                
-            int i=1;
-            model.addRow(new Object[]{
-                i++, t.getTrafficTitle(), t.getTrafficDetails(),t.getTrafficLink(),c.getCategoryName(),t.getTrafficSignID()
-            });
-        }
-        }
-    }
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
