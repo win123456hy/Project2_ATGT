@@ -3,39 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.model;
+package Model;
 
 /**
  *
  * @author Duc Va
  */
 public class Trafficsigns {
-    private int TrafficSignID;
-    
     private String TrafficTitle ;
     
     private String TrafficDetails;
     
     private String TrafficLink;
     
-    private int Category;
+    private String Category;
 
-    public Trafficsigns(int TrafficSignID, String TrafficTitle, String TrafficDetails, String TrafficLink, int Category) {
-        this.TrafficSignID = TrafficSignID;
+    public Trafficsigns(String TrafficTitle, String TrafficDetails, String TrafficLink, String Category) {
         this.TrafficTitle = TrafficTitle;
         this.TrafficDetails = TrafficDetails;
         this.TrafficLink = TrafficLink;
         this.Category = Category;
     }
-
-    public int getTrafficSignID() {
-        return TrafficSignID;
-    }
-
-    public void setTrafficSignID(int TrafficSignID) {
-        this.TrafficSignID = TrafficSignID;
-    }
-
 
     public Trafficsigns() {
       
@@ -65,11 +53,11 @@ public class Trafficsigns {
         this.TrafficLink = TrafficLink;
     }
 
-    public int getCategory() {
+    public String getCategory() {
         return Category;
     }
 
-    public void setCategory(int Category) {
+    public void setCategory(String Category) {
         this.Category = Category;
     }
     
