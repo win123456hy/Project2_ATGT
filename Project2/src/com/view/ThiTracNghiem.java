@@ -18,7 +18,7 @@ public class ThiTracNghiem extends javax.swing.JFrame {
      */
     public ThiTracNghiem() {
         initComponents();
-        this.setSize(1366,768);
+        this.setSize(1366, 768);
         back_thitracnghiem.setIcon(new ImageIcon("Images/Back.png"));
         thiduongbo.setIcon(new ImageIcon("Images/ThiDuongBo.png"));
         thixe2banh.setIcon(new ImageIcon("Images/Xe2Banh.png"));
@@ -122,32 +122,37 @@ public class ThiTracNghiem extends javax.swing.JFrame {
 
     private void back_thitracnghiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_thitracnghiemMouseClicked
         Home lo = new Home();
-            lo.setVisible(true);
-              this.dispose();
+        lo.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_back_thitracnghiemMouseClicked
 
     private void thixe2banhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thixe2banhMouseClicked
-       Test xe2 = new Test();
-            xe2.setVisible(true);
-              this.dispose();
+        System.setProperty("cateid", 1 + "");
+        Test xe2 = new Test();
+        xe2.setVisible(true);
+
+        this.dispose();
     }//GEN-LAST:event_thixe2banhMouseClicked
 
     private void thixe4banhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thixe4banhMouseClicked
+        System.setProperty("cateid", 2 + "");
         Test xe2 = new Test();
-            xe2.setVisible(true);
-              this.dispose();
+        xe2.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_thixe4banhMouseClicked
 
     private void thiduongsatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thiduongsatMouseClicked
+        System.setProperty("cateid", 3 + "");
         Test xe2 = new Test();
-            xe2.setVisible(true);
-              this.dispose();
+        xe2.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_thiduongsatMouseClicked
 
     private void thiduongthuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thiduongthuyMouseClicked
+        System.setProperty("cateid", 4 + "");
         Test xe2 = new Test();
-            xe2.setVisible(true);
-              this.dispose();
+        xe2.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_thiduongthuyMouseClicked
 
     /**

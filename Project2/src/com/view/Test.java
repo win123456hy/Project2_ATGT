@@ -41,134 +41,132 @@ public class Test extends javax.swing.JFrame {
     /**
      * Creates new form Test
      */
-   private Timer time;
-   private int giay=60;
-   private int phut=45;
-   private int index=0;
-   public JPanel jPanel[]=new JPanel[20];
-   public JLabel labels[] = new JLabel[20];
-   public JLabel labels1[] = new JLabel[20];
-   public JRadioButton jRadioButton[]=new JRadioButton[80];
-   public ButtonGroup buttonGroup[]=new ButtonGroup[20];
-   public getQuesforTest a = new getQuesforTest();
-    public   getAnswerforTest b=new getAnswerforTest();
-      public    ArrayList<Question> listques = a.CategoryTest(1);
-         public ArrayList<Answers> lisanswer;
-        public  setAnsweredforTest answeredforTest=new setAnsweredforTest();
-        public  getImageForTest imageForTest=new getImageForTest();
-    public Test() {
-           
-        initComponents();
-        this.setSize(1366,768);
-        
-        thoigian(); 
-        
-       
-        
- 
-            GridBagConstraints constraints = new GridBagConstraints();
-           int j=0;
-            for (int i = 0; i < labels.length; i++) {
-                lisanswer=b.getanswer(listques.get(i).getQuestionID());
-                
-                JPanel jp=new JPanel(new GridBagLayout());
-              
-                 JLabel jLabel=new JLabel();
-                 JLabel jLabel1=new JLabel();
-                 JRadioButton jRadioButton1=new JRadioButton();
-                 JRadioButton jRadioButton2=new JRadioButton();
-                 JRadioButton jRadioButton3=new JRadioButton();
-                 JRadioButton jRadioButton4=new JRadioButton();
-                 ButtonGroup bg=new ButtonGroup();
-                 
-                 jRadioButton1.setText(lisanswer.get(j).getAnswerDetail());
-                  jRadioButton2.setText(lisanswer.get(j+1).getAnswerDetail());
-                   jRadioButton3.setText(lisanswer.get(j+2).getAnswerDetail());
-                    jRadioButton4.setText(lisanswer.get(j+3).getAnswerDetail());
-                    jRadioButton[j]=jRadioButton1;
-                     jRadioButton[j+1]=jRadioButton2;
-                      jRadioButton[j+2]=jRadioButton3;
-                       jRadioButton[j+3]=jRadioButton4;
-                       
-                       bg.add(jRadioButton[j]);
-                       bg.add(jRadioButton[j+1]);
-                       bg.add(jRadioButton[j+2]);
-                       bg.add(jRadioButton[j+3]);
-                       
-                       buttonGroup[i]=bg;
-                constraints.gridx=0;
-                constraints.gridy=0;
-            jLabel.setText(listques.get(i).getQuestionDetail());
-            Images link=imageForTest.getImage(listques.get(i).getQuestionID());
-            if(link==null){
-            jLabel1.setText("");
-            }
-            else
-            jLabel1.setIcon(new ImageIcon(link.getImageLinks()));
-            labels[i]=jLabel;
-            labels1[i]=jLabel1;
-            
-            jp.add(labels[i],constraints);
-             constraints.gridx=0;
-              constraints.gridy=1;
-               jp.add(new JLabel("                                                                                "),constraints);
-            constraints.gridx=0;
-              constraints.gridy=2;
-               jp.add(labels1[i],constraints);
-                constraints.gridx=0;
-              constraints.gridy=3;
-              constraints.anchor=GridBagConstraints.WEST;
-              jp.add(jRadioButton[j],constraints);
-                constraints.gridx=0;
-              constraints.gridy=4;
-               constraints.anchor=GridBagConstraints.WEST;
-              jp.add(jRadioButton[j+1],constraints);
-               constraints.gridx=0;
-              constraints.gridy=5;
-               constraints.anchor=GridBagConstraints.WEST;
-              jp.add(jRadioButton[j+2],constraints);
-              constraints.gridx=0;
-              constraints.gridy=6;
-               constraints.anchor=GridBagConstraints.WEST;
-               jp.add(jRadioButton[j+3],constraints);
-            jPanel[i]=jp;
-            jTabbedPane1.add("Câu "+(i+1), jPanel[i]);
-            j=j+4;
-        }
-           
-          
+    private Timer time;
+    private int giay = 60;
+    private int phut = 44;
+    private int index = 0;
+    public JPanel jPanel[] = new JPanel[20];
+    public JLabel labels[] = new JLabel[20];
+    public JLabel labels1[] = new JLabel[20];
+    public JRadioButton jRadioButton[] = new JRadioButton[80];
+    public ButtonGroup buttonGroup[] = new ButtonGroup[20];
+    public getQuesforTest a = new getQuesforTest();
+    public getAnswerforTest b = new getAnswerforTest();
+    public ArrayList<Question> listques;
+    public ArrayList<Answers> lisanswer;
+    public setAnsweredforTest answeredforTest = new setAnsweredforTest();
+    public getImageForTest imageForTest = new getImageForTest();
 
-    
+    public Test() {
+
+        initComponents();
+        String cateid = System.getProperty("cateid");
+        listques = a.CategoryTest(Integer.parseInt(cateid));
+        this.setSize(1366, 768);
+
+        thoigian();
+
+        GridBagConstraints constraints = new GridBagConstraints();
+        int j = 0;
+        for (int i = 0; i < labels.length; i++) {
+            lisanswer = b.getanswer(listques.get(i).getQuestionID());
+
+            JPanel jp = new JPanel(new GridBagLayout());
+
+            JLabel jLabel = new JLabel();
+            JLabel jLabel1 = new JLabel();
+            JRadioButton jRadioButton1 = new JRadioButton();
+            JRadioButton jRadioButton2 = new JRadioButton();
+            JRadioButton jRadioButton3 = new JRadioButton();
+            JRadioButton jRadioButton4 = new JRadioButton();
+            ButtonGroup bg = new ButtonGroup();
+
+            jRadioButton1.setText(lisanswer.get(j).getAnswerDetail());
+            jRadioButton2.setText(lisanswer.get(j + 1).getAnswerDetail());
+            jRadioButton3.setText(lisanswer.get(j + 2).getAnswerDetail());
+            jRadioButton4.setText(lisanswer.get(j + 3).getAnswerDetail());
+            jRadioButton[j] = jRadioButton1;
+            jRadioButton[j + 1] = jRadioButton2;
+            jRadioButton[j + 2] = jRadioButton3;
+            jRadioButton[j + 3] = jRadioButton4;
+
+            bg.add(jRadioButton[j]);
+            bg.add(jRadioButton[j + 1]);
+            bg.add(jRadioButton[j + 2]);
+            bg.add(jRadioButton[j + 3]);
+
+            buttonGroup[i] = bg;
+            constraints.gridx = 0;
+            constraints.gridy = 0;
+            jLabel.setText(listques.get(i).getQuestionDetail());
+            Images link = imageForTest.getImage(listques.get(i).getQuestionID());
+            if (link == null) {
+                jLabel1.setText("");
+            } else {
+                jLabel1.setIcon(new ImageIcon(link.getImageLinks()));
+            }
+            labels[i] = jLabel;
+            labels1[i] = jLabel1;
+
+            jp.add(labels[i], constraints);
+            constraints.gridx = 0;
+            constraints.gridy = 1;
+            jp.add(new JLabel("                                                                                "), constraints);
+            constraints.gridx = 0;
+            constraints.gridy = 2;
+            jp.add(labels1[i], constraints);
+            constraints.gridx = 0;
+            constraints.gridy = 3;
+            constraints.anchor = GridBagConstraints.WEST;
+            jp.add(jRadioButton[j], constraints);
+            constraints.gridx = 0;
+            constraints.gridy = 4;
+            constraints.anchor = GridBagConstraints.WEST;
+            jp.add(jRadioButton[j + 1], constraints);
+            constraints.gridx = 0;
+            constraints.gridy = 5;
+            constraints.anchor = GridBagConstraints.WEST;
+            jp.add(jRadioButton[j + 2], constraints);
+            constraints.gridx = 0;
+            constraints.gridy = 6;
+            constraints.anchor = GridBagConstraints.WEST;
+            jp.add(jRadioButton[j + 3], constraints);
+            jPanel[i] = jp;
+            jTabbedPane1.add("Câu " + (i + 1), jPanel[i]);
+            j = j + 4;
+        }
+
     }
-    
-    public  void thoigian(){
-    time=new Timer(1000, new ActionListener() {
+
+    public void thoigian() {
+        time = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 giay--;
-               
-                if(phut>0){
-                     if(giay==0){
-                    giay=60;
-                    phut--;
+
+                if (phut > 0) {
+                    if (giay == 0) {
+                        giay = 60;
+                        phut--;
+                    }
+                    if (giay == 60) {
+                        lbTime.setText((phut + 1) + " phút:" + "00 giây");
+                    } else {
+                        lbTime.setText(phut + " phút:" + giay + " giây");
+                    }
+                } else if (phut == 0) {
+                    lbTime.setText(giay + " giây");
                 }
-                    if(giay==60)
-                lbTime.setText((phut+1)+" phút:"+"00 giây");
-                    else
-                 lbTime.setText(phut+" phút:"+giay+" giây");
-                }
-                else if(phut==0)
-                    lbTime.setText(giay+" giây");
-                
-                if(phut==0&&giay==0){
+
+                if (phut == 0 && giay == 0) {
                     time.stop();
                     Nopbai();
                 }
             }
         });
-         time.start();
-   }
-  
+        time.start();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -261,42 +259,47 @@ public class Test extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      index++;
-      if(index>19)
-          index=0;
+        index++;
+        if (index > 19) {
+            index = 0;
+        }
         jTabbedPane1.setSelectedIndex(index);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         index--;
-        if(index<0)
-            index=19;
+        if (index < 0) {
+            index = 19;
+        }
         jTabbedPane1.setSelectedIndex(index);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    Nopbai();
-    time.stop();
+        Nopbai();
+        time.stop();
     }//GEN-LAST:event_jButton3ActionPerformed
-    public void Nopbai(){
-        setExam sete=new setExam();
-        sete.createExam(1);
-        getExam gete=new getExam();
-        Exams exa= gete.getExamx(1);
-       
+    public void Nopbai() {
+        setExam sete = new setExam();
+        String usid = System.getProperty("userid");
+        sete.createExam(Integer.parseInt(usid));
+        getExam gete = new getExam();
+        Exams exa = gete.getExamx(Integer.parseInt(usid));
+
         for (int i = 0; i < jRadioButton.length; i++) {
-            if(jRadioButton[i].isSelected()){
-                if(i<4)
-            answeredforTest.Answered(exa.getExamID(),listques.get(0).getQuestionID(), lisanswer.get(i).getAnswerID());
-                else 
-             answeredforTest.Answered(exa.getExamID(),listques.get(i/4).getQuestionID(), lisanswer.get(i).getAnswerID());        
+            if (jRadioButton[i].isSelected()) {
+                if (i < 4) {
+                    answeredforTest.Answered(exa.getExamID(), listques.get(0).getQuestionID(), lisanswer.get(i).getAnswerID());
+                } else {
+                    answeredforTest.Answered(exa.getExamID(), listques.get(i / 4).getQuestionID(), lisanswer.get(i).getAnswerID());
+                }
             }
         }
-        System.setProperty("time",phut+" phút "+giay+" giây");
-    ResultTest rs=new ResultTest();
-    rs.setVisible(true);
-    this.dispose();
+        System.setProperty("time", phut + " phút " + giay + " giây");
+        ResultTest rs = new ResultTest();
+        rs.setVisible(true);
+        this.dispose();
     }
+
     /**
      * @param args the command line arguments
      */
@@ -327,10 +330,10 @@ public class Test extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-             
-             Test t=  new Test();
-             t.setVisible(true);
-                 
+
+                Test t = new Test();
+                t.setVisible(true);
+
             }
         });
     }

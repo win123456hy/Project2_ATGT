@@ -23,8 +23,9 @@ public class ResultTest extends javax.swing.JFrame {
     private getExam exam=new getExam();
     public ResultTest() {
         initComponents();
+        String usid=System.getProperty("userid");
         CalcuTest calcuTest=new CalcuTest();
-        Exams e= exam.getExamx(1);
+        Exams e= exam.getExamx(Integer.parseInt(usid));
         int diem=calcuTest.Score(e.getExamID());
         jLabel1.setText(diem+"");
         String time=System.getProperty("time");

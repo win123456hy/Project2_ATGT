@@ -10,20 +10,26 @@ package com.model;
  * @author Duc Va
  */
 public class Trafficsigns {
+    private int TrafficsignsID;
     private String TrafficTitle ;
     
     private String TrafficDetails;
     
     private String TrafficLink;
     
-    private String Category;
+    private Categorys CategoryID;
 
-    public Trafficsigns(String TrafficTitle, String TrafficDetails, String TrafficLink, String Category) {
-        this.TrafficTitle = TrafficTitle;
-        this.TrafficDetails = TrafficDetails;
-        this.TrafficLink = TrafficLink;
-        this.Category = Category;
+    public int getTrafficsignsID() {
+        return TrafficsignsID;
     }
+
+    public void setTrafficsignsID(int TrafficsignsID) {
+        this.TrafficsignsID = TrafficsignsID;
+    }
+
+    
+
+    
 
     public Trafficsigns() {
       
@@ -53,14 +59,23 @@ public class Trafficsigns {
         this.TrafficLink = TrafficLink;
     }
 
-    public String getCategory() {
-        return Category;
+    public Categorys getCategoryID() {
+        return CategoryID;
     }
 
-    public void setCategory(String Category) {
-        this.Category = Category;
+    public void setCategoryID(Categorys CategoryID) {
+        this.CategoryID = CategoryID;
     }
-    
+
+    public Trafficsigns(int TrafficsignsID, String TrafficTitle, String TrafficDetails, String TrafficLink, Categorys CategoryID) {
+        this.TrafficsignsID = TrafficsignsID;
+        this.TrafficTitle = TrafficTitle;
+        this.TrafficDetails = TrafficDetails;
+        this.TrafficLink = TrafficLink;
+        this.CategoryID = CategoryID;
+    }
+
+ 
 
 
     

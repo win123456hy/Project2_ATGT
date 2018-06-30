@@ -36,10 +36,12 @@ public class ReviewAnswered extends javax.swing.JFrame {
    
         private GridBagConstraints constraints = new GridBagConstraints();
      private getExam gete=new getExam();
-       private Exams exx= gete.getExamx(1);
+       private Exams exx;
     public ReviewAnswered() {
         initComponents();
+        String usid=System.getProperty("userid");
         
+        exx= gete.getExamx(Integer.parseInt(usid));
          jTextArea1.setEditable(false);
         jTextArea2.setEditable(false);
        jTextArea3.setEditable(false);
