@@ -7,6 +7,7 @@ package com.view;
 
 import com.dao.LoginDAO;
 import com.dao.getUserIDforlogin;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -44,6 +45,7 @@ public class DangNhap extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -53,6 +55,12 @@ public class DangNhap extends javax.swing.JFrame {
         jLabel1.setText("Đăng nhập");
 
         jLabel4.setText("Tên tài khoản");
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
 
         jLabel5.setText("Mật khẩu");
 
@@ -65,14 +73,23 @@ public class DangNhap extends javax.swing.JFrame {
 
         jButton2.setText("Đăng ký");
 
+        jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordField1KeyPressed(evt);
+            }
+        });
+
+        jButton3.setText("Quay lại");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 43, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -87,9 +104,6 @@ public class DangNhap extends javax.swing.JFrame {
                         .addGap(136, 136, 136)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -99,6 +113,17 @@ public class DangNhap extends javax.swing.JFrame {
                         .addGap(127, 127, 127)
                         .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 43, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,15 +147,42 @@ public class DangNhap extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void login(){
+    jLabel6.setText("");
+        jLabel2.setText("");
+        jLabel3.setText("");
+        if (jTextField1.getText().isEmpty()) {
+            jLabel2.setText("Không được để trống");
+            jTextField1.requestFocusInWindow();
+        }
+        if (jPasswordField1.getPassword().length==0) {
+            jLabel3.setText("Không được để trống");
+            jPasswordField1.requestFocusInWindow();
+        }
+        check = loginDAO.login(jTextField1.getText(), String.valueOf(jPasswordField1.getPassword()));
+        if (check == true&&!jTextField1.getText().isEmpty()&&jPasswordField1.getPassword().length>0) {
+            Home home = new Home();
+            home.setVisible(true);
+            this.dispose();
+            getUserIDforlogin userIDforlogin=new getUserIDforlogin();
+           int usid= userIDforlogin.getUserID(jTextField1.getText());
+             System.setProperty("userid",usid+"");
+        } else  if (check == false&&!jTextField1.getText().isEmpty()&&jPasswordField1.getPassword().length>0){
+            jLabel6.setText("Sai tên tài khoản hoặc mật khẩu! Vui lòng nhập lai.");
+            jTextField1.setText("");
+            jPasswordField1.setText("");
+    }                    
+    }
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
+
         jLabel6.setText("");
         jLabel2.setText("");
         jLabel3.setText("");
@@ -155,7 +207,26 @@ public class DangNhap extends javax.swing.JFrame {
             jTextField1.setText("");
             jPasswordField1.setText("");
     }//GEN-LAST:event_jButton1MouseClicked
-}   /**
+    }
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            login();
+        }
+    }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
+          if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            login();
+        }
+    }//GEN-LAST:event_jPasswordField1KeyPressed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Home home=new Home();
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+   /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -194,6 +265,7 @@ public class DangNhap extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

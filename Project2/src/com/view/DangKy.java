@@ -6,6 +6,7 @@
 package com.view;
 
 import com.dao.RegisterDAO;
+import java.awt.event.KeyEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -52,6 +53,7 @@ public class DangKy extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txtpassword1 = new javax.swing.JPasswordField();
         txtpassword2 = new javax.swing.JPasswordField();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -61,6 +63,18 @@ public class DangKy extends javax.swing.JFrame {
         jLabel1.setText("Đăng ký");
 
         jLabel6.setText("Tên tài khoản");
+
+        txtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUsernameKeyPressed(evt);
+            }
+        });
+
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEmailKeyPressed(evt);
+            }
+        });
 
         jLabel7.setText("Email");
 
@@ -84,6 +98,25 @@ public class DangKy extends javax.swing.JFrame {
         });
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        txtpassword1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtpassword1KeyPressed(evt);
+            }
+        });
+
+        txtpassword2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtpassword2KeyPressed(evt);
+            }
+        });
+
+        jButton2.setText("Quay lại");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,7 +167,10 @@ public class DangKy extends javax.swing.JFrame {
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(132, 132, 132)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -175,14 +211,19 @@ public class DangKy extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(41, 41, 41)
                 .addComponent(jLabel11)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-      jLabel2.setText("");
+        register();
+    }//GEN-LAST:event_jButton1MouseClicked
+    private void register() {
+        jLabel2.setText("");
         jLabel3.setText("");
         jLabel4.setText("");
         jLabel5.setText("");
@@ -226,10 +267,42 @@ public class DangKy extends javax.swing.JFrame {
         if (matcher.matches() == true && matcher1.matches() == true && matcher2.matches() == true && String.valueOf(pass1).equals(String.valueOf(pass2))) {
 
             RegisterDAO registerDAO = new RegisterDAO();
-            registerDAO.regis(username, String.valueOf(pass1), gender, email);
-            jLabel11.setText("Đăng ký thành công!!");
+            if (registerDAO.regis(username, String.valueOf(pass1), gender, email) == true) {
+                jLabel11.setText("Đăng ký thành công!!");
+            } else {
+                jLabel11.setText("Đã có người dùng này trong Database!!");
+            }
         }
-    }//GEN-LAST:event_jButton1MouseClicked
+    }
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Home home = new Home();
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            register();
+        }
+    }//GEN-LAST:event_txtUsernameKeyPressed
+
+    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            register();
+        }
+    }//GEN-LAST:event_txtEmailKeyPressed
+
+    private void txtpassword1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpassword1KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            register();
+        }
+    }//GEN-LAST:event_txtpassword1KeyPressed
+
+    private void txtpassword2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpassword2KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            register();
+        }
+    }//GEN-LAST:event_txtpassword2KeyPressed
 
     /**
      * @param args the command line arguments
@@ -269,6 +342,7 @@ public class DangKy extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
