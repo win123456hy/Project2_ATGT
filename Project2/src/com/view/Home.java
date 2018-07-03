@@ -23,7 +23,7 @@ public class Home extends javax.swing.JFrame {
         this.setSize(1366,768);
         hocluat.setIcon(new ImageIcon("Images/HocLuat.png"));
         thitracnghiem.setIcon(new ImageIcon("Images/THITRNG.png"));
-        gioithieu.setIcon(new ImageIcon("Images/GioiThieu.png"));
+        trangcanhan.setIcon(new ImageIcon("Images/TrangCaNhan.png"));
         thoat.setIcon(new ImageIcon("Images/Thoat.png"));
         
         
@@ -44,7 +44,7 @@ public class Home extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         hocluat = new javax.swing.JLabel();
         thitracnghiem = new javax.swing.JLabel();
-        gioithieu = new javax.swing.JLabel();
+        trangcanhan = new javax.swing.JLabel();
         thoat = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -71,13 +71,13 @@ public class Home extends javax.swing.JFrame {
         });
         jPanel1.add(thitracnghiem);
 
-        gioithieu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        gioithieu.addMouseListener(new java.awt.event.MouseAdapter() {
+        trangcanhan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        trangcanhan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                gioithieuMouseClicked(evt);
+                trangcanhanMouseClicked(evt);
             }
         });
-        jPanel1.add(gioithieu);
+        jPanel1.add(trangcanhan);
 
         thoat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         thoat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -105,11 +105,11 @@ public class Home extends javax.swing.JFrame {
               this.dispose();
     }//GEN-LAST:event_thitracnghiemMouseClicked
 
-    private void gioithieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gioithieuMouseClicked
+    private void trangcanhanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trangcanhanMouseClicked
         Introduce in = new Introduce();
             in.setVisible(true);
               this.dispose();
-    }//GEN-LAST:event_gioithieuMouseClicked
+    }//GEN-LAST:event_trangcanhanMouseClicked
 
     private void thoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thoatMouseClicked
         System.exit(0);
@@ -152,7 +152,6 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel gioithieu;
     private javax.swing.JLabel hocluat;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -160,5 +159,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel thitracnghiem;
     private javax.swing.JLabel thoat;
+    private javax.swing.JLabel trangcanhan;
     // End of variables declaration//GEN-END:variables
 }

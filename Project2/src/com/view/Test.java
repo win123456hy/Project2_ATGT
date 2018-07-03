@@ -58,7 +58,7 @@ public class Test extends javax.swing.JFrame {
      */
     private Timer time;
     private int giay = 60;
-    private int phut = 44;
+    private int phut = 1;
     private int index = 0;
     public JPanel jPanel[] = new JPanel[20];
     public JPanel jPanel1[] = new JPanel[20];
@@ -77,7 +77,9 @@ public class Test extends javax.swing.JFrame {
     public Test() {
 
         initComponents();
+        this.setSize(1366, 768);
 
+        thoigian();
         jButton4.setBackground(Color.BLACK);
         jButton4.setFont(new Font("Dialog", Font.PLAIN, 20));
         jButton4.setForeground(Color.WHITE);
@@ -90,49 +92,24 @@ public class Test extends javax.swing.JFrame {
         jButton7.setBackground(Color.BLACK);
         jButton7.setFont(new Font("Dialog", Font.PLAIN, 20));
         jButton7.setForeground(Color.WHITE);
-        
-        
+        lbprevious.setIcon(new ImageIcon("Images/previous.png"));
+        lbnext.setIcon(new ImageIcon("Images/next.png"));
+        lbnopbai.setIcon(new ImageIcon("Images/nopbai.png"));
+
         this.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         JPanel jPanelnp = new JPanel();
+       
         jPanelnp.setLayout(new BoxLayout(jPanelnp, BoxLayout.LINE_AXIS));
-        jPanelnp.setBorder(new LineBorder(Color.BLACK, 1));
-        JPanel jPaneltime = null;
-        jPaneltime = new JPanel(new GridBagLayout());
-        jPaneltime.setBorder(new LineBorder(Color.BLACK, 1));
-        GridBagConstraints constraints1 = new GridBagConstraints();
-        JPanel jPanelclock = new JPanel(new FlowLayout());
-        jPanelnp.add(jButton1);
-        jPanelnp.add(Box.createHorizontalGlue());
-        jPanelnp.add(Box.createRigidArea(new Dimension(1000, 0)));
-        jPanelnp.add(jButton2);
-        constraints1.gridx = 0;
-        constraints1.gridy = 0;
-        jPaneltime.add(labeltg, constraints1);
-        constraints1.gridx = 0;
-        constraints1.gridy = 1;
-        constraints1.insets = new Insets(0, 0, 230, 0);
-        jPanelclock.add(jButton4);
-        jPanelclock.add(jButton5);
-        jPanelclock.add(jButton6);
-        jPanelclock.add(jButton7);
-        jPaneltime.add(jPanelclock, constraints1);
-
-        constraints1.gridx = 0;
-        constraints1.gridy = 2;
-        jPaneltime.add(jButton3, constraints1);
+       
         constraints.gridx = 0;
         constraints.gridy = 0;
 
         this.add(jPanelnp, constraints);
-        constraints.gridx = 1;
-        constraints.gridy = 1;
-        this.add(jPaneltime, constraints);
+        
         String cateid = System.getProperty("cateid");
         listques = a.CategoryTest(Integer.parseInt(cateid));
-        this.setSize(1366, 768);
-
-        thoigian();
+        
 
         int j = 0;
         for (int i = 0; i < jTex.length; i++) {
@@ -162,7 +139,7 @@ public class Test extends javax.swing.JFrame {
             JRadioButton jRadioButton1 = new JRadioButton();
             ButtonGroup bg = new ButtonGroup();
 
-            jRadioButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/unselected.png")));
+            jRadioButton1.setIcon(new javax.swing.ImageIcon("Images/bochon.png"));
             //jRadioButton1.setHorizontalAlignment(JRadioButton.CENTER);
             jp1.add(jRadioButton1);
 
@@ -176,10 +153,10 @@ public class Test extends javax.swing.JFrame {
                     Enumeration<AbstractButton> elements = bg.getElements();
                     while (elements.hasMoreElements()) {
                         JRadioButton selectedRadio = (JRadioButton) elements.nextElement();
-                        selectedRadio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/unselected.png")));
+                        selectedRadio.setIcon(new javax.swing.ImageIcon("Images/bochon.png"));
 
                     }
-                    jRadioButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/selected.png")));
+                    jRadioButton1.setIcon(new javax.swing.ImageIcon("Images/chon.png"));
                     jRadioButton1.setSelected(true);
                 }
             });
@@ -194,9 +171,9 @@ public class Test extends javax.swing.JFrame {
                     Enumeration<AbstractButton> elements = bg.getElements();
                     while (elements.hasMoreElements()) {
                         JRadioButton selectedRadio = (JRadioButton) elements.nextElement();
-                        selectedRadio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/unselected.png")));
+                        selectedRadio.setIcon(new javax.swing.ImageIcon("Images/bochon.png"));
                     }
-                    jRadioButton[Integer.parseInt(txt.getName())].setIcon(new javax.swing.ImageIcon(getClass().getResource("/selected.png")));
+                    jRadioButton[Integer.parseInt(txt.getName())].setIcon(new javax.swing.ImageIcon("Images/chon.png"));
                     jRadioButton[Integer.parseInt(txt.getName())].setSelected(true);
                 }
 
@@ -206,7 +183,7 @@ public class Test extends javax.swing.JFrame {
             jp1.add(jTextArea);
 
             JRadioButton jRadioButton2 = new JRadioButton();
-            jRadioButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/unselected.png")));
+            jRadioButton2.setIcon(new javax.swing.ImageIcon("Images/bochon.png"));
             jp1.add(jRadioButton2);
             jRadioButton[j + 1] = jRadioButton2;
             bg.add(jRadioButton[j + 1]);
@@ -216,9 +193,9 @@ public class Test extends javax.swing.JFrame {
                     Enumeration<AbstractButton> elements = bg.getElements();
                     while (elements.hasMoreElements()) {
                         JRadioButton selectedRadio = (JRadioButton) elements.nextElement();
-                        selectedRadio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/unselected.png")));
+                        selectedRadio.setIcon(new javax.swing.ImageIcon("Images/bochon.png"));
                     }
-                    jRadioButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/selected.png")));
+                    jRadioButton2.setIcon(new javax.swing.ImageIcon("Images/chon.png"));
                     jRadioButton2.setSelected(true);
                 }
             });
@@ -233,9 +210,9 @@ public class Test extends javax.swing.JFrame {
                     Enumeration<AbstractButton> elements = bg.getElements();
                     while (elements.hasMoreElements()) {
                         JRadioButton selectedRadio = (JRadioButton) elements.nextElement();
-                        selectedRadio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/unselected.png")));
+                        selectedRadio.setIcon(new javax.swing.ImageIcon("Images/bochon.png"));
                     }
-                    jRadioButton[Integer.parseInt(txt.getName())].setIcon(new javax.swing.ImageIcon(getClass().getResource("/selected.png")));
+                    jRadioButton[Integer.parseInt(txt.getName())].setIcon(new javax.swing.ImageIcon("Images/chon.png"));
                     jRadioButton[Integer.parseInt(txt.getName())].setSelected(true);
                 }
 
@@ -245,7 +222,7 @@ public class Test extends javax.swing.JFrame {
             jp1.add(jTextArea1);
 
             JRadioButton jRadioButton3 = new JRadioButton();
-            jRadioButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/unselected.png")));
+            jRadioButton3.setIcon(new javax.swing.ImageIcon("Images/bochon.png"));
             jp1.add(jRadioButton3);
             jRadioButton[j + 2] = jRadioButton3;
             bg.add(jRadioButton[j + 2]);
@@ -255,9 +232,9 @@ public class Test extends javax.swing.JFrame {
                     Enumeration<AbstractButton> elements = bg.getElements();
                     while (elements.hasMoreElements()) {
                         JRadioButton selectedRadio = (JRadioButton) elements.nextElement();
-                        selectedRadio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/unselected.png")));
+                        selectedRadio.setIcon(new javax.swing.ImageIcon("Images/bochon.png"));
                     }
-                    jRadioButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/selected.png")));
+                    jRadioButton3.setIcon(new javax.swing.ImageIcon("Images/chon.png"));
                     jRadioButton3.setSelected(true);
                 }
             });
@@ -272,9 +249,9 @@ public class Test extends javax.swing.JFrame {
                     Enumeration<AbstractButton> elements = bg.getElements();
                     while (elements.hasMoreElements()) {
                         JRadioButton selectedRadio = (JRadioButton) elements.nextElement();
-                        selectedRadio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/unselected.png")));
+                        selectedRadio.setIcon(new javax.swing.ImageIcon("Images/bochon.png"));
                     }
-                    jRadioButton[Integer.parseInt(txt.getName())].setIcon(new javax.swing.ImageIcon(getClass().getResource("/selected.png")));
+                    jRadioButton[Integer.parseInt(txt.getName())].setIcon(new javax.swing.ImageIcon("Images/chon.png"));
                     jRadioButton[Integer.parseInt(txt.getName())].setSelected(true);
                 }
 
@@ -284,7 +261,7 @@ public class Test extends javax.swing.JFrame {
             jp1.add(jTextArea2);
 
             JRadioButton jRadioButton4 = new JRadioButton();
-            jRadioButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/unselected.png")));
+            jRadioButton4.setIcon(new javax.swing.ImageIcon("Images/bochon.png"));
             jp1.add(jRadioButton4);
             jRadioButton[j + 3] = jRadioButton4;
             bg.add(jRadioButton[j + 3]);
@@ -294,9 +271,9 @@ public class Test extends javax.swing.JFrame {
                     Enumeration<AbstractButton> elements = bg.getElements();
                     while (elements.hasMoreElements()) {
                         JRadioButton selectedRadio = (JRadioButton) elements.nextElement();
-                        selectedRadio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/unselected.png")));
+                        selectedRadio.setIcon(new javax.swing.ImageIcon("Images/bochon.png"));
                     }
-                    jRadioButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/selected.png")));
+                    jRadioButton4.setIcon(new javax.swing.ImageIcon("Images/chon.png"));
                     jRadioButton4.setSelected(true);
                 }
             });
@@ -311,9 +288,9 @@ public class Test extends javax.swing.JFrame {
                     Enumeration<AbstractButton> elements = bg.getElements();
                     while (elements.hasMoreElements()) {
                         JRadioButton selectedRadio = (JRadioButton) elements.nextElement();
-                        selectedRadio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/unselected.png")));
+                        selectedRadio.setIcon(new javax.swing.ImageIcon("Images/bochon.png"));
                     }
-                    jRadioButton[Integer.parseInt(txt.getName())].setIcon(new javax.swing.ImageIcon(getClass().getResource("/selected.png")));
+                    jRadioButton[Integer.parseInt(txt.getName())].setIcon(new javax.swing.ImageIcon("Images/chon.png"));
                     jRadioButton[Integer.parseInt(txt.getName())].setSelected(true);
                 }
 
@@ -335,13 +312,63 @@ public class Test extends javax.swing.JFrame {
             jPanel[i] = jpmain;
             jPanel[i].add(jp);
             jPanel[i].add(jp1);
-            jTabbedPane1.add("Câu " + (i + 1), jPanel[i]);
-            jTabbedPane1.setIconAt(i, new javax.swing.ImageIcon(getClass().getResource("/selected.png")));
+            jTabbedPane1.add(jPanel[i]);
+
             j = j + 4;
         }
+        jTabbedPane1.setIconAt(0, new javax.swing.ImageIcon("Images/1.png"));
+        jTabbedPane1.setIconAt(1, new javax.swing.ImageIcon("Images/2.png"));
+        jTabbedPane1.setIconAt(2, new javax.swing.ImageIcon("Images/3.png"));
+        jTabbedPane1.setIconAt(3, new javax.swing.ImageIcon("Images/4.png"));
+        jTabbedPane1.setIconAt(4, new javax.swing.ImageIcon("Images/5.png"));
+        jTabbedPane1.setIconAt(5, new javax.swing.ImageIcon("Images/6.png"));
+        jTabbedPane1.setIconAt(6, new javax.swing.ImageIcon("Images/7.png"));
+        jTabbedPane1.setIconAt(7, new javax.swing.ImageIcon("Images/8.png"));
+        jTabbedPane1.setIconAt(8, new javax.swing.ImageIcon("Images/9.png"));
+        jTabbedPane1.setIconAt(9, new javax.swing.ImageIcon("Images/10.png"));
+        jTabbedPane1.setIconAt(10, new javax.swing.ImageIcon("Images/11.png"));
+        jTabbedPane1.setIconAt(11, new javax.swing.ImageIcon("Images/12.png"));
+        jTabbedPane1.setIconAt(12, new javax.swing.ImageIcon("Images/13.png"));
+        jTabbedPane1.setIconAt(13, new javax.swing.ImageIcon("Images/14.png"));
+        jTabbedPane1.setIconAt(14, new javax.swing.ImageIcon("Images/15.png"));
+        jTabbedPane1.setIconAt(15, new javax.swing.ImageIcon("Images/16.png"));
+        jTabbedPane1.setIconAt(16, new javax.swing.ImageIcon("Images/17.png"));
+        jTabbedPane1.setIconAt(17, new javax.swing.ImageIcon("Images/18.png"));
+        jTabbedPane1.setIconAt(18, new javax.swing.ImageIcon("Images/19.png"));
+        jTabbedPane1.setIconAt(19, new javax.swing.ImageIcon("Images/20.png"));
+
         constraints.gridx = 0;
         constraints.gridy = 1;
         this.add(jTabbedPane1, constraints);
+        
+         JPanel jPaneltime = null;
+        jPaneltime = new JPanel(new GridBagLayout());
+        jPaneltime.setBorder(new LineBorder(Color.BLACK, 1));
+        GridBagConstraints constraints1 = new GridBagConstraints();
+        JPanel jPanelclock = new JPanel(new FlowLayout());
+        jPanelnp.add(lbprevious);
+        jPanelnp.add(Box.createHorizontalGlue());
+        jPanelnp.add(Box.createRigidArea(new Dimension(800, 0)));
+        jPanelnp.add(lbnext);
+        constraints1.gridx = 0;
+        constraints1.gridy = 0;
+        jPaneltime.add(labeltg, constraints1);
+        constraints1.gridx = 0;
+        constraints1.gridy = 1;
+        constraints1.insets = new Insets(0, 0, 200, 0);
+        jPanelclock.add(jButton4);
+        jPanelclock.add(jButton5);
+        jPanelclock.add(jButton6);
+        jPanelclock.add(jButton7);
+        jPaneltime.add(jPanelclock, constraints1);
+
+        constraints1.gridx = 0;
+        constraints1.gridy = 2;
+        jPaneltime.add(lbnopbai, constraints1);
+        constraints.gridx = 1;
+        constraints.gridy = 1;
+        this.add(jPaneltime, constraints);
+        
     }
 
     public void thoigian() {
@@ -396,43 +423,20 @@ public class Test extends javax.swing.JFrame {
     private void initComponents() {
 
         labeltg = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        lbprevious = new javax.swing.JLabel();
+        lbnext = new javax.swing.JLabel();
+        lbnopbai = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
 
         labeltg.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         labeltg.setText("Thời gian:");
-
-        jButton1.setText("Previous");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Next");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jButton3.setText("Nộp bài");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
@@ -446,26 +450,43 @@ public class Test extends javax.swing.JFrame {
 
         jButton7.setText("jButton7");
 
+        lbprevious.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbpreviousMouseClicked(evt);
+            }
+        });
+
+        lbnext.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbnextMouseClicked(evt);
+            }
+        });
+
+        lbnopbai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbnopbaiMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(860, 860, 860)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1091, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1091, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addComponent(lbprevious)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbnext)
+                        .addGap(73, 73, 73)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(69, 69, 69)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labeltg)))
+                        .addComponent(labeltg))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -474,16 +495,19 @@ public class Test extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton7)))
-                .addGap(489, 489, Short.MAX_VALUE))
+                        .addComponent(jButton7))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(lbnopbai)))
+                .addContainerGap(517, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labeltg))
+                    .addComponent(labeltg)
+                    .addComponent(lbprevious)
+                    .addComponent(lbnext))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
@@ -494,41 +518,41 @@ public class Test extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(85, 85, 85)
+                        .addComponent(lbnopbai))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(154, Short.MAX_VALUE))
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        index = jTabbedPane1.getSelectedIndex();
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void lbnextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbnextMouseClicked
         index++;
         if (index > 19) {
             index = 0;
         }
         jTabbedPane1.setSelectedIndex(index);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_lbnextMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        index--;
+    private void lbpreviousMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbpreviousMouseClicked
+            index--;
         if (index < 0) {
             index = 19;
         }
         jTabbedPane1.setSelectedIndex(index);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_lbpreviousMouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Nopbai();
+    private void lbnopbaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbnopbaiMouseClicked
+         Nopbai();
         time.stop();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
-        index = jTabbedPane1.getSelectedIndex();
-    }//GEN-LAST:event_jTabbedPane1StateChanged
+    }//GEN-LAST:event_lbnopbaiMouseClicked
     public void Nopbai() {
         setExam sete = new setExam();
         String usid = System.getProperty("userid");
@@ -590,14 +614,14 @@ public class Test extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel labeltg;
+    private javax.swing.JLabel lbnext;
+    private javax.swing.JLabel lbnopbai;
+    private javax.swing.JLabel lbprevious;
     // End of variables declaration//GEN-END:variables
 }

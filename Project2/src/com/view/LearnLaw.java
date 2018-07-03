@@ -21,8 +21,6 @@ public class LearnLaw extends javax.swing.JFrame {
         this.setSize(1366,768);
         back_hocluat.setIcon(new ImageIcon("Images/Back.png"));
         luatduongbo.setIcon(new ImageIcon("Images/LuatDuongBo.png"));
-        xe2banh.setIcon(new ImageIcon("Images/Xe2Banh.png"));
-        xe4banh.setIcon(new ImageIcon("Images/Xe4Banh.png"));
         luatduongsat.setIcon(new ImageIcon("Images/LuatDuongSat.png"));
         luatduongthuy.setIcon(new ImageIcon("Images/LuatDuongThuy.png"));
         
@@ -38,62 +36,50 @@ public class LearnLaw extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu1 = new javax.swing.JMenu();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         back_hocluat = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         luatduongbo = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        xe2banh = new javax.swing.JLabel();
-        xe4banh = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         luatduongsat = new javax.swing.JLabel();
         luatduongthuy = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout(6, 5));
+        getContentPane().setLayout(new java.awt.GridLayout(5, 5));
 
-        back_hocluat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        back_hocluat.setAlignmentX(0.5F);
-        back_hocluat.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        back_hocluat.setDebugGraphicsOptions(javax.swing.DebugGraphics.LOG_OPTION);
-        back_hocluat.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        back_hocluat.setName(""); // NOI18N
+        jPanel1.setLayout(new java.awt.GridLayout(1, 2));
+
+        jPanel2.setLayout(new java.awt.GridLayout(1, 4));
+
+        back_hocluat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        back_hocluat.setIcon(new javax.swing.ImageIcon("D:\\Github\\Project2_ATGT\\Project2\\Images\\Back.png")); // NOI18N
         back_hocluat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 back_hocluatMouseClicked(evt);
             }
         });
-        getContentPane().add(back_hocluat);
+        jPanel2.add(back_hocluat);
+        jPanel2.add(jLabel4);
+        jPanel2.add(jLabel5);
+        jPanel2.add(jLabel3);
+
+        jPanel1.add(jPanel2);
+        jPanel1.add(jLabel1);
+
+        getContentPane().add(jPanel1);
 
         luatduongbo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        luatduongbo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                luatduongboMouseClicked(evt);
+            }
+        });
         getContentPane().add(luatduongbo);
-
-        jPanel3.setLayout(new java.awt.GridLayout(1, 4));
-        jPanel3.add(jLabel8);
-
-        xe2banh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        xe2banh.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        xe2banh.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        xe2banh.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                xe2banhMouseClicked(evt);
-            }
-        });
-        jPanel3.add(xe2banh);
-
-        xe4banh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        xe4banh.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        xe4banh.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        xe4banh.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                xe4banhMouseClicked(evt);
-            }
-        });
-        jPanel3.add(xe4banh);
-        jPanel3.add(jLabel7);
-
-        getContentPane().add(jPanel3);
 
         luatduongsat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         luatduongsat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -114,24 +100,6 @@ public class LearnLaw extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void back_hocluatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_hocluatMouseClicked
-        Home lo = new Home();
-            lo.setVisible(true);
-              this.dispose();
-    }//GEN-LAST:event_back_hocluatMouseClicked
-
-    private void xe2banhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xe2banhMouseClicked
-        LuatXe2Banh xe2 = new LuatXe2Banh();
-            xe2.setVisible(true);
-              this.dispose();
-    }//GEN-LAST:event_xe2banhMouseClicked
-
-    private void xe4banhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xe4banhMouseClicked
-        LuatXe4Banh xe4 = new LuatXe4Banh();
-            xe4.setVisible(true);
-              this.dispose();
-    }//GEN-LAST:event_xe4banhMouseClicked
-
     private void luatduongsatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_luatduongsatMouseClicked
         LuatDuongSat la = new LuatDuongSat();
             la.setVisible(true);
@@ -143,6 +111,18 @@ public class LearnLaw extends javax.swing.JFrame {
             lu.setVisible(true);
               this.dispose();
     }//GEN-LAST:event_luatduongthuyMouseClicked
+
+    private void luatduongboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_luatduongboMouseClicked
+       LuatDuongBo lu = new LuatDuongBo();
+             lu.setVisible(true);
+              this.dispose();
+    }//GEN-LAST:event_luatduongboMouseClicked
+
+    private void back_hocluatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_hocluatMouseClicked
+         Home lo = new Home();
+            lo.setVisible(true);
+              this.dispose();
+    }//GEN-LAST:event_back_hocluatMouseClicked
 
     /**
      * @param args the command line arguments
@@ -181,14 +161,15 @@ public class LearnLaw extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel back_hocluat;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel luatduongbo;
     private javax.swing.JLabel luatduongsat;
     private javax.swing.JLabel luatduongthuy;
-    private javax.swing.JLabel xe2banh;
-    private javax.swing.JLabel xe4banh;
     // End of variables declaration//GEN-END:variables
 }

@@ -53,12 +53,12 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="thitracnghiemMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="gioithieu">
+        <Component class="javax.swing.JLabel" name="trangcanhan">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="gioithieuMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="trangcanhanMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="thoat">

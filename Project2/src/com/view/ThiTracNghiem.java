@@ -18,7 +18,7 @@ public class ThiTracNghiem extends javax.swing.JFrame {
      */
     public ThiTracNghiem() {
         initComponents();
-        this.setSize(1366, 768);
+        this.setSize(1366, 768); 
         back_thitracnghiem.setIcon(new ImageIcon("Images/Back.png"));
         thiduongbo.setIcon(new ImageIcon("Images/ThiDuongBo.png"));
         thixe2banh.setIcon(new ImageIcon("Images/Xe2Banh.png"));
@@ -36,8 +36,13 @@ public class ThiTracNghiem extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         back_thitracnghiem = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
         thiduongbo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -46,24 +51,32 @@ public class ThiTracNghiem extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         thiduongsat = new javax.swing.JLabel();
         thiduongthuy = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(java.awt.Color.blue);
-        getContentPane().setLayout(new java.awt.GridLayout(8, 3));
+        getContentPane().setLayout(new java.awt.GridLayout(6, 3));
 
-        back_thitracnghiem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanel2.setLayout(new java.awt.GridLayout(1, 2));
+
+        jPanel3.setLayout(new java.awt.GridLayout(1, 4));
+
+        back_thitracnghiem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         back_thitracnghiem.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         back_thitracnghiem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 back_thitracnghiemMouseClicked(evt);
             }
         });
-        getContentPane().add(back_thitracnghiem);
+        jPanel3.add(back_thitracnghiem);
+        jPanel3.add(jLabel4);
+        jPanel3.add(jLabel3);
+        jPanel3.add(jLabel2);
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel2);
+        jPanel2.add(jPanel3);
+        jPanel2.add(jPanel4);
+
+        getContentPane().add(jPanel2);
 
         thiduongbo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         thiduongbo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -111,20 +124,11 @@ public class ThiTracNghiem extends javax.swing.JFrame {
         });
         getContentPane().add(thiduongthuy);
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel6);
-
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel7);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void back_thitracnghiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_thitracnghiemMouseClicked
-        Home lo = new Home();
-        lo.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_back_thitracnghiemMouseClicked
 
     private void thixe2banhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thixe2banhMouseClicked
         System.setProperty("cateid", 1 + "");
@@ -154,6 +158,12 @@ public class ThiTracNghiem extends javax.swing.JFrame {
         xe2.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_thiduongthuyMouseClicked
+
+    private void back_thitracnghiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_thitracnghiemMouseClicked
+     Home lo = new Home();
+        lo.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_back_thitracnghiemMouseClicked
 
     /**
      * @param args the command line arguments
@@ -196,11 +206,15 @@ public class ThiTracNghiem extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel back_thitracnghiem;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel thiduongbo;
     private javax.swing.JLabel thiduongsat;
     private javax.swing.JLabel thiduongthuy;
