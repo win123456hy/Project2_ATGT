@@ -21,7 +21,7 @@ public class DBUtils {
 
     public static Connection open() {
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/project2", "root", "");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/project2?useUnicode=true&characterEncoding=utf-8", "root", "");
         } catch (SQLException ex) {
             return null;
         }

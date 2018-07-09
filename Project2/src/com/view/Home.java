@@ -7,6 +7,7 @@ package com.view;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,13 +21,11 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
 
-        this.setSize(1366,768);
+        this.setSize(1366, 768);
         hocluat.setIcon(new ImageIcon("Images/HocLuat.png"));
         thitracnghiem.setIcon(new ImageIcon("Images/THITRNG.png"));
         trangcanhan.setIcon(new ImageIcon("Images/TrangCaNhan.png"));
         thoat.setIcon(new ImageIcon("Images/Thoat.png"));
-        
-        
 
     }
 
@@ -94,21 +93,37 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void hocluatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hocluatMouseClicked
-       LearnLaw le = new LearnLaw();
-            le.setVisible(true);
-              this.dispose();
+        LearnLaw le = new LearnLaw();
+        le.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_hocluatMouseClicked
 
     private void thitracnghiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thitracnghiemMouseClicked
-        ThiTracNghiem thtrng = new ThiTracNghiem();
+        if (System.getProperty("userid") == null) {
+            int response = JOptionPane.showConfirmDialog(rootPane, "Bạn phải đăng nhập để thi."
+                    + "Click OK để bắt đầu đăng nhập"
+                    + "Cancel để quay về trang chủ", "Confirm",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (response == JOptionPane.NO_OPTION || response == JOptionPane.CLOSED_OPTION) {
+                Home a = new Home();
+                a.setVisible(true);
+                this.dispose();
+            } else if (response == JOptionPane.YES_OPTION) {
+                DangNhap dangNhap = new DangNhap();
+                dangNhap.setVisible(true);
+                this.dispose();
+            }
+        } else {
+            ThiTracNghiem thtrng = new ThiTracNghiem();
             thtrng.setVisible(true);
-              this.dispose();
+            this.dispose();
+        }
     }//GEN-LAST:event_thitracnghiemMouseClicked
 
     private void trangcanhanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trangcanhanMouseClicked
-        Introduce in = new Introduce();
-            in.setVisible(true);
-              this.dispose();
+        YourProfile in = new YourProfile();
+        in.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_trangcanhanMouseClicked
 
     private void thoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thoatMouseClicked

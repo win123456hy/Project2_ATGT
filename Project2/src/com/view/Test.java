@@ -40,9 +40,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
+import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.colorchooser.AbstractColorChooserPanel;
@@ -78,7 +80,6 @@ public class Test extends javax.swing.JFrame {
 
         initComponents();
         this.setSize(1366, 768);
-
         thoigian();
         jButton4.setBackground(Color.BLACK);
         jButton4.setFont(new Font("Dialog", Font.PLAIN, 20));
@@ -99,17 +100,16 @@ public class Test extends javax.swing.JFrame {
         this.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         JPanel jPanelnp = new JPanel();
-       
+
         jPanelnp.setLayout(new BoxLayout(jPanelnp, BoxLayout.LINE_AXIS));
-       
+
         constraints.gridx = 0;
         constraints.gridy = 0;
 
         this.add(jPanelnp, constraints);
-        
+
         String cateid = System.getProperty("cateid");
         listques = a.CategoryTest(Integer.parseInt(cateid));
-        
 
         int j = 0;
         for (int i = 0; i < jTex.length; i++) {
@@ -122,6 +122,7 @@ public class Test extends javax.swing.JFrame {
             JLabel jLabel1 = new JLabel();
 
             jtexx.setText(listques.get(i).getQuestionDetail());
+
             Images link = imageForTest.getImage(listques.get(i).getQuestionID());
             if (link == null) {
                 jLabel1.setText("");
@@ -133,6 +134,8 @@ public class Test extends javax.swing.JFrame {
             labels1[i] = jLabel1;
             jTex[i].setLineWrap(true);
             jTex[i].setEditable(false);
+            jTex[i].setFont(new Font("aa", Font.PLAIN, 20));
+
             jp.add(jTex[i]);
             jp.add(labels1[i]);
             JPanel jp1 = new JPanel(new GridLayout(4, 2));
@@ -180,6 +183,7 @@ public class Test extends javax.swing.JFrame {
             });
             jTextArea.setLineWrap(true);
             jTextArea.setEditable(false);
+
             jp1.add(jTextArea);
 
             JRadioButton jRadioButton2 = new JRadioButton();
@@ -219,6 +223,7 @@ public class Test extends javax.swing.JFrame {
             });
             jTextArea1.setLineWrap(true);
             jTextArea1.setEditable(false);
+            ;
             jp1.add(jTextArea1);
 
             JRadioButton jRadioButton3 = new JRadioButton();
@@ -258,6 +263,7 @@ public class Test extends javax.swing.JFrame {
             });
             jTextArea2.setLineWrap(true);
             jTextArea2.setEditable(false);
+
             jp1.add(jTextArea2);
 
             JRadioButton jRadioButton4 = new JRadioButton();
@@ -297,6 +303,7 @@ public class Test extends javax.swing.JFrame {
             });
             jTextArea3.setLineWrap(true);
             jTextArea3.setEditable(false);
+
             jp1.add(jTextArea3);
             buttonGroup[i] = bg;
 
@@ -340,8 +347,8 @@ public class Test extends javax.swing.JFrame {
         constraints.gridx = 0;
         constraints.gridy = 1;
         this.add(jTabbedPane1, constraints);
-        
-         JPanel jPaneltime = null;
+
+        JPanel jPaneltime = null;
         jPaneltime = new JPanel(new GridBagLayout());
         jPaneltime.setBorder(new LineBorder(Color.BLACK, 1));
         GridBagConstraints constraints1 = new GridBagConstraints();
@@ -368,7 +375,7 @@ public class Test extends javax.swing.JFrame {
         constraints.gridx = 1;
         constraints.gridy = 1;
         this.add(jPaneltime, constraints);
-        
+
     }
 
     public void thoigian() {
@@ -542,7 +549,7 @@ public class Test extends javax.swing.JFrame {
     }//GEN-LAST:event_lbnextMouseClicked
 
     private void lbpreviousMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbpreviousMouseClicked
-            index--;
+        index--;
         if (index < 0) {
             index = 19;
         }
@@ -550,7 +557,7 @@ public class Test extends javax.swing.JFrame {
     }//GEN-LAST:event_lbpreviousMouseClicked
 
     private void lbnopbaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbnopbaiMouseClicked
-         Nopbai();
+        Nopbai();
         time.stop();
     }//GEN-LAST:event_lbnopbaiMouseClicked
     public void Nopbai() {

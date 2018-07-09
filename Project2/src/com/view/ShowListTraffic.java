@@ -9,12 +9,21 @@ import com.dao.getTraffficforShow;
 import com.model.Trafficsigns;
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -29,29 +38,72 @@ public class ShowListTraffic extends javax.swing.JFrame {
     /**
      * Creates new form ShowListTraffic
      */
+    class MouseEv extends MouseAdapter {
+        String link;
+        public MouseEv() {
+            super();
+        }
+
+        public void mouseClicked(MouseEvent evt) {
+            JDialog dialog = new JDialog();
+            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+            dialog.setTitle("Image Loading Demo");
+            JLabel jLabel = new JLabel();
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon(link).getImage().getScaledInstance(500, 500, Image.SCALE_DEFAULT));
+            jLabel.setIcon(imageIcon);
+            dialog.add(jLabel);
+            
+            dialog.pack();
+            dialog.setLocationRelativeTo(null);
+            dialog.setVisible(true);
+        }
+
+        public void setImageIcon(String linkk) {
+            link=linkk;
+        }
+
+    }
     private ArrayList<Trafficsigns> listt = new ArrayList<>();
     int index = 0;
+    private ArrayList<JLabel> arrayListlabel = new ArrayList<>();
 
     public ShowListTraffic() {
         initComponents();
+
         getTraffficforShow traffficforShow = new getTraffficforShow();
-        listt = traffficforShow.gettraffic(6);
+        listt = traffficforShow.gettraffic(7);
 
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(listt.get(0).getTrafficLink()).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
-        JLabel a = new JLabel();
-        a.setIcon(imageIcon);
-        JLabel b = new JLabel();
-        b.setIcon(imageIcon);
-        JPanel jPanel=new JPanel();
-          jPanel.setLayout( new GridLayout( 20, 20 ) ) ;
-          int i,j;
+        for (int k = 0; k < listt.size(); k++) {
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon(listt.get(k).getTrafficLink()).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+            JLabel a = new JLabel();
+            a.setIcon(imageIcon);
+            arrayListlabel.add(k, a);
+        }
+        int row = 0;
+        if (arrayListlabel.size() % 5 == 0) {
+            row = arrayListlabel.size() / 5;
+        } else {
+            row = arrayListlabel.size() / 5 + arrayListlabel.size() % 5;
+        }
+        JPanel jPanel = new JPanel();
 
-	  jPanel.add(a);
-     jPanel.add(b);
-    jScrollPane1.setViewportView(jPanel);
-    jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-    jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-            this.getContentPane().add(jScrollPane1,BorderLayout.CENTER);
+        jPanel.setLayout(new GridLayout(row, 5));
+
+        for (JLabel jLabel : arrayListlabel) {
+            jPanel.add(jLabel);
+        }
+        jScrollPane1.setViewportView(jPanel);
+        jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        this.getContentPane().add(jScrollPane1, BorderLayout.CENTER);
+        MouseEv mouseEv = null;
+        
+        for (int i = 0; i < arrayListlabel.size(); i++) {
+            mouseEv = new MouseEv();
+            mouseEv.setImageIcon(listt.get(i).getTrafficLink());
+            arrayListlabel.get(i).addMouseListener(mouseEv);
+        }
+
     }
 
     /**
@@ -72,16 +124,16 @@ public class ShowListTraffic extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();

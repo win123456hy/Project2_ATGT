@@ -64,10 +64,11 @@ public class RegisterDAO {
             stm.setDate(5, sqlStartDate);
             
            stm.executeUpdate();
+            con.commit();
           if(stm.executeUpdate()>0)
               return true;
           
-            con.commit();
+           
             
             
         } catch (Exception ex) {

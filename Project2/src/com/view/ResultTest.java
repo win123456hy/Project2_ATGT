@@ -129,9 +129,7 @@ public class ResultTest extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        deleteAnswered a=new deleteAnswered();
-         Exams e= exam.getExamx(1);
-        a.delete(e.getExamID());
+
         Home l=new Home();
         l.setVisible(true);
         this.dispose();

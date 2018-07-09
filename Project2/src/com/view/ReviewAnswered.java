@@ -11,12 +11,20 @@ import com.dao.getExam;
 import com.model.Answers;
 import com.model.Exams;
 import com.model.Question;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
 /**
@@ -28,46 +36,48 @@ public class ReviewAnswered extends javax.swing.JFrame {
     /**
      * Creates new form ReviewAnswered
      */
-    getAnsweredforReviewAnswered ra=new getAnsweredforReviewAnswered();
+    getAnsweredforReviewAnswered ra = new getAnsweredforReviewAnswered();
     private DefaultTableModel model;
-    private ArrayList<Question> ques=new ArrayList<>();
-     private ArrayList<Answers> pos=new ArrayList<>();
-     private Answers possibleCorrect=new Answers();
-   
-        private GridBagConstraints constraints = new GridBagConstraints();
-     private getExam gete=new getExam();
-       private Exams exx;
+    private ArrayList<Question> ques = new ArrayList<>();
+    private ArrayList<Answers> pos = new ArrayList<>();
+    private Answers possibleCorrect = new Answers();
+
+    private GridBagConstraints constraints = new GridBagConstraints();
+    private getExam gete = new getExam();
+    private Exams exx;
+
     public ReviewAnswered() {
         initComponents();
-        String usid=System.getProperty("userid");
-        
-        exx= gete.getExamx(Integer.parseInt(usid));
-         jTextArea1.setEditable(false);
+
+        String usid = System.getProperty("userid");
+
+        exx = gete.getExamx(Integer.parseInt(usid));
+        jTextArea1.setEditable(false);
         jTextArea2.setEditable(false);
-       jTextArea3.setEditable(false);
-         
-        model=new DefaultTableModel();
+        jTextArea3.setEditable(false);
+
+        model = new DefaultTableModel();
         model.addColumn("STT");
+        model.addColumn("Trạng thái");
         model.addColumn("Câu hỏi");
         model.addColumn("Đáp án của bạn");
         model.addColumn("Đáp án đúng");
-        
-      
-        ques=ra.getQues(exx.getExamID());
-        pos=ra.getPos(exx.getExamID());
-        
+
+        ques = ra.getQues(exx.getExamID());
+        pos = ra.getPos(exx.getExamID());
+
         jTable1.setModel(model);
-//        TableColumnModel columnModel=jTable1.getColumnModel();
-//        columnModel.getColumn(0).setPreferredWidth(1);
-//        columnModel.getColumn(1).setPreferredWidth(2);
-//        columnModel.getColumn(2).setPreferredWidth(300);
-//        columnModel.getColumn(3).setPreferredWidth(400);
         jTable1.setAutoResizeMode(jTable1.AUTO_RESIZE_LAST_COLUMN);
         for (int i = 0; i < ques.size(); i++) {
-            possibleCorrect=ra.getPoscorrect(ques.get(i).getQuestionID());
-             model.addRow(new Object[]{i+1,ques.get(i).getQuestionDetail(),pos.get(i).getAnswerDetail(),possibleCorrect.getAnswerDetail() });
+            possibleCorrect = ra.getPoscorrect(ques.get(i).getQuestionID());
+            if (possibleCorrect.getAnswerDetail().equals(pos.get(i).getAnswerDetail())) {
+                model.addRow(new Object[]{i + 1,"Đúng" ,ques.get(i).getQuestionDetail(), pos.get(i).getAnswerDetail(), possibleCorrect.getAnswerDetail()});
+                
+            } else {
+                model.addRow(new Object[]{i + 1,"Sai" ,ques.get(i).getQuestionDetail(), pos.get(i).getAnswerDetail(), possibleCorrect.getAnswerDetail()});
+            }
         }
-      
+
     }
 
     /**
@@ -214,28 +224,26 @@ public class ReviewAnswered extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Home l=new Home();
+        Home l = new Home();
         l.setVisible(true);
-        deleteAnswered a=new deleteAnswered();
-        a.delete(exx.getExamID());
+
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-       int i= jTable1.getSelectedRow();
-       model=(DefaultTableModel) jTable1.getModel();
-       String ques=model.getValueAt(i, 1).toString();
-        String answer=model.getValueAt(i, 2).toString();
-        String answercorrect=model.getValueAt(i, 3).toString();
-       
+        int i = jTable1.getSelectedRow();
+        model = (DefaultTableModel) jTable1.getModel();
+        String ques = model.getValueAt(i, 2).toString();
+        String answer = model.getValueAt(i, 3).toString();
+        String answercorrect = model.getValueAt(i, 4).toString();
 
-       jTextArea1.setText(ques);
-       jTextArea1.setLineWrap(true);
-       jTextArea2.setText(answer);
-       jTextArea2.setLineWrap(true);
-jTextArea3.setText(answercorrect);
-jTextArea3.setLineWrap(true);
+        jTextArea1.setText(ques);
+        jTextArea1.setLineWrap(true);
+        jTextArea2.setText(answer);
+        jTextArea2.setLineWrap(true);
+        jTextArea3.setText(answercorrect);
+        jTextArea3.setLineWrap(true);
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**

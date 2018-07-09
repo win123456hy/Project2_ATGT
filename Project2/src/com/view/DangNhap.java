@@ -18,12 +18,13 @@ public class DangNhap extends javax.swing.JFrame {
     /**
      * Creates new form DangKy
      */
-     public LoginDAO loginDAO = new LoginDAO();
+    public LoginDAO loginDAO = new LoginDAO();
 
     public boolean check = false;
+
     public DangNhap() {
         initComponents();
-         this.setLocationRelativeTo(null);// chinh form ra giua man hinh
+        this.setLocationRelativeTo(null);// chinh form ra giua man hinh
     }
 
     /**
@@ -155,34 +156,7 @@ public class DangNhap extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void login(){
-    jLabel6.setText("");
-        jLabel2.setText("");
-        jLabel3.setText("");
-        if (jTextField1.getText().isEmpty()) {
-            jLabel2.setText("Không được để trống");
-            jTextField1.requestFocusInWindow();
-        }
-        if (jPasswordField1.getPassword().length==0) {
-            jLabel3.setText("Không được để trống");
-            jPasswordField1.requestFocusInWindow();
-        }
-        check = loginDAO.login(jTextField1.getText(), String.valueOf(jPasswordField1.getPassword()));
-        if (check == true&&!jTextField1.getText().isEmpty()&&jPasswordField1.getPassword().length>0) {
-            Home home = new Home();
-            home.setVisible(true);
-            this.dispose();
-            getUserIDforlogin userIDforlogin=new getUserIDforlogin();
-           int usid= userIDforlogin.getUserID(jTextField1.getText());
-             System.setProperty("userid",usid+"");
-        } else  if (check == false&&!jTextField1.getText().isEmpty()&&jPasswordField1.getPassword().length>0){
-            jLabel6.setText("Sai tên tài khoản hoặc mật khẩu! Vui lòng nhập lai.");
-            jTextField1.setText("");
-            jPasswordField1.setText("");
-    }                    
-    }
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-
+    private void login() {
         jLabel6.setText("");
         jLabel2.setText("");
         jLabel3.setText("");
@@ -190,43 +164,72 @@ public class DangNhap extends javax.swing.JFrame {
             jLabel2.setText("Không được để trống");
             jTextField1.requestFocusInWindow();
         }
-        if (jPasswordField1.getPassword().length==0) {
+        if (jPasswordField1.getPassword().length == 0) {
             jLabel3.setText("Không được để trống");
             jPasswordField1.requestFocusInWindow();
         }
         check = loginDAO.login(jTextField1.getText(), String.valueOf(jPasswordField1.getPassword()));
-        if (check == true&&!jTextField1.getText().isEmpty()&&jPasswordField1.getPassword().length>0) {
-            Home home = new Home();
-            home.setVisible(true);
+        if (check == true && !jTextField1.getText().isEmpty() && jPasswordField1.getPassword().length > 0) {
+            ThiTracNghiem thtrng = new ThiTracNghiem();
+            thtrng.setVisible(true);
             this.dispose();
-            getUserIDforlogin userIDforlogin=new getUserIDforlogin();
-           int usid= userIDforlogin.getUserID(jTextField1.getText());
-             System.setProperty("userid",usid+"");
-        } else  if (check == false&&!jTextField1.getText().isEmpty()&&jPasswordField1.getPassword().length>0){
+            getUserIDforlogin userIDforlogin = new getUserIDforlogin();
+            int usid = userIDforlogin.getUserID(jTextField1.getText());
+            System.setProperty("userid", usid + "");
+        } else if (check == false && !jTextField1.getText().isEmpty() && jPasswordField1.getPassword().length > 0) {
             jLabel6.setText("Sai tên tài khoản hoặc mật khẩu! Vui lòng nhập lai.");
             jTextField1.setText("");
             jPasswordField1.setText("");
-    }//GEN-LAST:event_jButton1MouseClicked
+        }
     }
+
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             login();
         }
     }//GEN-LAST:event_jTextField1KeyPressed
 
     private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
-          if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             login();
         }
     }//GEN-LAST:event_jPasswordField1KeyPressed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Home home=new Home();
+        Home home = new Home();
         home.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
-   /**
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+//        jLabel6.setText("");
+//        jLabel2.setText("");
+//        jLabel3.setText("");
+//        if (jTextField1.getText().isEmpty()) {
+//            jLabel2.setText("Không được để trống");
+//            jTextField1.requestFocusInWindow();
+//        }
+//        if (jPasswordField1.getPassword().length==0) {
+//            jLabel3.setText("Không được để trống");
+//            jPasswordField1.requestFocusInWindow();
+//        }
+//        check = loginDAO.login(jTextField1.getText(), String.valueOf(jPasswordField1.getPassword()));
+//        if (check == true&&!jTextField1.getText().isEmpty()&&jPasswordField1.getPassword().length>0) {
+//             ThiTracNghiem thtrng = new ThiTracNghiem();
+//            thtrng.setVisible(true);
+//              this.dispose();
+//            getUserIDforlogin userIDforlogin=new getUserIDforlogin();
+//           int usid= userIDforlogin.getUserID(jTextField1.getText());
+//             System.setProperty("userid",usid+"");
+//        } else  if (check == false&&!jTextField1.getText().isEmpty()&&jPasswordField1.getPassword().length>0){
+//            jLabel6.setText("Sai tên tài khoản hoặc mật khẩu! Vui lòng nhập lai.");
+//            jTextField1.setText("");
+//            jPasswordField1.setText("");
+//    }          
+        login();
+    }//GEN-LAST:event_jButton1MouseClicked
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
