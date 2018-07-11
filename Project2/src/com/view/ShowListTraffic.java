@@ -71,7 +71,8 @@ public class ShowListTraffic extends javax.swing.JFrame {
         initComponents();
 
         getTraffficforShow traffficforShow = new getTraffficforShow();
-        listt = traffficforShow.gettraffic(7);
+         int cateidtraffic=Integer.parseInt(System.getProperty("catetraffic"));
+        listt = traffficforShow.gettraffic(cateidtraffic);
 
         for (int k = 0; k < listt.size(); k++) {
             ImageIcon imageIcon = new ImageIcon(new ImageIcon(listt.get(k).getTrafficLink()).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));

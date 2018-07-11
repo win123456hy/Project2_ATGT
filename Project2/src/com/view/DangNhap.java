@@ -73,6 +73,11 @@ public class DangNhap extends javax.swing.JFrame {
         });
 
         jButton2.setText("Đăng ký");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -170,12 +175,16 @@ public class DangNhap extends javax.swing.JFrame {
         }
         check = loginDAO.login(jTextField1.getText(), String.valueOf(jPasswordField1.getPassword()));
         if (check == true && !jTextField1.getText().isEmpty() && jPasswordField1.getPassword().length > 0) {
-            ThiTracNghiem thtrng = new ThiTracNghiem();
-            thtrng.setVisible(true);
-            this.dispose();
+//            ThiTracNghiem thtrng = new ThiTracNghiem();
+//            thtrng.setVisible(true);
+//            this.dispose();
             getUserIDforlogin userIDforlogin = new getUserIDforlogin();
             int usid = userIDforlogin.getUserID(jTextField1.getText());
             System.setProperty("userid", usid + "");
+            Home home = new Home();
+            home.setVisible(true);
+            this.dispose();
+
         } else if (check == false && !jTextField1.getText().isEmpty() && jPasswordField1.getPassword().length > 0) {
             jLabel6.setText("Sai tên tài khoản hoặc mật khẩu! Vui lòng nhập lai.");
             jTextField1.setText("");
@@ -229,6 +238,12 @@ public class DangNhap extends javax.swing.JFrame {
 //    }          
         login();
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        DangKy dangKy=new DangKy();
+        dangKy.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2MouseClicked
     /**
      * @param args the command line arguments
      */

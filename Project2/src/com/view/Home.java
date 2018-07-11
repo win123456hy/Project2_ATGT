@@ -5,9 +5,17 @@
  */
 package com.view;
 
+import com.dao.getUserIDforlogin;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -22,11 +30,45 @@ public class Home extends javax.swing.JFrame {
         initComponents();
 
         this.setSize(1366, 768);
+        jPanel4.setLayout(new GridLayout(1, 1));
+        jPanel4.add(new JLabel(new ImageIcon("Images/backgroundatgt.png")));
+        jPanel4.setBackground(Color.WHITE);
+        jPanel1.setBackground(Color.WHITE);
+        jPanel2.setBackground(Color.WHITE);
+        jPanel3.setBackground(Color.WHITE);
+        JPanel paneltitle = new JPanel(new GridLayout(1, 1));
+        paneltitle.add(new JLabel(new ImageIcon("Images/logo2.png")));
+        paneltitle.setBackground(Color.WHITE);
+        jPanel2.add(paneltitle);
+
+        JPanel jpanelusename = new JPanel(new BorderLayout());
+        jpanelusename.setBackground(Color.WHITE);
+        JPanel jpaneluss = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        jpaneluss.setBackground(Color.WHITE);
+        jpaneluss.add(jLabel1);
+        jpanelusename.add(jpaneluss, BorderLayout.NORTH);
+
+        JPanel loginpanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        loginpanel.add(login);
+        loginpanel.setBackground(Color.WHITE);
+        jPanel3.add(jpanelusename);
+        jPanel3.add(loginpanel);
+        if ((System.getProperty("userid") == "" || System.getProperty("userid") == null)) {
+            login.setIcon(new ImageIcon("Images/login.png"));
+        } else if (System.getProperty("templogin") != "" || System.getProperty("templogin") != null) {
+            getUserIDforlogin uid = new getUserIDforlogin();
+            int id = Integer.parseInt(System.getProperty("userid"));
+
+            String usname = uid.getusername(id);
+            jLabel1.setText("Hi " + usname);
+            jLabel1.setFont(new Font("sds", Font.BOLD, 20));
+            login.setIcon(new ImageIcon("Images/logout.png"));
+        }
         hocluat.setIcon(new ImageIcon("Images/HocLuat.png"));
         thitracnghiem.setIcon(new ImageIcon("Images/THITRNG.png"));
         trangcanhan.setIcon(new ImageIcon("Images/TrangCaNhan.png"));
+        hocbienbao.setIcon(new ImageIcon("Images/HocBienBao.png"));
         thoat.setIcon(new ImageIcon("Images/Thoat.png"));
-
     }
 
     /**
@@ -38,21 +80,33 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        login = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         hocluat = new javax.swing.JLabel();
+        hocbienbao = new javax.swing.JLabel();
         thitracnghiem = new javax.swing.JLabel();
         trangcanhan = new javax.swing.JLabel();
         thoat = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+
+        login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        login.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginMouseClicked(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(1, 3));
-        getContentPane().add(jLabel6);
+        getContentPane().add(jPanel4);
 
-        jPanel1.setLayout(new java.awt.GridLayout(6, 1));
-        jPanel1.add(jLabel5);
+        jPanel1.setLayout(new java.awt.GridLayout(7, 1));
+        jPanel1.add(jLabel2);
 
         hocluat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hocluat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -61,6 +115,15 @@ public class Home extends javax.swing.JFrame {
             }
         });
         jPanel1.add(hocluat);
+
+        hocbienbao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hocbienbao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        hocbienbao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hocbienbaoMouseClicked(evt);
+            }
+        });
+        jPanel1.add(hocbienbao);
 
         thitracnghiem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         thitracnghiem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -87,7 +150,13 @@ public class Home extends javax.swing.JFrame {
         jPanel1.add(thoat);
 
         getContentPane().add(jPanel1);
-        getContentPane().add(jLabel7);
+
+        jPanel2.setLayout(new java.awt.GridLayout(3, 1));
+
+        jPanel3.setLayout(new java.awt.GridLayout(1, 2));
+        jPanel2.add(jPanel3);
+
+        getContentPane().add(jPanel2);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -99,7 +168,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_hocluatMouseClicked
 
     private void thitracnghiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thitracnghiemMouseClicked
-        if (System.getProperty("userid") == null) {
+        if (System.getProperty("userid") == null || System.getProperty("userid") == "") {
             int response = JOptionPane.showConfirmDialog(rootPane, "Bạn phải đăng nhập để thi."
                     + "Click OK để bắt đầu đăng nhập"
                     + "Cancel để quay về trang chủ", "Confirm",
@@ -121,14 +190,52 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_thitracnghiemMouseClicked
 
     private void trangcanhanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trangcanhanMouseClicked
-        YourProfile in = new YourProfile();
-        in.setVisible(true);
-        this.dispose();
+        if (System.getProperty("userid") == null || System.getProperty("userid") == "") {
+            int response = JOptionPane.showConfirmDialog(rootPane, "Bạn phải đăng nhập để thi."
+                    + "Click OK để bắt đầu đăng nhập"
+                    + "Cancel để quay về trang chủ", "Confirm",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (response == JOptionPane.NO_OPTION || response == JOptionPane.CLOSED_OPTION) {
+                Home a = new Home();
+                a.setVisible(true);
+                this.dispose();
+            } else if (response == JOptionPane.YES_OPTION) {
+                DangNhap dangNhap = new DangNhap();
+                dangNhap.setVisible(true);
+                this.dispose();
+            }
+        } else {
+            YourProfile in = new YourProfile();
+            in.setVisible(true);
+            this.dispose();
+        }
+
     }//GEN-LAST:event_trangcanhanMouseClicked
 
     private void thoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thoatMouseClicked
         System.exit(0);
     }//GEN-LAST:event_thoatMouseClicked
+
+    private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
+        if (System.getProperty("userid") == "" || System.getProperty("userid") == null) {
+            DangNhap dangNhap = new DangNhap();
+            dangNhap.setVisible(true);
+            this.dispose();
+        } else {
+            System.setProperty("templogin", "");
+            System.setProperty("userid", "");
+            new Home().setVisible(true);
+
+            this.dispose();
+        }
+
+    }//GEN-LAST:event_loginMouseClicked
+
+    private void hocbienbaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hocbienbaoMouseClicked
+        HocBienBao in = new HocBienBao();
+        in.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_hocbienbaoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -167,11 +274,15 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel hocbienbao;
     private javax.swing.JLabel hocluat;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel login;
     private javax.swing.JLabel thitracnghiem;
     private javax.swing.JLabel thoat;
     private javax.swing.JLabel trangcanhan;

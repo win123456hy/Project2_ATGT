@@ -20,57 +20,89 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class RegisterDAO {
-    public boolean checktrung(String username){
-     String sql = "select * from users where username=?";
+
+    public boolean checktrung(String username) {
+        String sql = "select * from users where username=?";
         Connection con = DBUtils.open();
-        PreparedStatement stm=null;
-        ResultSet rs=null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
         try {
             stm = con.prepareStatement(sql);
             stm.setString(1, username);
             rs = stm.executeQuery();
-            if(rs.next()){
-            return true;
-                }
-             return false;
+            if (rs.next()) {
+                return true;
+            }
+            return false;
         } catch (SQLException ex) {
             return false;
-        }finally{
-             
+        } finally {
+
             DBUtils.closeAll(con, stm, rs);
-          
+
         }
     }
-    public boolean regis(String userName, String pass,int gender,String email) {
-        if(checktrung(userName)==true)
+
+    public boolean regis(String userName, String pass, int gender, String email) {
+        if (checktrung(userName) == true) {
             return false;
-        else{
-        String sql = "INSERT INTO users(UserName,Gender,Email,Password,CreatedTime) VALUES (?,?,?,?,?)";
+        } else {
+            String sql = "INSERT INTO users(UserName,Gender,Email,Password,CreatedTime) VALUES (?,?,?,?,?)";
+            Connection con = DBUtils.open();
+            PreparedStatement stm = null;
+            try {
+                con.setAutoCommit(false);
+                String encodedString = Base64.getEncoder().encodeToString(pass.getBytes());
+                Date date = new Date();
+                java.sql.Date sqlStartDate = new java.sql.Date(date.getTime());
+                stm = con.prepareStatement(sql);
+                stm.setString(1, userName);
+                stm.setInt(2, gender);
+                stm.setString(3, email);
+                stm.setString(4, encodedString);
+                stm.setDate(5, sqlStartDate);
+
+                int checkc = stm.executeUpdate();
+                con.commit();
+                if (checkc > 0) {
+                    return true;
+                }
+
+            } catch (Exception ex) {
+                try {
+                    con.rollback();
+                    return false;
+                } catch (SQLException ex1) {
+                    Logger.getLogger(RegisterDAO.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+            } finally {
+                DBUtils.closeTwo(con, stm);
+            }
+        }
+        return false;
+    }
+
+    public boolean changePass(int id, String passold, String passnew) {
+        String encodedStringPassold = Base64.getEncoder().encodeToString(passold.getBytes());
+        String encodedStringPassnew = Base64.getEncoder().encodeToString(passnew.getBytes());
+        String sql = "Update users set Password=? where userid=? and Password=?";
         Connection con = DBUtils.open();
-        PreparedStatement stm=null;
-        MessageDigest digest;
+        PreparedStatement stm = null;
         try {
             con.setAutoCommit(false);
-            String encodedString = Base64.getEncoder().encodeToString(pass.getBytes());
-            Date date = new Date();
-        java.sql.Date sqlStartDate = new java.sql.Date(date.getTime());
+
             stm = con.prepareStatement(sql);
-            stm.setString(1, userName);
-            stm.setInt(2, gender);
-            stm.setString(3, email);
-            stm.setString(4, encodedString);
-            stm.setDate(5, sqlStartDate);
-            
-           stm.executeUpdate();
+            stm.setString(1, encodedStringPassnew);
+            stm.setInt(2, id);
+            stm.setString(3, encodedStringPassold);
+
+            int checkc = stm.executeUpdate();
             con.commit();
-          if(stm.executeUpdate()>0)
-              return true;
-          
-           
-            
-            
+            if (checkc > 0) {
+                return true;
+            }
+
         } catch (Exception ex) {
             try {
                 con.rollback();
@@ -78,10 +110,9 @@ public class RegisterDAO {
             } catch (SQLException ex1) {
                 Logger.getLogger(RegisterDAO.class.getName()).log(Level.SEVERE, null, ex1);
             }
-        }finally{
+        } finally {
             DBUtils.closeTwo(con, stm);
         }
-                    }
-          return false; 
+        return false;
     }
 }

@@ -5,7 +5,14 @@
  */
 package com.view;
 
+import com.dao.getUserIDforlogin;
+import com.model.Users;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.util.Base64;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -16,10 +23,73 @@ public class YourProfile extends javax.swing.JFrame {
     /**
      * Creates new form Introduce
      */
+    private Users u;
+    private JLabel jLabelpassword;
+
     public YourProfile() {
         initComponents();
-        this.setSize(1366,768);
+        this.setSize(1366, 768);
+        this.setLocationRelativeTo(null);
+        getUserIDforlogin userIDforlogin = new getUserIDforlogin();
+        int iduss = Integer.parseInt(System.getProperty("userid"));
+        u = userIDforlogin.get1usser(iduss);
         back_gioithieu.setIcon(new ImageIcon("Images/Back.png"));
+        Username.setLayout(new GridLayout(1, 2));
+
+        JLabel jLabelusernametitle = new JLabel("Tên tài khoản:");
+        JLabel jLabelusername = new JLabel(u.getUsername());
+        jLabelusernametitle.setFont(new Font("a", Font.PLAIN, 24));
+        jLabelusername.setFont(new Font("a", Font.PLAIN, 24));
+
+        Username.add(jLabelusernametitle);
+        Username.add(jLabelusername);
+
+        Password.setLayout(new GridLayout(1, 5));
+        JLabel jLabelpasswordtitle = new JLabel("Mật khẩu:");
+        jLabelpasswordtitle.setFont(new Font("a", Font.PLAIN, 24));
+
+        jLabelpassword = new JLabel(u.getPassword());
+        jLabelpassword.setFont(new Font("a", Font.PLAIN, 24));
+        Password.add(jLabelpasswordtitle);
+        Password.add(jLabelpassword);
+        Password.add(buttonshowpassword);
+        Password.add(buttonHiddenPass);
+        Password.add(buttonChangePass);
+
+        //if(u.getGender()==1)
+        Gender.setLayout(new GridLayout(1, 2));
+        JLabel jLabelgendertitle = new JLabel("Giới tính:");
+        jLabelgendertitle.setFont(new Font("a", Font.PLAIN, 24));
+
+        JLabel jLabelgender = new JLabel();
+        jLabelgender.setFont(new Font("a", Font.PLAIN, 24));
+
+        if (u.getGender() == 0) {
+            jLabelgender.setText("Nam");
+        } else {
+            jLabelgender.setText("Nữ");
+        }
+
+        Gender.add(jLabelgendertitle);
+        Gender.add(jLabelgender);
+
+        Email.setLayout(new GridLayout(1, 2));
+        JLabel jLabelemailtitle = new JLabel("Email:");
+        JLabel jLabelemail = new JLabel(u.getEmail());
+        jLabelemailtitle.setFont(new Font("a", Font.PLAIN, 24));
+        jLabelemail.setFont(new Font("a", Font.PLAIN, 24));
+
+        Email.add(jLabelemailtitle);
+        Email.add(jLabelemail);
+
+        CreateTime.setLayout(new GridLayout(1, 2));
+        JLabel jLabelCreatetimetitle = new JLabel("Thời gian lập:");
+        JLabel jLabelcreatetime = new JLabel(u.getCreatedTime().toString());
+        jLabelCreatetimetitle.setFont(new Font("a", Font.PLAIN, 24));
+        jLabelcreatetime.setFont(new Font("a", Font.PLAIN, 24));
+
+        CreateTime.add(jLabelCreatetimetitle);
+        CreateTime.add(jLabelcreatetime);
     }
 
     /**
@@ -32,59 +102,121 @@ public class YourProfile extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        Username = new javax.swing.JPanel();
+        Password = new javax.swing.JPanel();
+        buttonshowpassword = new javax.swing.JButton();
+        buttonChangePass = new javax.swing.JButton();
+        buttonHiddenPass = new javax.swing.JButton();
+        Gender = new javax.swing.JPanel();
+        Email = new javax.swing.JPanel();
+        CreateTime = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         back_gioithieu = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new java.awt.GridLayout(11, 1));
+        jPanel1.setLayout(new java.awt.GridLayout(5, 1));
 
-        jLabel1.setText("                APP của nhóm (Đạt, Bảng, Đức, Sự)  Project 2 ApTech");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        jPanel1.add(jLabel1);
+        javax.swing.GroupLayout UsernameLayout = new javax.swing.GroupLayout(Username);
+        Username.setLayout(UsernameLayout);
+        UsernameLayout.setHorizontalGroup(
+            UsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2300, Short.MAX_VALUE)
+        );
+        UsernameLayout.setVerticalGroup(
+            UsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 99, Short.MAX_VALUE)
+        );
 
-        jLabel3.setText("APP của nhóm (Đạt, Bảng, Đức, Sự)  Project 2 ApTech");
-        jPanel1.add(jLabel3);
+        jPanel1.add(Username);
 
-        jLabel4.setText("APP của nhóm (Đạt, Bảng, Đức, Sự)  Project 2 ApTech");
-        jPanel1.add(jLabel4);
+        buttonshowpassword.setText("Hiện Password");
+        buttonshowpassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonshowpasswordMouseClicked(evt);
+            }
+        });
 
-        jLabel5.setText("APP của nhóm (Đạt, Bảng, Đức, Sự)  Project 2 ApTech");
-        jPanel1.add(jLabel5);
+        buttonChangePass.setText("Đổi mật khẩu");
+        buttonChangePass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonChangePassMouseClicked(evt);
+            }
+        });
 
-        jLabel6.setText("APP của nhóm (Đạt, Bảng, Đức, Sự)  Project 2 ApTech");
-        jPanel1.add(jLabel6);
+        buttonHiddenPass.setText("Ẩn Password");
+        buttonHiddenPass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonHiddenPassMouseClicked(evt);
+            }
+        });
 
-        jLabel7.setText("APP của nhóm (Đạt, Bảng, Đức, Sự)  Project 2 ApTech");
-        jPanel1.add(jLabel7);
+        javax.swing.GroupLayout PasswordLayout = new javax.swing.GroupLayout(Password);
+        Password.setLayout(PasswordLayout);
+        PasswordLayout.setHorizontalGroup(
+            PasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PasswordLayout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addComponent(buttonHiddenPass)
+                .addGap(18, 18, 18)
+                .addComponent(buttonshowpassword)
+                .addGap(28, 28, 28)
+                .addComponent(buttonChangePass, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        PasswordLayout.setVerticalGroup(
+            PasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PasswordLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonshowpassword)
+                    .addComponent(buttonChangePass)
+                    .addComponent(buttonHiddenPass))
+                .addContainerGap())
+        );
 
-        jLabel8.setText("APP của nhóm (Đạt, Bảng, Đức, Sự)  Project 2 ApTech");
-        jPanel1.add(jLabel8);
+        jPanel1.add(Password);
 
-        jLabel9.setText("APP của nhóm (Đạt, Bảng, Đức, Sự)  Project 2 ApTech");
-        jPanel1.add(jLabel9);
+        javax.swing.GroupLayout GenderLayout = new javax.swing.GroupLayout(Gender);
+        Gender.setLayout(GenderLayout);
+        GenderLayout.setHorizontalGroup(
+            GenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2300, Short.MAX_VALUE)
+        );
+        GenderLayout.setVerticalGroup(
+            GenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 99, Short.MAX_VALUE)
+        );
 
-        jLabel10.setText("APP của nhóm (Đạt, Bảng, Đức, Sự)  Project 2 ApTech");
-        jPanel1.add(jLabel10);
+        jPanel1.add(Gender);
 
-        jLabel11.setText("APP của nhóm (Đạt, Bảng, Đức, Sự)  Project 2 ApTech");
-        jPanel1.add(jLabel11);
+        javax.swing.GroupLayout EmailLayout = new javax.swing.GroupLayout(Email);
+        Email.setLayout(EmailLayout);
+        EmailLayout.setHorizontalGroup(
+            EmailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2300, Short.MAX_VALUE)
+        );
+        EmailLayout.setVerticalGroup(
+            EmailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 99, Short.MAX_VALUE)
+        );
 
-        jLabel12.setText("APP của nhóm (Đạt, Bảng, Đức, Sự)  Project 2 ApTech");
-        jPanel1.add(jLabel12);
+        jPanel1.add(Email);
 
-        jPanel2.setLayout(new java.awt.GridLayout());
+        javax.swing.GroupLayout CreateTimeLayout = new javax.swing.GroupLayout(CreateTime);
+        CreateTime.setLayout(CreateTimeLayout);
+        CreateTimeLayout.setHorizontalGroup(
+            CreateTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2300, Short.MAX_VALUE)
+        );
+        CreateTimeLayout.setVerticalGroup(
+            CreateTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 99, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(CreateTime);
+
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         back_gioithieu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -98,24 +230,40 @@ public class YourProfile extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void back_gioithieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_gioithieuMouseClicked
-       Home lo = new Home();
-       lo.setVisible(true);
-       this.dispose();
+        Home lo = new Home();
+        lo.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_back_gioithieuMouseClicked
+
+    private void buttonshowpasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonshowpasswordMouseClicked
+        byte[] decodedBytes = Base64.getDecoder().decode(u.getPassword());
+        String decodedString = new String(decodedBytes);
+        jLabelpassword.setText(decodedString);
+    }//GEN-LAST:event_buttonshowpasswordMouseClicked
+
+    private void buttonChangePassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonChangePassMouseClicked
+            DoiMatKhau doiMatKhau=new DoiMatKhau();
+            doiMatKhau.setVisible(true);
+            this.dispose();
+    }//GEN-LAST:event_buttonChangePassMouseClicked
+
+    private void buttonHiddenPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonHiddenPassMouseClicked
+        jLabelpassword.setText(u.getPassword());
+    }//GEN-LAST:event_buttonHiddenPassMouseClicked
 
     /**
      * @param args the command line arguments
@@ -154,18 +302,15 @@ public class YourProfile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel CreateTime;
+    private javax.swing.JPanel Email;
+    private javax.swing.JPanel Gender;
+    private javax.swing.JPanel Password;
+    private javax.swing.JPanel Username;
     private javax.swing.JLabel back_gioithieu;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton buttonChangePass;
+    private javax.swing.JButton buttonHiddenPass;
+    private javax.swing.JButton buttonshowpassword;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

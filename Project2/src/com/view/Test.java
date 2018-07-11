@@ -362,9 +362,13 @@ public class Test extends javax.swing.JFrame {
         jPaneltime.add(labeltg, constraints1);
         constraints1.gridx = 0;
         constraints1.gridy = 1;
-        constraints1.insets = new Insets(0, 0, 200, 0);
+        constraints1.insets = new Insets(0, 0, 250, 0);
         jPanelclock.add(jButton4);
         jPanelclock.add(jButton5);
+        JLabel lbael= new JLabel(":");
+        lbael.setFont(new Font("sad", Font.BOLD,20 ));
+        jPanelclock.add(lbael);
+        
         jPanelclock.add(jButton6);
         jPanelclock.add(jButton7);
         jPaneltime.add(jPanelclock, constraints1);
