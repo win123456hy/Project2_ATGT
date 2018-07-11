@@ -169,9 +169,9 @@ public class Home extends javax.swing.JFrame {
 
     private void thitracnghiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thitracnghiemMouseClicked
         if (System.getProperty("userid") == null || System.getProperty("userid") == "") {
-            int response = JOptionPane.showConfirmDialog(rootPane, "Bạn phải đăng nhập để thi."
-                    + "Click OK để bắt đầu đăng nhập"
-                    + "Cancel để quay về trang chủ", "Confirm",
+            int response = JOptionPane.showConfirmDialog(rootPane, "Bạn phải đăng nhập để thi.\n"
+                    + "Click Yes để bắt đầu đăng nhập.\n"
+                    + "Click No để quay về trang chủ.", "Confirm",
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (response == JOptionPane.NO_OPTION || response == JOptionPane.CLOSED_OPTION) {
                 Home a = new Home();
@@ -191,9 +191,9 @@ public class Home extends javax.swing.JFrame {
 
     private void trangcanhanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trangcanhanMouseClicked
         if (System.getProperty("userid") == null || System.getProperty("userid") == "") {
-            int response = JOptionPane.showConfirmDialog(rootPane, "Bạn phải đăng nhập để thi."
-                    + "Click OK để bắt đầu đăng nhập"
-                    + "Cancel để quay về trang chủ", "Confirm",
+            int response = JOptionPane.showConfirmDialog(rootPane, "Bạn phải đăng nhập để thi.\n"
+                    + "Click Yes để bắt đầu đăng nhập.\n"
+                    + "Click No để quay về trang chủ.", "Confirm",
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (response == JOptionPane.NO_OPTION || response == JOptionPane.CLOSED_OPTION) {
                 Home a = new Home();

@@ -15,7 +15,6 @@ import com.model.Answers;
 import com.model.Exams;
 import com.model.Images;
 import com.model.Question;
-import com.model.Users;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -24,11 +23,13 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
-import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import javax.swing.AbstractButton;
@@ -36,18 +37,13 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
-import javax.swing.UIManager;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.colorchooser.AbstractColorChooserPanel;
 
 /**
  *
@@ -58,9 +54,34 @@ public class Test extends javax.swing.JFrame {
     /**
      * Creates new form Test
      */
+       class MouseEv extends MouseAdapter {
+        int idd;
+        public MouseEv() {
+            super();
+        }
+
+        public void mouseClicked(MouseEvent evt) {
+              JDialog dialog = new JDialog();
+              dialog.setPreferredSize(new Dimension(1000, 500));
+            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+            dialog.setTitle("Chữ to");
+            JLabel jLabelto = new JLabel(jTex[idd].getText());
+            jLabelto.setFont(new Font("aa", Font.BOLD, 30));
+             dialog.add(jLabelto);
+            
+            dialog.pack();
+            dialog.setLocationRelativeTo(null);
+            dialog.setVisible(true);
+        }
+
+        public void setid(int id) {
+            idd=id;
+        }
+
+    }
     private Timer time;
     private int giay = 60;
-    private int phut = 1;
+    private int phut = 44;
     private int index = 0;
     public JPanel jPanel[] = new JPanel[20];
     public JPanel jPanel1[] = new JPanel[20];
@@ -81,6 +102,7 @@ public class Test extends javax.swing.JFrame {
         initComponents();
         this.setSize(1366, 768);
         thoigian();
+         MouseEv mouseEv = null;
         jButton4.setBackground(Color.BLACK);
         jButton4.setFont(new Font("Dialog", Font.PLAIN, 20));
         jButton4.setForeground(Color.WHITE);
@@ -134,8 +156,9 @@ public class Test extends javax.swing.JFrame {
             labels1[i] = jLabel1;
             jTex[i].setLineWrap(true);
             jTex[i].setEditable(false);
-            jTex[i].setFont(new Font("aa", Font.PLAIN, 20));
-
+             mouseEv = new MouseEv();
+            mouseEv.setid(i);
+            jTex[i].addMouseListener(mouseEv);
             jp.add(jTex[i]);
             jp.add(labels1[i]);
             JPanel jp1 = new JPanel(new GridLayout(4, 2));
@@ -362,13 +385,13 @@ public class Test extends javax.swing.JFrame {
         jPaneltime.add(labeltg, constraints1);
         constraints1.gridx = 0;
         constraints1.gridy = 1;
-        constraints1.insets = new Insets(0, 0, 250, 0);
+        constraints1.insets = new Insets(0, 0, 200, 0);
         jPanelclock.add(jButton4);
         jPanelclock.add(jButton5);
-        JLabel lbael= new JLabel(":");
-        lbael.setFont(new Font("sad", Font.BOLD,20 ));
+        JLabel lbael = new JLabel(":");
+        lbael.setFont(new Font("sad", Font.BOLD, 20));
         jPanelclock.add(lbael);
-        
+
         jPanelclock.add(jButton6);
         jPanelclock.add(jButton7);
         jPaneltime.add(jPanelclock, constraints1);

@@ -48,7 +48,7 @@ public class ReviewAnswered extends javax.swing.JFrame {
 
     public ReviewAnswered() {
         initComponents();
-
+        this.setLocationRelativeTo(null);
         String usid = System.getProperty("userid");
 
         exx = gete.getExamx(Integer.parseInt(usid));

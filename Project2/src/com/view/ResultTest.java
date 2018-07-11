@@ -23,6 +23,7 @@ public class ResultTest extends javax.swing.JFrame {
     private getExam exam=new getExam();
     public ResultTest() {
         initComponents();
+        this.setLocationRelativeTo(null);
         String usid=System.getProperty("userid");
         CalcuTest calcuTest=new CalcuTest();
         Exams e= exam.getExamx(Integer.parseInt(usid));

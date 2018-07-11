@@ -24,7 +24,6 @@ public class YourProfile extends javax.swing.JFrame {
      * Creates new form Introduce
      */
     private Users u;
-    private JLabel jLabelpassword;
 
     public YourProfile() {
         initComponents();
@@ -44,16 +43,11 @@ public class YourProfile extends javax.swing.JFrame {
         Username.add(jLabelusernametitle);
         Username.add(jLabelusername);
 
-        Password.setLayout(new GridLayout(1, 5));
+        Password.setLayout(new GridLayout(1, 2));
         JLabel jLabelpasswordtitle = new JLabel("Mật khẩu:");
         jLabelpasswordtitle.setFont(new Font("a", Font.PLAIN, 24));
 
-        jLabelpassword = new JLabel(u.getPassword());
-        jLabelpassword.setFont(new Font("a", Font.PLAIN, 24));
         Password.add(jLabelpasswordtitle);
-        Password.add(jLabelpassword);
-        Password.add(buttonshowpassword);
-        Password.add(buttonHiddenPass);
         Password.add(buttonChangePass);
 
         //if(u.getGender()==1)
@@ -104,9 +98,7 @@ public class YourProfile extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Username = new javax.swing.JPanel();
         Password = new javax.swing.JPanel();
-        buttonshowpassword = new javax.swing.JButton();
         buttonChangePass = new javax.swing.JButton();
-        buttonHiddenPass = new javax.swing.JButton();
         Gender = new javax.swing.JPanel();
         Email = new javax.swing.JPanel();
         CreateTime = new javax.swing.JPanel();
@@ -130,24 +122,10 @@ public class YourProfile extends javax.swing.JFrame {
 
         jPanel1.add(Username);
 
-        buttonshowpassword.setText("Hiện Password");
-        buttonshowpassword.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonshowpasswordMouseClicked(evt);
-            }
-        });
-
         buttonChangePass.setText("Đổi mật khẩu");
         buttonChangePass.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buttonChangePassMouseClicked(evt);
-            }
-        });
-
-        buttonHiddenPass.setText("Ẩn Password");
-        buttonHiddenPass.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonHiddenPassMouseClicked(evt);
             }
         });
 
@@ -156,22 +134,15 @@ public class YourProfile extends javax.swing.JFrame {
         PasswordLayout.setHorizontalGroup(
             PasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PasswordLayout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(buttonHiddenPass)
-                .addGap(18, 18, 18)
-                .addComponent(buttonshowpassword)
-                .addGap(28, 28, 28)
+                .addGap(369, 369, 369)
                 .addComponent(buttonChangePass, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(1832, Short.MAX_VALUE))
         );
         PasswordLayout.setVerticalGroup(
             PasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PasswordLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(PasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonshowpassword)
-                    .addComponent(buttonChangePass)
-                    .addComponent(buttonHiddenPass))
+                .addContainerGap(65, Short.MAX_VALUE)
+                .addComponent(buttonChangePass)
                 .addContainerGap())
         );
 
@@ -249,21 +220,11 @@ public class YourProfile extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_back_gioithieuMouseClicked
 
-    private void buttonshowpasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonshowpasswordMouseClicked
-        byte[] decodedBytes = Base64.getDecoder().decode(u.getPassword());
-        String decodedString = new String(decodedBytes);
-        jLabelpassword.setText(decodedString);
-    }//GEN-LAST:event_buttonshowpasswordMouseClicked
-
     private void buttonChangePassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonChangePassMouseClicked
             DoiMatKhau doiMatKhau=new DoiMatKhau();
             doiMatKhau.setVisible(true);
             this.dispose();
     }//GEN-LAST:event_buttonChangePassMouseClicked
-
-    private void buttonHiddenPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonHiddenPassMouseClicked
-        jLabelpassword.setText(u.getPassword());
-    }//GEN-LAST:event_buttonHiddenPassMouseClicked
 
     /**
      * @param args the command line arguments
@@ -309,8 +270,6 @@ public class YourProfile extends javax.swing.JFrame {
     private javax.swing.JPanel Username;
     private javax.swing.JLabel back_gioithieu;
     private javax.swing.JButton buttonChangePass;
-    private javax.swing.JButton buttonHiddenPass;
-    private javax.swing.JButton buttonshowpassword;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
