@@ -342,6 +342,7 @@ public class Test extends javax.swing.JFrame {
             jPanel[i] = jpmain;
             jPanel[i].add(jp);
             jPanel[i].add(jp1);
+            jPanel[i].setPreferredSize(new Dimension(900, 500));
             jTabbedPane1.add(jPanel[i]);
 
             j = j + 4;
@@ -385,7 +386,7 @@ public class Test extends javax.swing.JFrame {
         jPaneltime.add(labeltg, constraints1);
         constraints1.gridx = 0;
         constraints1.gridy = 1;
-        constraints1.insets = new Insets(0, 0, 200, 0);
+        constraints1.insets = new Insets(0, 0,250,0 );
         jPanelclock.add(jButton4);
         jPanelclock.add(jButton5);
         JLabel lbael = new JLabel(":");
