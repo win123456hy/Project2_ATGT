@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2018 at 10:32 AM
--- Server version: 10.1.33-MariaDB
--- PHP Version: 7.2.6
+-- Generation Time: Jul 12, 2018 at 04:01 AM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,9 +44,9 @@ INSERT INTO `answers` (`AnswerID`, `AnswerDetail`, `QuestionID`, `IsCorrect`) VA
 (2, 'Đường, cầu đường bộ, hầm đường bộ, bến phà đường bộ. ', 1, 1),
 (3, 'Đường, cầu đường bộ, hầm đường bộ, bến phà đường bộ và các công trình phụ trợ khác.\r\n', 1, 0),
 (4, 'Cơ quan quản lý giao thông vận tải.\r\n', 2, 0),
-(5, 'Ủy ban nhân dân cấp tỉnh. ', 2, 1),
+(5, 'abc', 2, 1),
 (6, 'Cơ quan cảnh sát giao thông đường bộ.\r\n', 2, 0),
-(7, 'Thanh tra giao thông đường bộ.\r\n', 2, 0),
+(7, 'Thanh tra giao thông đường bộ', 2, 0),
 (8, 'Các công trình phụ trợ khác.\r\n', 1, 0),
 (9, 'Nghiêm cấm. ', 3, 1),
 (10, 'Không bị nghiêm cấm.', 3, 0),
@@ -279,7 +279,15 @@ INSERT INTO `answers` (`AnswerID`, `AnswerDetail`, `QuestionID`, `IsCorrect`) VA
 (237, 'Cả 3 hướng.\r\n', 60, 0),
 (238, 'Hướng 1 và hướng 2.', 60, 0),
 (239, 'Hướng 1 và hướng 3', 60, 1),
-(240, 'Hướng 2 và hướng 3.', 60, 0);
+(240, 'Hướng 2 và hướng 3.', 60, 0),
+(241, 'âsasasas', 61, 1),
+(242, 'âsasasasâsasa', 61, 0),
+(243, 'âsasasasâsasaư1212', 61, 0),
+(244, 'âsasasasâsasaư12121', 61, 0),
+(245, '1', 63, 0),
+(246, '2', 63, 0),
+(247, '3', 63, 0),
+(248, '4', 63, 1);
 
 -- --------------------------------------------------------
 
@@ -302,7 +310,11 @@ INSERT INTO `categories` (`CategoryID`, `CategoryName`, `CategoryDescription`) V
 (2, 'Xe oto', 'Xe oto 4 banh'),
 (3, 'Đường bộ', 'đường bộ'),
 (4, 'Đường sắt', 'Đường sắt'),
-(5, 'Đường Thủy', 'Đường Thủy');
+(5, 'Đường Thủy', 'Đường Thủy'),
+(6, 'Biển Báo Cấm', NULL),
+(7, 'Biển Báo Chỉ Dẫn', NULL),
+(8, 'Biển Báo Hiệu Lệnh', NULL),
+(9, 'Biển Báo Nguy Hiểm', NULL);
 
 -- --------------------------------------------------------
 
@@ -317,6 +329,115 @@ CREATE TABLE `examdetails` (
   `AnswerID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `examdetails`
+--
+
+INSERT INTO `examdetails` (`ExamDetailID`, `ExamID`, `QuestionID`, `AnswerID`) VALUES
+(21, 12, 1, 1),
+(22, 12, 7, 26),
+(23, 12, 10, 39),
+(24, 12, 11, 43),
+(25, 12, 12, 47),
+(26, 12, 14, 55),
+(27, 16, 1, 1),
+(28, 17, 1, 3),
+(29, 17, 22, 86),
+(30, 19, 9, 33),
+(31, 20, 1, 1),
+(32, 20, 4, 14),
+(33, 20, 5, 17),
+(34, 20, 7, 26),
+(35, 20, 8, 30),
+(36, 20, 12, 46),
+(37, 20, 13, 50),
+(38, 20, 15, 58),
+(39, 20, 16, 62),
+(40, 20, 17, 65),
+(41, 20, 18, 69),
+(42, 20, 20, 77),
+(43, 20, 25, 97),
+(44, 21, 1, 1),
+(45, 21, 6, 22),
+(46, 21, 7, 26),
+(47, 21, 8, 30),
+(48, 21, 12, 46),
+(49, 22, 1, 3),
+(50, 22, 7, 28),
+(51, 22, 10, 38),
+(52, 22, 11, 43),
+(53, 22, 12, 46),
+(54, 22, 13, 50),
+(55, 23, 3, 9),
+(56, 23, 10, 38),
+(57, 23, 13, 50),
+(58, 23, 15, 58),
+(59, 24, 3, 9),
+(60, 24, 5, 19),
+(61, 24, 6, 21),
+(62, 24, 7, 27),
+(63, 24, 10, 38),
+(64, 24, 11, 42),
+(65, 24, 13, 51),
+(66, 24, 15, 59),
+(67, 24, 16, 63),
+(68, 24, 18, 70),
+(69, 24, 19, 74),
+(70, 24, 20, 77),
+(71, 25, 1, 1),
+(72, 25, 10, 38),
+(73, 25, 12, 47),
+(74, 25, 17, 68),
+(75, 25, 18, 70),
+(76, 25, 19, 74),
+(77, 26, 14, 54),
+(78, 27, 8, 29),
+(79, 27, 10, 38),
+(80, 27, 11, 42),
+(81, 27, 12, 45),
+(82, 27, 13, 50),
+(83, 27, 14, 54),
+(84, 27, 15, 58),
+(85, 29, 2, 5),
+(86, 29, 9, 34),
+(87, 30, 1, 1),
+(88, 31, 1, 2),
+(89, 31, 5, 18),
+(90, 31, 6, 23),
+(91, 31, 10, 39),
+(92, 31, 11, 42),
+(93, 32, 16, 62),
+(94, 32, 19, 73),
+(95, 32, 23, 91),
+(96, 33, 1, 2),
+(97, 33, 2, 4),
+(98, 33, 4, 13),
+(99, 33, 5, 18),
+(100, 33, 6, 21),
+(101, 33, 8, 29),
+(102, 33, 9, 33),
+(103, 33, 13, 49),
+(104, 33, 16, 61),
+(105, 33, 17, 184),
+(106, 33, 19, 74),
+(107, 33, 20, 79),
+(108, 33, 22, 86),
+(109, 33, 38, 120),
+(110, 34, 11, 41),
+(111, 34, 14, 55),
+(112, 34, 17, 65),
+(113, 34, 20, 77),
+(114, 34, 24, 93),
+(115, 34, 26, 101),
+(116, 38, 13, 49),
+(117, 38, 15, 58),
+(118, 38, 18, 70),
+(119, 38, 20, 78),
+(120, 38, 22, 86),
+(121, 38, 26, 101),
+(122, 38, 28, 109),
+(123, 38, 38, 149);
+
 -- --------------------------------------------------------
 
 --
@@ -326,8 +447,43 @@ CREATE TABLE `examdetails` (
 CREATE TABLE `exams` (
   `ExamID` int(11) NOT NULL,
   `CreatedTime` date NOT NULL,
-  `UserID` int(11) NOT NULL
+  `UserID` int(11) NOT NULL,
+  `Score` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `exams`
+--
+
+INSERT INTO `exams` (`ExamID`, `CreatedTime`, `UserID`, `Score`) VALUES
+(12, '2018-07-02', 3, 1),
+(16, '2018-07-03', 3, 0),
+(17, '2018-07-03', 3, 1),
+(19, '2018-07-03', 3, 0),
+(20, '2018-07-06', 3, 4),
+(21, '2018-07-06', 3, 0),
+(22, '2018-07-06', 3, 3),
+(23, '2018-07-06', 3, 3),
+(24, '2018-07-06', 3, 5),
+(25, '2018-07-06', 3, 3),
+(26, '2018-07-06', 3, 1),
+(27, '2018-07-06', 3, 4),
+(28, '2018-07-06', 3, 0),
+(29, '2018-07-09', 4, 1),
+(30, '2018-07-09', 6, 0),
+(31, '2018-07-09', 3, 3),
+(32, '2018-07-09', 3, 1),
+(33, '2018-07-12', 8, 4),
+(34, '2018-07-12', 17, 2),
+(35, '2018-07-12', 8, 0),
+(36, '2018-07-12', 8, 0),
+(37, '2018-07-12', 8, 0),
+(38, '2018-07-12', 8, 4),
+(39, '2018-07-12', 3, 0),
+(40, '2018-07-12', 3, 0),
+(41, '2018-07-12', 3, 0),
+(42, '2018-07-12', 3, 0),
+(43, '2018-07-12', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -444,7 +600,48 @@ INSERT INTO `laws` (`LawID`, `LawTitle`, `LawDetail`, `LawTimeRelease`, `Categor
 (47, 'Điều 62. Điều kiện của người điều khiển xe máy chuyên dùng tham gia giao thông\r\n', '1. Người điều khiển xe máy chuyên dùng tham gia giao thông phải đủ độ tuổi, sức khỏe phù hợp với ngành nghề lao động và có chứng chỉ bồi dưỡng kiến thức pháp luật về giao thông đường bộ, bằng hoặc chứng chỉ điều khiển xe máy chuyên dùng do cơ sở đào tạo người điều khiển xe máy chuyên dùng cấp.\r\n2. Người điều khiển xe máy chuyên dùng khi tham gia giao thông phải mang theo các giấy tờ sau đây:\r\na) Đăng ký xe;\r\nb) Chứng chỉ bồi dưỡng kiến thức pháp luật về giao thông đường bộ, bằng hoặc chứng chỉ điều khiển xe máy chuyên dùng;\r\nc) Giấy chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường đối với xe máy chuyên dùng quy định tại Điều 57 của Luật này.\r\n', '2017-07-01', 3),
 (48, 'Điều 1. Phạm vi điều chỉnh', 'Luật này quy định về hoạt động giao thông đường thủy nội địa; các điều kiện bảo đảm an toàn giao thông đường thuỷ nội địa đối với kết cấu hạ tầng, phương tiện và người tham gia giao thông, vận tải đường thuỷ nội địa.', '2005-01-01', 5),
 (49, 'Điều 1. Phạm vi điều chỉnh', 'Luật này quy định về quy hoạch, đầu tư, xây dựng, bảo vệ, quản lý, bảo trì và phát triển kết cấu hạ tầng đường sắt; công nghiệp đường sắt, phương tiện giao thông đường sắt; tín hiệu, quy tắc giao thông và bảo đảm trật tự, an toàn giao thông đường sắt; kinh doanh đường sắt; quyền và nghĩa vụ của tổ chức, cá nhân có liên quan đến hoạt động đường sắt; quản lý nhà nước về hoạt động đường sắt.', '2005-01-01', 4),
-(50, 'Điều 2. Đối tượng áp dụng', 'Luật này áp dụng đối với tổ chức, cá nhân liên quan đến hoạt động giao thông đường thuỷ nội địa.\r\n\r\nTrường hợp điều ước quốc tế mà Cộng hoà xã hội chủ nghĩa Việt Nam ký kết hoặc gia nhập có quy định khác với Luật này thì áp dụng quy định của điều ước quốc tế đó.', '2005-01-01', 4);
+(50, 'Điều 2. Đối tượng áp dụng', 'Luật này áp dụng đối với tổ chức, cá nhân liên quan đến hoạt động giao thông đường thuỷ nội địa.\r\n\r\nTrường hợp điều ước quốc tế mà Cộng hoà xã hội chủ nghĩa Việt Nam ký kết hoặc gia nhập có quy định khác với Luật này thì áp dụng quy định của điều ước quốc tế đó.', '2005-01-01', 4),
+(51, '42/2017/TT-BGTVT - Quy định điều kiện', 'Quy định điều kiện của người điều khiển phương tiện, nhân viên phục vụ, trang thiết bị, chất lượng dịch vụ trên phương tiện vận tải khách du lịch', '2017-11-15', 5),
+(52, '15/2017/TT-BGTVT - Ban hành Quy chuẩn', 'Ban hành Quy chuẩn kỹ thuật quốc gia về phân cấp và đóng phương tiện thủy nội địa vỏ thép chở xô hóa chất nguy hiểm', '2017-05-15', 5),
+(53, '10/2017/TT-BGTVT Ban hành quy chuẩn kỹ', 'Ban hành quy chuẩn kỹ thuật quốc gia về thiết bị nâng trên các công trình biển', '2017-04-04', 5),
+(54, '09/2017/TT-BGTVT Ban hành quy chuẩn kỹ', 'Ban hành quy chuẩn kỹ thuật quốc gia về thiết bị nâng trên các phương tiện thủy nội địa', '2017-03-20', 5),
+(55, '02/2017/TT-BGTVT Sửa đổi, bổ sung một', 'Sửa đổi, bổ sung một số điều của Thông tư số 56/2014/TT-BGTVT ngày 24 tháng 10 năm 2014 của Bộ trưởng Bộ Giao thông vận tải quy định thi, kiểm tra, cấp, cấp lại, chuyển đổi giấy chứng nhận khả năng chuyên môn, chứng chỉ chuyên môn thuyền viên, người', '2017-01-20', 5),
+(56, '04/2017/TT-BGTVT THÔNG TƯ SỐ 04/2017', 'THÔNG TƯ SỐ 04/2017/TT-BGTVT NGÀY 20/01/2017 SỬA ĐỔI, BỔ SUNG MỘT SỐ ĐIỀU CỦA THÔNG TƯ SỐ 47/2015/TT-BGTVT NGÀY 14 THÁNG 9 NĂM 2015 CỦA BỘ TRƯỞNG BỘ GIAO THÔNG VẬN TẢI QUY ĐỊNH PHẠM VI, TRÁCH NHIỆM CỦA THUYỀN VIÊN, NGƯỜI LÁI PHƯƠNG TIỆN VÀ ĐỊNH BIÊN', '2017-01-20', 5),
+(57, '03/2017/TT-BGTVT Quy định nội dung', 'Quy định nội dung, chương trình đào tạo thuyền viên, người lái phương tiện thủy nội địa', '2017-01-20', 5),
+(58, '12/2016/TT-BGTVT - HƯỚNG DẪN THI HÀNH', 'HƯỚNG DẪN THI HÀNH MỘT SỐ ĐIỀU CỦA NGHỊ ĐỊNH SỐ 132/2015/NĐ-CP NGÀY 25 THÁNG 12 NĂM 2015 CỦA CHÍNH PHỦ QUY ĐỊNH XỬ PHẠT VI PHẠM HÀNH CHÍNH TRONG LĨNH VỰC GIAO THÔNG ĐƯỜNG THỦY NỘI ĐỊA', '2016-06-09', 5),
+(59, '59/2015/TT-BGTVT SỬA ĐỔI, BỔ SUNG MỘT', 'SỬA ĐỔI, BỔ SUNG MỘT SỐ ĐIỀU CỦA THÔNG TƯ SỐ 80/2014/TT-BGTVT NGÀY 30 THÁNG 12 NĂM 2014 CỦA BỘ TRƯỞNG BỘ GIAO THÔNG VẬN TẢI QUY ĐỊNH VỀ VẬN TẢI HÀNH KHÁCH, HÀNH LÝ, BAO GỬI TRÊN ĐƯỜNG THỦY NỘI ĐỊA', '2015-10-30', 5),
+(60, '51/2015/QĐ-TTg VỀ QUY ĐỊNH TỔ CHỨC', 'VỀ QUY ĐỊNH TỔ CHỨC TÌM KIẾM, CỨU NẠN GIAO THÔNG ĐƯỜNG THỦY NỘI ĐỊA', '2015-10-14', 5),
+(61, '132/2015/NĐ-CP QUY ĐỊNH XỬ PHẠT', 'QUY ĐỊNH XỬ PHẠT VI PHẠM HÀNH CHÍNH TRONG LĨNH VỰC GIAO THÔNG ĐƯỜNG THỦY NỘI ĐỊA', '2015-12-25', 5),
+(62, 'Điều 1. Phạm vi điều chỉnh', 'Luật này quy định về hoạt động giao thông đường thủy nội địa; các điều kiện bảo đảm an toàn giao thông đường thuỷ nội địa đối với kết cấu hạ tầng, phương tiện và người tham gia giao thông, vận tải đường thuỷ nội địa.', '2001-12-25', 5),
+(63, 'Điều 2. Đối tượng áp dụng', 'Luật này áp dụng đối với tổ chức, cá nhân liên quan đến hoạt động giao thông đường thuỷ nội địa.\r\n\r\nTrường hợp điều ước quốc tế mà Cộng hoà xã hội chủ nghĩa Việt Nam ký kết hoặc gia nhập có quy định khác với Luật này thì áp dụng quy định của điều ước quốc tế đó.', '2001-12-25', 5),
+(64, 'Điều 3. Giải thích từ ngữ', 'Trong Luật này, các từ ngữ dưới đây được hiểu như sau:\r\n\r\n1. Hoạt động giao thông đường thuỷ nội địa là hoạt động của người, phương tiện tham gia giao thông, vận tải đường thuỷ nội địa; quy hoạch phát triển, xây dựng, khai thác, bảo vệ kết cấu hạ tầng giao thông đường thuỷ nội địa và quản lý nhà nước về giao thông đường thuỷ nội địa.\r\n\r\n2. Luồng chạy tàu thuyền (sau đây gọi là luồng) là vùng nước được giới hạn bằng hệ thống báo hiệu đường thuỷ nội địa để phương tiện đi lại thông suốt, an toàn.\r\n\r\n3. Âu tàu là công trình chuyên dùng dâng nước, hạ nước để đưa phương tiện qua nơi có mực nước chênh lệch trên đường thuỷ nội địa.\r\n\r\n4. Đường thủy nội địa là luồng, âu tàu, các công trình đưa phương tiện qua đập, thác trên sông, kênh, rạch hoặc luồng trên hồ, đầm, phá, vụng, vịnh, ven bờ biển, ra đảo, nối các đảo thuộc nội thuỷ của nước Cộng hoà xã hội chủ nghĩa Việt Nam được tổ chức quản lý, khai thác giao thông vận tải.\r\n\r\n5. Hành lang bảo vệ luồng là phần giới hạn của vùng nước hoặc dải đất dọc hai bên luồng để lắp đặt báo hiệu, bảo vệ luồng và bảo đảm an toàn giao thông.\r\n\r\n6. Thanh thải là việc loại bỏ các vật chướng ngại trên đường thuỷ nội địa.\r\n\r\n7. Phương tiện thuỷ nội địa (sau đây gọi là phương tiện) là tàu, thuyền và các cấu trúc nổi khác, có động cơ hoặc không có động cơ, chuyên hoạt động trên đường thuỷ nội địa.\r\n\r\n8. Phương tiện thô sơ là phương tiện không có động cơ chỉ di chuyển bằng sức người hoặc sức gió, sức nước.\r\n\r\n9. Bè là phương tiện được kết ghép lại bằng tre, nứa, gỗ hoặc các vật nổi khác để chuyển đi hoặc dùng làm phương tiện vận chuyển tạm thời trên đường thuỷ nội địa.\r\n\r\n10. Hoán cải phương tiện là việc thay đổi tính năng, kết cấu, công dụng của phương tiện.\r\n\r\n11. Phương tiện đi đối hướng nhau là hai phương tiện đi ngược hướng nhau mà từ phương tiện của mình nhìn thấy mũi phương tiện kia thẳng trước mũi phương tiện của mình.\r\n\r\n12. Đoàn lai là đoàn gồm nhiều phương tiện được ghép với nhau, di chuyển nhờ phương tiện có động cơ chuyên lai kéo, lai đẩy hoặc lai áp mạn.\r\n\r\n13. Đoàn lai hỗn hợp là đoàn lai được ghép thành đội hình có ít nhất hai trong ba phương thức lai kéo, lai đẩy, lai áp mạn.\r\n\r\n14. Trọng tải toàn phần của phương tiện là khối lượng tính bằng tấn của hàng hoá, nhiên liệu, dầu bôi trơn, nước trong khoang két, lương thực, thực phẩm, hành khách và hành lý, thuyền viên và tư trang của họ.\r\n\r\n15. Sức chở người của phương tiện là số lượng người tối đa được phép chở trên phương tiện, trừ thuyền viên, người lái phương tiện và trẻ em dưới một tuổi.\r\n\r\n16. Vạch dấu mớn nước an toàn là vạch đánh dấu trên phương tiện để giới hạn phần thân phương tiện được phép chìm trong nước khi hoạt động.\r\n\r\n17. Mạn được gió của thuyền là mạn có hướng gió thổi vào cánh buồm chính.\r\n\r\n18. Thuyền viên là người làm việc theo chức danh quy định trên phương tiện không có động cơ trọng tải toàn phần trên 15 tấn hoặc phương tiện có động cơ tổng công suất máy chính trên 15 mã lực hoặc phương tiện có sức chở trên 12 người.\r\n\r\n19. Thuyền trưởng là chức danh của người chỉ huy cao nhất trên phương tiện không có động cơ trọng tải toàn phần trên 15 tấn hoặc phương tiện có động cơ tổng công suất máy chính trên 15 mã lực hoặc phương tiện có sức chở trên 12 người.\r\n\r\n20. Người lái phương tiện là người trực tiếp điều khiển phương tiện không có động cơ trọng tải toàn phần đến 15 tấn hoặc phương tiện có động cơ tổng công suất máy chính đến 15 mã lực hoặc phương tiện có sức chở đến 12 người hoặc bè.\r\n\r\n21. Hoa tiêu đường thuỷ nội địa (sau đây gọi là hoa tiêu) là người tư vấn, giúp thuyền trưởng điều khiển phương tiện hành trình an toàn.\r\n\r\n22. Người vận tải là tổ chức, cá nhân sử dụng phương tiện để vận tải người, hàng hóa trên đường thuỷ nội địa.\r\n\r\n23. Người kinh doanh vận tải là người vận tải giao kết hợp đồng vận tải hàng hoá, hành khách với người thuê vận tải để thực hiện việc vận tải hàng hoá, hành khách mà có thu cước phí vận tải.\r\n\r\n24. Người thuê vận tải là tổ chức, cá nhân giao kết hợp đồng vận tải hàng hoá, hành khách với người kinh doanh vận tải.\r\n\r\n25. Người nhận hàng là tổ chức, cá nhân có tên nhận hàng ghi trên giấy vận chuyển.\r\n\r\n26. Hành lý là vật dùng, hàng hoá của hành khách mang theo trong cùng chuyến đi, bao gồm hành lý xách tay và hành lý ký gửi.\r\n\r\n27. Bao gửi là hàng hoá gửi theo bất kỳ phương tiện chở khách nào mà người gửi không đi cùng trên phương tiện đó.', '2001-12-24', 5),
+(65, 'Điều 4. Nguyên tắc hoạt động giao', 'Điều 4. Nguyên tắc hoạt động giao thông đường thuỷ nội địa\r\n\r\n1. Hoạt động giao thông đường thuỷ nội địa phải bảo đảm thông suốt, trật tự, an toàn cho người, phương tiện, tài sản và bảo vệ môi trường; phục vụ phát triển kinh tế - xã hội và góp phần bảo đảm quốc phòng, an ninh, bảo vệ chủ quyền và lợi ích quốc gia.\r\n\r\n2. Bảo đảm trật tự, an toàn giao thông đường thuỷ nội địa là trách nhiệm của toàn xã hội, của chính quyền các cấp, của tổ chức, cá nhân quản lý hoặc trực tiếp tham gia giao thông; thực hiện đồng bộ các giải pháp về kỹ thuật, an toàn của phương tiện, kết cấu hạ tầng giao thông đường thuỷ nội địa; đào tạo, nâng cao trình độ chuyên môn, nghiệp vụ; phổ biến, giáo dục ý thức chấp hành pháp luật cho người tham gia giao thông đường thuỷ nội địa; xử lý nghiêm các hành vi vi phạm pháp luật về trật tự, an toàn giao thông đường thuỷ nội địa theo quy định của pháp luật.\r\n\r\n3. Phát triển giao thông đường thuỷ nội địa phải theo quy hoạch, kế hoạch và đồng bộ.\r\n\r\n4. Quản lý hoạt động giao thông đường thuỷ nội địa được thực hiện thống nhất trên cơ sở phân công, phân cấp trách nhiệm, quyền hạn rõ ràng, đồng thời có sự phối hợp chặt chẽ giữa các bộ, ngành và chính quyền các cấp.', '2001-12-24', 5),
+(66, 'Điều 5. Chính sách phát triển giao thông', 'Điều 5. Chính sách phát triển giao thông đường thuỷ nội địa\r\n\r\n1. Nhà nước ưu tiên đầu tư phát triển kết cấu hạ tầng giao thông đường thuỷ nội địa trên các tuyến giao thông đường thuỷ nội địa trọng điểm, khu vực kinh tế trọng điểm, vùng sâu, vùng xa có lợi thế về giao thông đường thuỷ nội địa so với các loại hình giao thông khác.\r\n\r\n2. Nhà nước khuyến khích, tạo điều kiện cho tổ chức, cá nhân Việt Nam, tổ chức, cá nhân nước ngoài đầu tư phát triển kết cấu hạ tầng giao thông đường thuỷ nội địa, ứng dụng khoa học, công nghệ tiên tiến, đào tạo nguồn nhân lực chuyên ngành và đầu tư kinh doanh, khai thác vận tải đường thuỷ nội địa để phát triển giao thông đường thuỷ nội địa bền vững.', '2001-12-24', 5),
+(67, 'Điều 6. Tuyên truyền, phổ biến', 'Điều 6. Tuyên truyền, phổ biến, giáo dục pháp luật về giao thông đường thuỷ nội địa\r\n\r\n1. Tổ chức liên quan đến giao thông đường thuỷ nội địa có trách nhiệm tuyên truyền, phổ biến, giáo dục pháp luật về giao thông đường thuỷ nội địa cho nhân dân và cán bộ, công chức, người lao động trong phạm vi quản lý của mình.\r\n\r\n2. Cơ quan thông tin, tuyên truyền có trách nhiệm tổ chức tuyên truyền, phổ biến pháp luật về giao thông đường thuỷ nội địa thường xuyên, rộng rãi đến toàn dân.\r\n\r\n3. Cơ quan quản lý nhà nước về giáo dục và đào tạo có trách nhiệm chỉ đạo việc giáo dục pháp luật về giao thông đường thuỷ nội địa trong các cơ sở giáo dục phù hợp với đặc điểm của từng vùng lãnh thổ', '2001-12-24', 5),
+(68, 'Điều 7. Trách nhiệm của tổ chức', 'Điều 7. Trách nhiệm của tổ chức, cá nhân khi có tai nạn trên đường thuỷ nội địa\r\n\r\n1. Thuyền trưởng, người lái phương tiện và người có mặt tại nơi xảy ra tai nạn giao thông đường thuỷ nội địa hoặc phát hiện người, phương tiện bị nạn trên đường thuỷ nội địa phải tìm mọi biện pháp để kịp thời cứu người, phương tiện, tài sản bị nạn; bảo vệ dấu vết, vật chứng liên quan đến tai nạn; báo cho cơ quan công an hoặc Uỷ ban nhân dân nơi gần nhất và phải có mặt theo yêu cầu của cơ quan điều tra có thẩm quyền.\r\n\r\n2. Cơ quan công an hoặc Uỷ ban nhân dân nơi nhận được tin báo phải cử ngay người đến nơi xảy ra tai nạn hoặc nơi phát hiện người, phương tiện bị nạn, được quyền huy động người, phương tiện để cứu vớt, cứu chữa người bị nạn, bảo vệ tài sản, phương tiện bị nạn, dấu vết, vật chứng liên quan đến tai nạn; bảo đảm trật tự, an toàn giao thông thông suốt; trường hợp tai nạn, sự cố gây tác hại đến môi trường thì phải báo ngay cho cơ quan quản lý nhà nước về bảo vệ môi trường.\r\n\r\n3. Cơ quan công an hoặc cơ quan khác của Nhà nước có thẩm quyền khi nhận được tin xảy ra tai nạn trên đường thuỷ nội địa phải kịp thời tiến hành điều tra và xử lý theo quy định của pháp luật.\r\n\r\n4. Uỷ ban nhân dân nơi xảy ra tai nạn hoặc nơi phát hiện người bị nạn có trách nhiệm giúp đỡ người bị nạn; trường hợp tai nạn gây chết người, sau khi cơ quan điều tra có thẩm quyền đồng ý cho chôn cất mà nạn nhân không rõ tung tích, không có thân nhân hoặc thân nhân không có khả năng chôn cất thì tiến hành chôn cất nạn nhân theo quy định của pháp luật.', '2001-12-24', 5),
+(69, 'Điều 8. Các hành vi bị cấm', 'Điều 8. Các hành vi bị cấm\r\n\r\n1. Phá hoại công trình giao thông đường thuỷ nội địa; tạo vật chướng ngại gây cản trở giao thông đường thuỷ nội địa.\r\n\r\n2. Mở cảng, bến thuỷ nội địa trái phép; đón, trả người hoặc xếp, dỡ hàng hoá không đúng nơi quy định.\r\n\r\n3. Xây dựng trái phép nhà, lều quán hoặc các công trình khác trên đường thuỷ nội địa và phạm vi bảo vệ kết cấu hạ tầng giao thông đường thuỷ nội địa.\r\n\r\n4. Đổ đất, đá, cát, sỏi hoặc chất thải khác, khai thác trái phép khoáng sản trong phạm vi luồng và hành lang bảo vệ luồng; đặt cố định ngư cụ, phương tiện khai thác, nuôi trồng thuỷ sản trên luồng.\r\n\r\n5. Đưa phương tiện không đủ điều kiện hoạt động theo quy định tại Điều 24 của Luật này tham gia giao thông đường thuỷ nội địa; sử dụng phương tiện không đúng công dụng hoặc không đúng vùng hoạt động theo giấy chứng nhận an toàn kỹ thuật và bảo vệ môi trường của cơ quan đăng kiểm.\r\n\r\n6. Bố trí thuyền viên không đủ định biên theo quy định khi đưa phương tiện vào hoạt động; thuyền viên, người lái phương tiện làm việc trên phương tiện không có bằng, chứng chỉ chuyên môn hoặc bằng, chứng chỉ chuyên môn không phù hợp.\r\n\r\n7. Chở hàng hoá độc hại, dễ cháy, dễ nổ, động vật lớn chung với hành khách; chở quá sức chở người của phương tiện hoặc quá vạch dấu mớn nước an toàn.\r\n\r\n8. Làm việc trên phương tiện khi trong máu có nồng độ cồn vượt quá 80 miligam/100 mililít máu hoặc 40 miligam/1lít khí thở hoặc có các chất kích thích khác mà pháp luật cấm sử dụng.\r\n\r\n9. Bỏ trốn sau khi gây tai nạn để trốn tránh trách nhiệm; xâm phạm tính mạng, tài sản khi phương tiện bị nạn; lợi dụng việc xảy ra tai nạn làm mất trật tự, cản trở việc xử lý tai nạn.\r\n\r\n10. Vi phạm báo hiệu hạn chế tạo sóng hoặc các báo hiệu cấm khác.\r\n\r\n11. Tổ chức đua hoặc tham gia đua trái phép phương tiện trên đường thuỷ nội địa; lạng lách gây nguy hiểm cho phương tiện khác.\r\n\r\n12. Lợi dụng chức vụ, quyền hạn để sách nhiễu, gây phiền hà khi thực hiện nhiệm vụ; thực hiện hoặc cho phép thực hiện hành vi vi phạm pháp luật về giao thông đường thuỷ nội địa.\r\n\r\n13. Các hành vi khác vi phạm pháp luật về giao thông đường thuỷ nội địa.', '2001-12-24', 5),
+(70, 'Điều 1. Phạm vi điều chỉnh', 'Điều 1. Phạm vi điều chỉnh\r\n\r\nLuật này quy định về quy hoạch, đầu tư, xây dựng, bảo vệ, quản lý, bảo trì và phát triển kết cấu hạ tầng đường sắt; công nghiệp đường sắt, phương tiện giao thông đường sắt; tín hiệu, quy tắc giao thông và bảo đảm trật tự, an toàn giao thông đường sắt; kinh doanh đường sắt; quyền và nghĩa vụ của tổ chức, cá nhân có liên quan đến hoạt động đường sắt; quản lý nhà nước về hoạt động đường sắt.', '2016-06-16', 4),
+(71, 'Điều 2. Đối tượng áp dụng', 'Điều 2. Đối tượng áp dụng\r\n\r\nLuật này áp dụng đối với tổ chức, cá nhân trong nước và nước ngoài có liên quan đến hoạt động đường sắt trên lãnh thổ nước Cộng hòa xã hội chủ nghĩa Việt Nam.', '2016-06-16', 4),
+(72, 'Điều 3. Giải thích từ ngữ', 'Điều 3. Giải thích từ ngữ\r\n\r\nTrong Luật này, các từ ngữ dưới đây được hiểu như sau:\r\n\r\n1. Cầu chung là cầu có mặt cầu dùng chung cho phương tiện giao thông đường sắt và phương tiện giao thông đường bộ.\r\n\r\n2. Chạy tàu là hoạt động để điều khiển sự di chuyển của phương tiện giao thông đường sắt.\r\n\r\n3. Chứng vật chạy tàu là bằng chứng cho phép phương tiện giao thông đường sắt được chạy vào khu gian và được thể hiện bằng tín hiệu đèn màu, tín hiệu cánh, thẻ đường, giấy phép, phiếu đường.\r\n\r\n4. Công lệnh tải trọng là quy định về tải trọng tối đa cho phép trên một trục và tải trọng rải đều tối đa cho phép theo chiều dài của phương tiện giao thông đường sắt được quy định trên từng cầu, đoạn, khu gian, khu đoạn, tuyến đường sắt.\r\n\r\n5. Công lệnh tốc độ là quy định về tốc độ tối đa cho phép phương tiện giao thông đường sắt chạy trên từng cầu, đoạn, khu gian, khu đoạn, tuyến đường sắt.\r\n\r\n6. Công trình đường sắt là công trình xây dựng phục vụ giao thông vận tải đường sắt, bao gồm đường, cầu, cống, hầm, kè, tường chắn, ga, đề-pô, hệ thống thoát nước, hệ thống thông tin, tín hiệu, hệ thống báo hiệu cố định, hệ thống cấp điện và các công trình, thiết bị phụ trợ khác của đường sắt.\r\n\r\n7. Công trình công nghiệp đường sắt là công trình được xây dựng để phục vụ cho các hoạt động sản xuất, lắp ráp, sửa chữa, hoán cải phương tiện giao thông đường sắt; sản xuất phụ kiện, phụ tùng, vật tư, thiết bị chuyên dùng cho đường sắt.\r\n\r\n8. Đề-pô là nơi tập kết tàu để bảo dưỡng, sửa chữa, thực hiện các tác nghiệp kỹ thuật khác.\r\n\r\n9. Đường ngang là đoạn đường bộ giao nhau cùng mức với đường sắt được cơ quan có thẩm quyền cho phép xây dựng và khai thác.\r\n\r\n10. Đường sắt tốc độ cao là một loại hình của đường sắt quốc gia có tốc độ thiết kế từ 200 km/h trở lên, có khổ đường 1.435 mm, đường đôi, điện khí hóa.\r\n\r\n11. Ga đường sắt là nơi để phương tiện giao thông đường sắt dừng, tránh, vượt, đón, trả khách, xếp, dỡ hàng hoá, thực hiện tác nghiệp kỹ thuật và các dịch vụ khác.\r\n\r\n12. Hàng siêu trọng là hàng không thể tháo rời, có khối lượng vượt quá tải trọng cho phép của toa xe hoặc khi xếp lên toa xe có tổng khối lượng hàng hóa và toa xe vượt quá tải trọng quy định của công lệnh tải trọng đã được công bố.\r\n\r\n13. Hàng siêu trường là hàng không thể tháo rời, khi xếp lên toa xe có kích thước vượt quá khổ giới hạn đầu máy, khổ giới hạn và chiều dài toa xe của khổ đường tương ứng.\r\n\r\n14. Hoạt động đường sắt là hoạt động của tổ chức, cá nhân trong lĩnh vực quy hoạch, kinh doanh đường sắt, bảo đảm trật tự, an toàn giao thông đường sắt và các hoạt động khác có liên quan.\r\n\r\n15. Kết cấu hạ tầng đường sắt là công trình đường sắt, phạm vi bảo vệ công trình đường sắt và hành lang an toàn giao thông đường sắt.\r\n\r\n16. Ke ga là công trình đường sắt trong ga đường sắt để phục vụ hành khách lên, xuống tàu, xếp, dỡ hàng hóa.\r\n\r\n17. Khổ đường sắt là khoảng cách ngắn nhất giữa hai má trong của đường ray.\r\n\r\n18. Khu gian là đoạn đường sắt nối hai ga liền kề, được tính từ vị trí xác định tín hiệu vào ga của ga phía bên này đến vị trí xác định tín hiệu vào ga gần nhất của ga phía bên kia.\r\n\r\n19. Khu đoạn là tập hợp một số khu gian và ga đường sắt kế tiếp nhau phù hợp với tác nghiệp chạy tàu.\r\n\r\n20. Kinh doanh kết cấu hạ tầng đường sắt là việc thực hiện một, một số hoặc toàn bộ hoạt động đầu tư, sử dụng, bán, cho thuê, chuyển nhượng quyền khai thác kết cấu hạ tầng đường sắt để phục vụ hoạt động vận tải đường sắt và các dịch vụ thương mại khác nhằm mục đích sinh lợi.\r\n\r\n21. Kinh doanh vận tải đường sắt là việc thực hiện vận chuyển hành khách, hành lý và hàng hóa bằng đường sắt nhằm mục đích sinh lợi.\r\n\r\n22. Kinh doanh đường sắt đô thị là việc thực hiện một, một số hoặc toàn bộ các công đoạn từ đầu tư đến vận chuyển hành khách trong đô thị nhằm mục đích sinh lợi.\r\n\r\n23. Lối đi tự mở là đoạn đường bộ giao nhau với đường sắt do tổ chức, cá nhân tự xây dựng và khai thác khi chưa được cơ quan có thẩm quyền cho phép.\r\n\r\n24. Nút giao cùng mức là nơi có hai hoặc nhiều đường giao thông giao nhau trên cùng một mặt bằng.\r\n\r\n25. Nút giao khác mức là nơi có hai hoặc nhiều đường giao thông giao nhau không cùng một mặt bằng.\r\n\r\n26. Phương tiện giao thông đường sắt là đầu máy, toa xe, phương tiện chuyên dùng di chuyển trên đường sắt.\r\n\r\n27. Tuyến đường sắt là một hoặc nhiều khu đoạn liên tiếp tính từ ga đường sắt đầu tiên đến ga đường sắt cuối cùng.\r\n\r\n28. Tàu là phương tiện giao thông đường sắt được lập bởi đầu máy và toa xe hoặc đầu máy chạy đơn, toa xe động lực, phương tiện động lực chuyên dùng di chuyển trên đường sắt.', '2016-06-16', 4),
+(73, 'Điều 4. Nguyên tắc cơ bản trong', 'Điều 4. Nguyên tắc cơ bản trong hoạt động đường sắt\r\n\r\n1. Bảo đảm hoạt động giao thông vận tải đường sắt thông suốt, trật tự, an toàn, chính xác và hiệu quả; phục vụ nhu cầu đi lại thuận tiện của người dân, phát triển kinh tế - xã hội, bảo đảm quốc phòng, an ninh và bảo vệ môi trường.\r\n\r\n2. Phát triển đường sắt theo quy hoạch, kế hoạch, gắn kết với các loại hình giao thông vận tải khác và hội nhập quốc tế, bảo đảm văn minh, hiện đại và đồng bộ.\r\n\r\n3. Điều hành thống nhất, tập trung hoạt động giao thông vận tải đường sắt.\r\n\r\n4. Tách bạch giữa chức năng quản lý nhà nước của cơ quan nhà nước với hoạt động kinh doanh của doanh nghiệp, giữa kinh doanh kết cấu hạ tầng với kinh doanh vận tải trên đường sắt do Nhà nước đầu tư.\r\n\r\n5. Bảo đảm cạnh tranh lành mạnh, bình đẳng giữa các tổ chức, cá nhân thuộc mọi thành phần kinh tế tham gia kinh doanh đường sắt.', '2016-06-16', 4),
+(74, 'Điều 5. Chính sách của Nhà nước', 'Điều 5. Chính sách của Nhà nước về phát triển đường sắt\r\n\r\n1. Ưu tiên tập trung nguồn lực để đầu tư phát triển, nâng cấp, bảo trì, bảo vệ kết cấu hạ tầng đường sắt quốc gia, đường sắt đô thị để bảo đảm giao thông vận tải đường sắt đóng vai trò chủ đạo trong hệ thống giao thông vận tải cả nước.\r\n\r\n2. Khuyến khích, hỗ trợ, tạo điều kiện và bảo vệ quyền, lợi ích hợp pháp của tổ chức, cá nhân trong nước và nước ngoài đầu tư, kinh doanh đường sắt.\r\n\r\n3. Dành quỹ đất theo quy hoạch để phát triển kết cấu hạ tầng đường sắt, công trình công nghiệp đường sắt.\r\n\r\n4. Khuyến khích, hỗ trợ phát triển công nghiệp đường sắt, nghiên cứu, ứng dụng khoa học và công nghệ tiên tiến, công nghệ cao, đào tạo nguồn nhân lực để phát triển đường sắt hiện đại.\r\n\r\n5. Khuyến khích và tạo điều kiện thuận lợi cho tổ chức, cá nhân đầu tư phát triển hệ thống đường sắt chuyên dùng.\r\n\r\n6. Ưu tiên phân bổ ngân sách trung ương trong kế hoạch đầu tư công trung hạn và hằng năm với tỉ lệ thích đáng để bảo đảm phát triển kết cấu hạ tầng đường sắt quốc gia theo quy hoạch.\r\n\r\nHằng năm, Chính phủ báo cáo Quốc hội về việc thực hiện chính sách phát triển giao thông vận tải đường sắt và việc sử dụng ngân sách nhà nước đầu tư cho giao thông vận tải đường sắt.', '2016-06-16', 4),
+(75, 'Điều 6. Ưu đãi, hỗ trợ trong ', 'Điều 6. Ưu đãi, hỗ trợ trong hoạt động đường sắt\r\n\r\n1. Kinh doanh kết cấu hạ tầng đường sắt, kinh doanh vận tải đường sắt, kinh doanh đường sắt đô thị và công nghiệp đường sắt là các ngành, nghề ưu đãi đầu tư.\r\n\r\n2. Tổ chức, cá nhân hoạt động đường sắt được hưởng ưu đãi, hỗ trợ như sau:\r\n\r\na) Giao đất không thu tiền sử dụng đất đối với diện tích đất xây dựng kết cấu hạ tầng đường sắt quốc gia, đường sắt đô thị; miễn tiền thuê đất đối với diện tích đất xây dựng kết cấu hạ tầng đường sắt chuyên dùng, công trình công nghiệp đường sắt;\r\n\r\nb) Căn cứ vào khả năng nguồn lực thực tế, Nhà nước cho vay với lãi suất vay tín dụng đầu tư ưu đãi từ nguồn tín dụng đầu tư của Nhà nước hoặc được cấp bảo lãnh Chính phủ về vốn vay theo quy định của pháp luật về quản lý nợ công đối với đầu tư phát triển kết cấu hạ tầng đường sắt quốc gia, đường sắt đô thị; đầu tư mua sắm phương tiện giao thông đường sắt, máy móc, thiết bị phục vụ duy tu bảo dưỡng đường sắt; phát triển công nghiệp đường sắt;\r\n\r\nc) Doanh nghiệp kinh doanh kết cấu hạ tầng đường sắt, kinh doanh đường sắt đô thị, công nghiệp đường sắt được hưởng ưu đãi về thuế suất thuế thu nhập doanh nghiệp theo quy định của pháp luật về thuế thu nhập doanh nghiệp;\r\n\r\nd) Được miễn thuế nhập khẩu đối với máy móc, thiết bị, phụ tùng thay thế, phương tiện giao thông đường sắt, nguyên liệu, vật tư dùng để chế tạo máy móc, thiết bị hoặc để chế tạo linh kiện, chi tiết, bộ phận rời, phụ tùng của máy móc, thiết bị cần thiết cho hoạt động đường sắt và vật tư cần thiết cho xây dựng kết cấu hạ tầng đường sắt mà trong nước chưa sản xuất được.\r\n\r\n3. Tổ chức, cá nhân khi đầu tư xây dựng kết cấu hạ tầng đường sắt quốc gia, đường sắt đô thị được Nhà nước bảo đảm toàn bộ kinh phí giải phóng mặt bằng đối với đất dành cho đường sắt để xây dựng kết cấu hạ tầng đường sắt.\r\n\r\n4. Tổ chức, cá nhân kinh doanh kết cấu hạ tầng đường sắt được dành riêng dải tần số vô tuyến điện phục vụ công tác điều hành giao thông vận tải đường sắt và hệ thống cung cấp điện sức kéo phục vụ chạy tàu.', '2016-06-16', 4),
+(76, 'Điều 7. Quy hoạch phát triển giao thông', 'Điều 7. Quy hoạch phát triển giao thông vận tải đường sắt\r\n\r\n1. Quy hoạch phát triển giao thông vận tải đường sắt là cơ sở định hướng đầu tư, phát triển, khai thác mạng lưới đường sắt.\r\n\r\n2. Quy hoạch phát triển giao thông vận tải đường sắt bao gồm các nội dung về kết cấu hạ tầng đường sắt và cơ sở quốc gia công nghiệp đường sắt.\r\n\r\n3. Quy hoạch phát triển giao thông vận tải đường sắt phải đáp ứng các yêu cầu sau đây:\r\n\r\na) Bảo đảm kết nối liên vùng, đáp ứng nhu cầu phát triển kinh tế - xã hội, quốc phòng, an ninh, bảo vệ môi trường và hội nhập quốc tế;\r\n\r\nb) Gắn kết giữa phát triển kết cấu hạ tầng đường sắt với phát triển phương tiện, dịch vụ vận tải và công nghiệp đường sắt theo hướng tiên tiến, hiện đại, an toàn;\r\n\r\nc) Bảo đảm kết nối phương thức vận tải đường sắt với các phương thức vận tải khác để tạo nên hệ thống giao thông vận tải đồng bộ, bền vững, an toàn, hiệu quả và ít tác động tiêu cực tới môi trường;\r\n\r\nd) Nghiên cứu nội dung về phát triển kết cấu hạ tầng đường sắt khi lập quy hoạch phát triển giao thông vận tải của đô thị đặc biệt, đô thị loại I, cảng hàng không quốc tế đầu mối, cảng biển đặc biệt và cảng biển loại I.\r\n\r\n4. Tổ chức lập, phê duyệt quy hoạch phát triển giao thông vận tải đường sắt:\r\n\r\na) Bộ trưởng Bộ Giao thông vận tải tổ chức lập quy hoạch phát triển giao thông vận tải đường sắt quốc gia và đường sắt đô thị đi qua địa giới hành chính từ 02 tỉnh, thành phố trực thuộc Trung ương trở lên, trình Thủ tướng Chính phủ phê duyệt; tổ chức lập, phê duyệt quy hoạch chi tiết tuyến, ga đường sắt quốc gia trong đô thị loại III trở lên, ga đầu mối, ga liên vận quốc tế;\r\n\r\nb) Chủ tịch Ủy ban nhân dân cấp tỉnh tổ chức lập quy hoạch đô thị, quy hoạch tỉnh trong đó có nội dung phát triển đường sắt đô thị, đường sắt chuyên dùng, trình Thủ tướng Chính phủ phê duyệt.', '2016-06-16', 4),
+(77, 'Điều 8. Hợp tác quốc tế về đường sắt', 'Điều 8. Hợp tác quốc tế về đường sắt\r\n\r\n1. Hợp tác quốc tế về đường sắt phải bảo đảm độc lập, chủ quyền, toàn vẹn lãnh thổ và lợi ích quốc gia; đáp ứng yêu cầu về hội nhập quốc tế; tuân thủ điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên.\r\n\r\n2. Ưu tiên hoạt động hợp tác quốc tế đối với kết nối khu vực và quốc tế, kinh doanh vận tải đường sắt; đầu tư phát triển, kinh doanh kết cấu hạ tầng đường sắt; phát triển công nghiệp đường sắt; nghiên cứu khoa học, chuyển giao công nghệ; đào tạo phát triển nguồn nhân lực.\r\n\r\n3. Bộ, cơ quan ngang Bộ trong phạm vi chức năng, nhiệm vụ, quyền hạn của mình có trách nhiệm chủ trì hoặc phối hợp với Bộ Giao thông vận tải bảo đảm thuận tiện, nhanh chóng trong việc thông quan tại ga liên vận quốc tế.', '2016-06-16', 4),
+(78, 'Điều 9. Các hành vi bị nghiêm cấm', 'Điều 9. Các hành vi bị nghiêm cấm trong hoạt động đường sắt\r\n\r\n1. Phá hoại công trình đường sắt, phương tiện giao thông đường sắt.\r\n\r\n2. Lấn chiếm hành lang an toàn giao thông đường sắt, phạm vi bảo vệ công trình đường sắt.\r\n\r\n3. Tự mở lối đi qua đường sắt; xây dựng trái phép cầu vượt, hầm chui, cống hoặc công trình khác trong phạm vi đất dành cho đường sắt; khoan, đào trái phép trong phạm vi bảo vệ công trình đường sắt.\r\n\r\n4. Làm sai lệch công trình, hệ thống báo hiệu trên đường sắt; làm che lấp hoặc làm sai lạc tín hiệu giao thông đường sắt.\r\n\r\n5. Ngăn cản việc chạy tàu, tùy tiện báo hiệu hoặc sử dụng các thiết bị để dừng tàu, trừ trường hợp phát hiện có sự cố gây mất an toàn giao thông đường sắt.\r\n\r\n6. Vượt rào, vượt chắn đường ngang, vượt qua đường ngang khi có tín hiệu cấm; vượt rào ngăn giữa đường sắt với khu vực xung quanh.\r\n\r\n7. Xả chất thải không bảo đảm vệ sinh môi trường lên đường sắt; để vật chướng ngại, đổ chất độc hại, chất phế thải lên đường sắt; để chất dễ cháy, chất dễ nổ trong phạm vi bảo vệ công trình đường sắt và hành lang an toàn giao thông đường sắt.\r\n\r\n8. Chăn thả súc vật, họp chợ trên đường sắt, trong phạm vi bảo vệ công trình đường sắt và hành lang an toàn giao thông đường sắt.\r\n\r\n9. Đi, đứng, nằm, ngồi hoặc hành vi khác trên nóc toa xe, đầu máy, bậc lên xuống toa xe; đu bám, đứng, ngồi hai bên thành toa xe, đầu máy, nơi nối giữa các toa xe, đầu máy; mở cửa lên, xuống tàu, đưa đầu, tay, chân và vật khác ra ngoài thành toa xe khi tàu đang chạy, trừ nhân viên đường sắt, lực lượng chức năng đang thi hành nhiệm vụ.\r\n\r\n10. Đi, đứng, nằm, ngồi hoặc hành vi khác trên đường sắt, trừ nhân viên đường sắt, lực lượng chức năng đang thi hành nhiệm vụ.\r\n\r\n11. Ném đất, đá hoặc vật khác lên tàu hoặc từ trên tàu xuống.\r\n\r\n12.\r\n\r\n Mang, vận chuyển hàng hóa cấm lưu thông, động vật có dịch bệnh vào ga, lên tàu; mang, vận chuyển trái phép động vật hoang dã, chất phóng xạ, chất dễ cháy, chất dễ nổ và hàng nguy hiểm khác vào ga, lên tàu; mang, vận chuyển thi hài, hài cốt vào ga, lên tàu đường sắt đô thị.\r\n\r\n13. Làm, tiêu thụ vé giả; bán vé trái quy định.\r\n\r\n14. Đưa phương tiện giao thông đường sắt, trang thiết bị không bảo đảm an toàn kỹ thuật vào hoạt động phục vụ giao thông đường sắt; sử dụng toa xe chở hàng để vận chuyển hành khách; tự ý thay đổi kết cấu, hình dáng, tính năng sử dụng của phương tiện giao thông đường sắt; giao hoặc để cho người không đủ điều kiện điều khiển phương tiện giao thông đường sắt.\r\n\r\n15. Nối vào tàu khách các toa xe vận tải động vật, hàng hoá có mùi hôi thối, chất dễ cháy, chất dễ nổ, chất độc hại và hàng nguy hiểm khác.\r\n\r\n16. Điều khiển tàu chạy quá tốc độ quy định.\r\n\r\n17. Nhân viên đường sắt trực tiếp phục vụ chạy tàu trong khi làm nhiệm vụ mà trong máu hoặc hơi thở có nồng độ cồn hoặc có chất kích thích khác mà pháp luật cấm sử dụng.', '2016-06-16', 4),
+(79, 'Điều 10. Hệ thống đường sắt Việt Nam', 'Điều 10. Hệ thống đường sắt Việt Nam\r\n\r\n1. Hệ thống đường sắt Việt Nam bao gồm đường sắt quốc gia, đường sắt đô thị và đường sắt chuyên dùng được quy định như sau:\r\n\r\na) Đường sắt quốc gia phục vụ nhu cầu vận tải chung của cả nước, từng vùng kinh tế và liên vận quốc tế;\r\n\r\nb) Đường sắt đô thị phục vụ nhu cầu vận tải hành khách ở đô thị và vùng phụ cận;\r\n\r\nc) Đường sắt chuyên dùng phục vụ nhu cầu vận tải riêng của tổ chức, cá nhân.\r\n\r\n2. Thẩm quyền quyết định công bố, điều chỉnh hệ thống đường sắt được quy định như sau:\r\n\r\na) Đường sắt quốc gia, đường sắt chuyên dùng có nối ray với đường sắt quốc gia do Bộ trưởng Bộ Giao thông vận tải quyết định công bố, điều chỉnh; đường sắt đô thị có nối ray hoặc chạy chung với đường sắt quốc gia do Bộ trưởng Bộ Giao thông vận tải quyết định công bố, điều chỉnh sau khi thống nhất với Chủ tịch Ủy ban nhân dân cấp tỉnh có đường sắt đô thị;\r\n\r\nb) Đường sắt đô thị, đường sắt chuyên dùng không nối ray với đường sắt quốc gia do Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định công bố, điều chỉnh; trường hợp đường sắt đô thị, đường sắt chuyên dùng không nối ray với đường sắt quốc gia đi qua địa giới hành chính từ 02 tỉnh, thành phố trực thuộc Trung ương trở lên thì Bộ trưởng Bộ Giao thông vận tải quyết định công bố, điều chỉnh sau khi có ý kiến của Chủ tịch Ủy ban nhân dân các tỉnh, thành phố này.\r\n\r\n3. Thẩm quyền quy định việc đặt tên tuyến, tên ga đường sắt; quyết định đưa tuyến, đoạn tuyến, ga đường sắt vào khai thác; dừng khai thác, tháo dỡ tuyến được quy định như sau:\r\n\r\na) Chính phủ quy định việc đặt tên tuyến, tên ga đường sắt và tháo dỡ tuyến, đoạn tuyến, ga đường sắt;\r\n\r\nb) Bộ trưởng Bộ Giao thông vận tải quyết định đưa vào khai thác, dừng khai thác tuyến, đoạn tuyến, ga đường sắt quốc gia;\r\n\r\nc) Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định đưa vào khai thác, dừng khai thác tuyến, đoạn tuyến, ga đường sắt đô thị;\r\n\r\nd) Chủ đầu tư quyết định đưa vào khai thác, dừng khai thác tuyến, đoạn tuyến, ga đường sắt chuyên dùng do mình đầu tư.', '2016-06-16', 4),
+(80, 'Điều 11. Tài sản kết cấu hạ tầng đường sắt', 'Điều 11. Tài sản kết cấu hạ tầng đường sắt\r\n\r\n1. Tài sản kết cấu hạ tầng đường sắt bao gồm:\r\n\r\na) Tài sản kết cấu hạ tầng đường sắt trực tiếp liên quan đến chạy tàu bao gồm công trình, hạng mục công trình đường sắt hoặc công trình phụ trợ khác trực tiếp phục vụ công tác chạy tàu, đón tiễn hành khách, xếp dỡ hàng hóa;\r\n\r\nb) Tài sản kết cấu hạ tầng đường sắt không trực tiếp liên quan đến chạy tàu là tài sản kết cấu hạ tầng đường sắt không thuộc quy định tại điểm a khoản này.\r\n\r\n2. Trách nhiệm quản lý tài sản kết cấu hạ tầng đường sắt do Nhà nước đầu tư:\r\n\r\na) Chính phủ thực hiện chức năng đại diện chủ sở hữu, thống nhất quản lý tài sản kết cấu hạ tầng đường sắt theo quy định của pháp luật về quản lý, sử dụng tài sản công;\r\n\r\nb) Bộ Giao thông vận tải thực hiện nhiệm vụ, quyền hạn của đại diện chủ sở hữu đối với tài sản kết cấu hạ tầng đường sắt quốc gia;\r\n\r\nc) Ủy ban nhân dân cấp tỉnh thực hiện nhiệm vụ, quyền hạn của đại diện chủ sở hữu đối với tài sản kết cấu hạ tầng đường sắt đô thị;\r\n\r\nd) Doanh nghiệp kinh doanh kết cấu hạ tầng đường sắt sử dụng, khai thác, bảo vệ tài sản kết cấu hạ tầng đường sắt khi được Nhà nước giao, cho thuê hoặc chuyển nhượng theo quy định của pháp luật.\r\n\r\n3. Tổ chức, cá nhân tự quản lý, sử dụng và khai thác tài sản kết cấu hạ tầng đường sắt do mình đầu tư theo quy định của pháp luật.\r\n\r\n4. Chính phủ quy định Danh mục tài sản kết cấu hạ tầng đường sắt quy định tại khoản 1 Điều này; quản lý, sử dụng tài sản kết cấu hạ tầng đường sắt do Nhà nước đầu tư', '2016-06-16', 4),
+(81, 'Điều 12. Đất dành cho đường sắt', 'Điều 12. Đất dành cho đường sắt\r\n\r\n1. Đất dành cho đường sắt bao gồm:\r\n\r\na) Đất dùng để xây dựng công trình đường sắt;\r\n\r\nb) Đất trong phạm vi bảo vệ công trình đường sắt;\r\n\r\nc) Đất trong phạm vi hành lang an toàn giao thông đường sắt.\r\n\r\n2. Việc sử dụng đất dành cho đường sắt được quy định như sau:\r\n\r\na) Đất dành cho đường sắt được dùng để xây dựng công trình đường sắt và bảo đảm an toàn giao thông đường sắt theo quy hoạch, kế hoạch sử dụng đất đã được cấp có thẩm quyền phê duyệt;\r\n\r\nb) Trường hợp đất dành cho đường sắt phải sử dụng kết hợp để xây dựng công trình thiết yếu phục vụ quốc phòng, an ninh, kinh tế - xã hội không thể bố trí ngoài phạm vi đất này thì không được làm ảnh hưởng đến công trình đường sắt, an toàn giao thông đường sắt và khi thực hiện phải được cấp phép theo quy định của Bộ trưởng Bộ Giao thông vận tải;\r\n\r\nc) Tổ chức, cá nhân được giao, cho thuê hoặc chuyển nhượng kết cấu hạ tầng đường sắt có trách nhiệm sử dụng, khai thác đất dành cho đường sắt theo quy hoạch được cấp có thẩm quyền phê duyệt và quy định của pháp luật.\r\n\r\n3. Quản lý đất dành cho đường sắt được quy định như sau:\r\n\r\na) Việc quản lý đất dành cho đường sắt do cơ quan quản lý nhà nước chịu trách nhiệm quản lý theo quy định của pháp luật về đất đai;\r\n\r\nb) Cơ quan quản lý nhà nước quản lý tài sản kết cấu hạ tầng đường sắt được giao quản lý đất dùng để xây dựng công trình đường sắt, đất trong phạm vi bảo vệ công trình đường sắt; quản lý việc sử dụng đất dành cho đường sắt theo quy hoạch được cấp có thẩm quyền phê duyệt;\r\n\r\nc) Ủy ban nhân dân các cấp quản lý đất dành cho đường sắt đã được quy hoạch, đất trong phạm vi hành lang an toàn giao thông đường sắt;\r\n\r\nd) Đất dành cho đường sắt trong phạm vi đất cảng hàng không, sân bay dân dụng, cảng biển được quản lý theo quy định của pháp luật về đất đai.\r\n\r\n4. Chính phủ quy định chi tiết Điều này.', '2016-06-16', 4),
+(82, 'Điều 13. Cấp kỹ thuật đường sắt', 'Điều 13. Cấp kỹ thuật đường sắt\r\n\r\n1. Đường sắt quốc gia, đường sắt đô thị, đường sắt chuyên dùng được phân thành các cấp kỹ thuật đường sắt. Mỗi cấp kỹ thuật đường sắt có tiêu chuẩn tương ứng.\r\n\r\n2. Việc tổ chức lập, thẩm định, công bố tiêu chuẩn về cấp kỹ thuật đường sắt thực hiện theo quy định của pháp luật về tiêu chuẩn, quy chuẩn kỹ thuật.', '2016-06-16', 4),
+(83, 'Điều 14. Khổ đường sắt', 'Điều 14. Khổ đường sắt\r\n\r\n1. Đường sắt quốc gia, đường sắt chuyên dùng nối ray với đường sắt quốc gia có khổ đường tiêu chuẩn là 1.435 mm hoặc khổ đường hẹp là 1.000 mm.\r\n\r\n2. Đường sắt quốc gia, đường sắt đô thị đầu tư mới có khổ đường 1.435 mm. Trường hợp đặc biệt có khổ đường khác do Thủ tướng Chính phủ quyết định.\r\n\r\n3. Đường sắt chuyên dùng không nối ray với đường sắt quốc gia đi qua khu vực dân cư do chủ đầu tư quyết định khổ đường sau khi có ý kiến của Bộ Giao thông vận tải.', '2016-06-16', 4),
+(84, 'Điều 15. Kết nối ray các tuyến đường sắt', 'Điều 15. Kết nối ray các tuyến đường sắt\r\n\r\n1. Vị trí kết nối ray các tuyến đường sắt trong nước phải tại ga đường sắt.\r\n\r\n2. Chỉ đường sắt quốc gia mới được kết nối ray với đường sắt nước ngoài. Thủ tướng Chính phủ quyết định việc kết nối ray giữa đường sắt quốc gia với đường sắt nước ngoài.\r\n\r\n3. Bộ trưởng Bộ Giao thông vận tải quy định điều kiện, trình tự, thủ tục thực hiện việc kết nối ray đường sắt đô thị, đường sắt chuyên dùng với đường sắt quốc gia; việc kết nối ray các tuyến đường sắt đô thị.\r\n\r\n4. Tổ chức, cá nhân quyết định việc kết nối ray đường sắt chuyên dùng với đường sắt chuyên dùng do mình đầu tư.', '2016-06-16', 4),
+(85, 'Điều 16. Ga đường sắt', 'Điều 16. Ga đường sắt\r\n\r\n1. Ga đường sắt được phân loại như sau:\r\n\r\na) Ga hành khách để đón, trả khách, thực hiện dịch vụ liên quan đến vận tải hành khách, tác nghiệp kỹ thuật và kinh doanh dịch vụ thương mại khác;\r\n\r\nb) Ga hàng hoá để giao, nhận, xếp, dỡ, bảo quản hàng hoá, thực hiện dịch vụ khác liên quan đến vận tải hàng hoá và tác nghiệp kỹ thuật;\r\n\r\nc) Ga kỹ thuật để thực hiện các tác nghiệp kỹ thuật phục vụ chạy tàu;\r\n\r\nd) Ga hỗn hợp có chức năng của 02 hoặc 03 loại ga quy định tại các điểm a, b và c khoản này.\r\n\r\n2. Ga đường sắt phải đáp ứng các yêu cầu sau đây:\r\n\r\na) Tùy theo cấp kỹ thuật ga, ga đường sắt gồm có nhà ga, quảng trường, kho, bãi hàng, ke ga, tường rào, khu dịch vụ, trang thiết bị cần thiết và công trình khác có liên quan đến hoạt động đường sắt;\r\n\r\nb) Ga đường sắt phải có tên ga và thông tin, chỉ dẫn cho khách hàng. Tên ga không trùng nhau và phù hợp với địa danh, lịch sử, văn hóa, thuần phong mỹ tục của địa phương. Tại các ga trên đường sắt quốc gia trong đô thị loại III trở lên, ga đầu mối, ga liên vận quốc tế phải bố trí nơi làm việc cho cơ quan quản lý nhà nước hoạt động thường xuyên có liên quan đến hoạt động đường sắt theo quy hoạch được cấp có thẩm quyền phê duyệt;\r\n\r\nc) Phải có hệ thống thoát hiểm; hệ thống phòng cháy và chữa cháy; hệ thống cấp điện, chiếu sáng, thông gió; hệ thống cấp, thoát nước; hệ thống bảo đảm vệ sinh môi trường và yêu cầu kỹ thuật khác của nhà ga;\r\n\r\nd) Ga hành khách phải có công trình, thiết bị chỉ dẫn tiếp cận cho người khuyết tật và đối tượng được ưu tiên theo quy định của pháp luật; hệ thống điện thoại khẩn cấp, phương tiện sơ cứu y tế;\r\n\r\nđ) Ga liên vận quốc tế, ga trung tâm phải có kiến trúc mang đặc trưng lịch sử, bản sắc văn hóa truyền thống của địa phương, vùng miền. Ga đường sắt tốc độ cao phải có thiết bị kiểm soát bảo đảm an ninh, an toàn;\r\n\r\ne) Tại các ga đường sắt quốc gia, ga đường sắt đô thị được phép xây dựng công trình kinh doanh dịch vụ thương mại, văn phòng.\r\n\r\n3. Phạm vi ga theo chiều dọc được xác định bởi dải đất từ vị trí xác định tín hiệu vào ga phía bên này đến vị trí xác định tín hiệu vào ga phía bên kia; theo chiều ngang ga được xác định bởi khoảng đất phía trong tường rào ga hoặc mốc chỉ giới ga theo quy hoạch được cấp có thẩm quyền phê duyệt.\r\n\r\n4. Bộ trưởng Bộ Giao thông vận tải quy định cấp kỹ thuật ga đường sắt.', '2016-06-16', 4),
+(86, 'Điều 17. Đường sắt giao nhau ', 'Điều 17. Đường sắt giao nhau với đường sắt hoặc với đường bộ\r\n\r\n1. Đường sắt giao nhau với đường sắt phải giao khác mức, trừ trường hợp đường sắt chuyên dùng giao nhau với đường sắt chuyên dùng.\r\n\r\n2. Đường sắt giao nhau với đường bộ phải xây dựng nút giao khác mức trong các trường hợp sau đây:\r\n\r\na) Đường sắt có tốc độ thiết kế từ 100 km/h trở lên giao nhau với đường bộ;\r\n\r\nb) Đường sắt giao nhau với đường bộ từ cấp III trở lên; đường sắt giao nhau với đường bộ đô thị;\r\n\r\nc) Đường sắt đô thị giao nhau với đường bộ, trừ đường xe điện bánh sắt.\r\n\r\n3. Chủ đầu tư xây dựng đường sắt mới phải chịu trách nhiệm xây dựng nút giao khác mức theo quy định tại khoản 1 và khoản 2 Điều này. Chủ đầu tư xây dựng đường bộ mới phải chịu trách nhiệm xây dựng nút giao khác mức theo quy định tại khoản 2 Điều này.\r\n\r\n4. Trường hợp không thuộc quy định tại khoản 2 Điều này hoặc khi chưa có đủ điều kiện tổ chức giao khác mức thì Ủy ban nhân dân các cấp, doanh nghiệp kinh doanh kết cấu hạ tầng đường sắt, chủ đầu tư dự án hoặc tổ chức, cá nhân có nhu cầu giao thông qua đường sắt phải tuân theo những quy định sau đây:\r\n\r\na) Nơi xây dựng đường ngang phải được cơ quan có thẩm quyền cấp phép;\r\n\r\nb) Nơi không được phép xây dựng đường ngang phải xây dựng đường gom nằm ngoài hành lang an toàn giao thông đường sắt để dẫn tới đường ngang hoặc nút giao khác mức gần nhất.\r\n\r\n5. Bộ trưởng Bộ Giao thông vận tải quy định chi tiết về:\r\n\r\na) Đường ngang, giao thông tại khu vực đường ngang; việc cấp, gia hạn Giấy phép xây dựng, cải tạo, nâng cấp, bãi bỏ đường ngang;\r\n\r\nb) Cầu chung, giao thông trên khu vực cầu chung;\r\n\r\nc) Kết nối tín hiệu đèn giao thông đường bộ với tín hiệu đèn báo hiệu trên đường bộ tại đường ngang, cung cấp thông tin hỗ trợ cảnh giới tại các điểm giao cắt giữa đường bộ và đường sắt.\r\n\r\n6. Chính phủ quy định việc xử lý các vị trí đường sắt giao nhau với đường sắt, đường sắt giao nhau với đường bộ không phù hợp với quy định của Luật này, các lối đi tự mở và lộ trình thực hiện.', '2016-06-16', 4),
+(87, 'Điều 18. Đường sắt và đường bộ', 'Điều 18. Đường sắt và đường bộ chạy song song gần nhau\r\n\r\n1. Trường hợp đường sắt, đường bộ chạy song song gần nhau thì phải bảo đảm đường này nằm ngoài hành lang an toàn giao thông của đường kia; trường hợp địa hình không cho phép thì trên lề đường bộ phía giáp với đường sắt phải xây dựng công trình phòng hộ ngăn cách, trừ trường hợp đỉnh ray đường sắt cao hơn mặt đường bộ từ 03 m trở lên.\r\n\r\n2. Trường hợp đường sắt, đường bộ chạy song song chồng lên nhau thì khoảng cách theo phương thẳng đứng từ điểm cao nhất của mặt đường bộ phía dưới hoặc đỉnh ray đường sắt phía dưới đến điểm thấp nhất của kết cấu nhịp cầu phía trên phải bằng chiều cao bảo đảm an toàn giao thông của công trình phía dưới.', '2016-06-16', 4),
+(88, 'Điều 19. Hệ thống báo hiệu ', 'Điều 19. Hệ thống báo hiệu cố định trên đường sắt\r\n\r\n1. Hệ thống báo hiệu cố định trên đường sắt bao gồm:\r\n\r\na) Cột tín hiệu, đèn tín hiệu;\r\n\r\nb) Biển hiệu, mốc hiệu;\r\n\r\nc) Biển báo;\r\n\r\nd) Rào, chắn;\r\n\r\nđ) Cọc mốc chỉ giới;\r\n\r\ne) Các báo hiệu khác.\r\n\r\n2. Hệ thống báo hiệu cố định trên đường sắt phải được xây dựng, lắp đặt đầy đủ phù hợp với cấp kỹ thuật và loại đường sắt; bảo đảm thường xuyên hoạt động tốt.', '2016-06-16', 4),
+(89, 'Điều 20. Đầu tư xây dựng kết cấu', 'Điều 20. Đầu tư xây dựng kết cấu hạ tầng đường sắt\r\n\r\n1. Đầu tư xây dựng kết cấu hạ tầng đường sắt là việc đầu tư xây dựng mới, đổi mới công nghệ, nâng cấp, cải tạo kết cấu hạ tầng đường sắt theo quy định của pháp luật.\r\n\r\n2. Việc góp vốn nhà nước tham gia vào dự án đầu tư phát triển kết cấu hạ tầng đường sắt quốc gia, đường sắt đô thị theo hình thức đối tác công tư trong thời gian xây dựng hoặc kéo dài suốt vòng đời dự án do Thủ tướng Chính phủ quyết định.\r\n\r\n3. Bộ trưởng Bộ Giao thông vận tải, Ủy ban nhân dân cấp tỉnh tổ chức xây dựng và công bố dự án đầu tư xây dựng công trình đường sắt thuộc thẩm quyền quản lý theo quy định của pháp luật.', '2016-06-16', 4);
+INSERT INTO `laws` (`LawID`, `LawTitle`, `LawDetail`, `LawTimeRelease`, `CategoryID`) VALUES
+(90, 'Điều 21. Quản lý, bảo trì kết cấu hạ', 'Điều 21. Quản lý, bảo trì kết cấu hạ tầng đường sắt\r\n\r\n1. Kết cấu hạ tầng đường sắt đưa vào khai thác phải được bảo trì theo quy định của pháp luật.\r\n\r\n2. Trách nhiệm quản lý, bảo trì kết cấu hạ tầng đường sắt được quy định như sau:\r\n\r\na) Bộ trưởng Bộ Giao thông vận tải quy định việc quản lý, bảo trì kết cấu hạ tầng đường sắt quốc gia; tổ chức quản lý bảo trì kết cấu hạ tầng đường sắt quốc gia do Nhà nước đầu tư;\r\n\r\nb) Ủy ban nhân dân cấp tỉnh quy định việc quản lý, bảo trì kết cấu hạ tầng đường sắt đô thị; tổ chức quản lý bảo trì kết cấu hạ tầng đường sắt đô thị do Nhà nước đầu tư;\r\n\r\nc) Doanh nghiệp kinh doanh kết cấu hạ tầng đường sắt thực hiện bảo trì kết cấu hạ tầng đường sắt do Nhà nước đầu tư theo quy định của pháp luật khi được giao, cho thuê hoặc chuyển nhượng;\r\n\r\nd) Tổ chức, cá nhân tự quản lý, bảo trì kết cấu hạ tầng đường sắt do mình đầu tư theo quy định của pháp luật.', '2016-06-16', 4);
 
 -- --------------------------------------------------------
 
@@ -522,7 +719,10 @@ INSERT INTO `questions` (`QuestionID`, `QuestionDetail`, `CategoryID`) VALUES
 (57, ' Biển báo nào cấm xe rẽ trái ?', 2),
 (58, 'Theo tín hiệu đèn, xe nào phải dừng lại là đúng quy tắc giao thông?\r\n', 2),
 (59, 'Theo hướng mũi tên, nhường hướng nào xe gắn máy đi được?\r\n', 2),
-(60, 'Theo hướng mũi tên, những hướng nào xe mô tô được phép đi?\r\n', 2);
+(60, 'Theo hướng mũi tên, những hướng nào xe mô tô được phép đi?\r\n', 2),
+(61, 'sáasa', 1),
+(62, 'abc', 2),
+(63, 'abc', 2);
 
 -- --------------------------------------------------------
 
@@ -537,6 +737,180 @@ CREATE TABLE `trafficsigns` (
   `TrafficDetail` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `CategoryID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `trafficsigns`
+--
+
+INSERT INTO `trafficsigns` (`TrafficSignID`, `TrafficLink`, `TrafficTitle`, `TrafficDetail`, `CategoryID`) VALUES
+(2, 'Images/Bien_Bao_Cam/bien_bao_cam.jpg', 'Đường Cấm', 'Đường Cấm', 6),
+(3, 'Images/Bien_Bao_Cam/cam_bop_coi.jpg', 'Cấm Bóp Còi', 'Cấm Bóp Còi', 6),
+(4, 'Images/Bien_Bao_Cam/cam_di_thang_va_re_phai.jpg', 'Cấm Đi Thẳng và Rẽ Phải', 'Cấm Đi Thẳng và Rẽ Phải', 6),
+(5, 'Images/Bien_Bao_Cam/cam_di_thang_va_re_trai.jpg', 'Cấm Đi Thẳng và Rẽ Trái', 'Cấm Đi Thẳng và Rẽ Trái', 6),
+(6, 'Images/Bien_Bao_Cam/cam_di_thang.jpg', 'Cấm Đi Thẳng', 'Cấm Đi Thẳng', 6),
+(7, 'Images/Bien_Bao_Cam/cam_di_xe_dap.jpg', 'Cấm Đi Xe Đạp', 'Cấm Đi Xe Đạp', 6),
+(8, 'Images/Bien_Bao_Cam/cam_do_xe_ngay_chan.jpg', 'Cấm Đỗ Xe Ngày Chẵn', 'Cấm Đỗ Xe Ngày Chẵn', 6),
+(9, 'Images/Bien_Bao_Cam/cam_do_xe_ngay_le.jpg', 'Cấm Đỗ Xe Ngày Lẻ', 'Cấm Đỗ Xe Ngày Lẻ', 6),
+(10, 'Images/Bien_Bao_Cam/cam_do_xe.jpg', 'Cấm Đỗ Xe', 'Cấm Đỗ Xe', 6),
+(11, 'Images/Bien_Bao_Cam/cam_dung_do_xe.jpg', 'Cấm Dừng Đỗ Xe', 'Cấm Dừng Đỗ Xe', 6),
+(12, 'Images/Bien_Bao_Cam/cam_may_keo.jpg', 'Cấm Máy Kéo', 'Cấm Máy Kéo', 6),
+(13, 'Images/Bien_Bao_Cam/cam_nguoi_di_bo.jpg', 'Cấm Người Đi Bộ', 'Cấm Người Đi Bộ', 6),
+(14, 'Images/Bien_Bao_Cam/cam_oto_quay_dau.jpg', 'Cấm Ôtô Quay Đầu', 'Cấm Ôtô Quay Đầu', 6),
+(15, 'Images/Bien_Bao_Cam/cam_oto_re_trai.jpg', 'Cấm Ôtô Rẽ Trái', 'Cấm Ôtô Rẽ Trái', 6),
+(16, 'Images/Bien_Bao_Cam/cam_oto_tai_vuot.jpg', 'Cấm Ôtô Tải Vượt', 'Cấm Ôtô tải Vượt', 6),
+(17, 'Images/Bien_Bao_Cam/cam_quay_dau.jpg', 'Cấm Quay Đầu', 'Cấm Quay Đầu', 6),
+(18, 'Images/Bien_Bao_Cam/cam_re_phai.jpg', 'Cấm Rẽ Phải', 'Cấm Rẽ Phải', 6),
+(19, 'Images/Bien_Bao_Cam/cam_re_trai_va_re_phai.jpg', 'Cấm Rẽ Trái và Rẽ Phải', 'Cấm Rẽ Trái và Rẽ Phải', 6),
+(20, 'Images/Bien_Bao_Cam/cam_re_trai.jpg', 'Cấm Rẽ Trái', 'Cấm Rẽ Trái', 6),
+(21, 'Images/Bien_Bao_Cam/cam_vuot.jpg', 'Cấm Vượt', 'Cấm Vượt', 6),
+(22, 'Images/Bien_Bao_Cam/cam_xe_dap_tho.jpg', 'Cấm Xe Đạp Thô', 'Cấm Xe Đạp Thô', 6),
+(23, 'Images/Bien_Bao_Cam/cam_xe_gan_may.jpg', 'Cấm Xe Máy', 'Cấm Xe Máy', 6),
+(24, 'Images/Bien_Bao_Cam/cam_moto_2_3_banh.jpg', 'Cấm Moto 2 - 3 Bánh', 'Cấm Moto 2 - 3 Bánh', 6),
+(25, 'Images/Bien_Bao_Cam/cam_oto_3_banh.jpg', 'Cấm ÔTô 3 Bánh', 'Cấm ÔTô 3 Bánh', 6),
+(26, 'Images/Bien_Bao_Cam/cam_oto_keo_moc.jpg', 'Cấm Ôtô Kéo Móc', 'Cấm Ôtô Kéo Móc', 6),
+(27, 'Images/Bien_Bao_Cam/cam_oto_khach_va_oto_tai.jpg', 'Cấm Ôtô Khách và Ôtô Tải', 'Cấm Ôtô Khách và Ôtô Tải', 6),
+(28, 'Images/Bien_Bao_Cam/cam_oto_moto.jpg', 'Cấm Ôtô và Moto', 'Cấm Ôtô và Moto', 6),
+(29, 'Images/Bien_Bao_Cam/cam_oto_tai_2t5.jpg', 'Cấm Ôtô Tải Trên 2.5 Tấn', 'Cấm Ôtô Tải Trên 2.5 Tấn', 6),
+(30, 'Images/Bien_Bao_Cam/cam_xe_nguoi_keo.jpg', 'Cấm Xe Người Kéo', 'Cấm Xe Người Kéo', 6),
+(31, 'Images/Bien_Bao_Cam/cu_ly_toi_thieu_cua_2_xe.jpg', 'Cự Ly Tối Thiếu của 2 Xe', 'Cự Ly Tối Thiếu của 2 Xe', 6),
+(32, 'Images/Bien_Bao_Cam/dung_lai.jpg', 'Đứng Lại', 'Đứng Lại', 6),
+(33, 'Images/Bien_Bao_Cam/han_che_chieu_cao.jpg', 'Hạn Chế Chiều Cao', 'v', 6),
+(34, 'Images/Bien_Bao_Cam/han_che_chieu_dai_cua_xe.jpg', 'Hạn Chế Chiều Dài Của Xe', 'Hạn Chế Chiều Dài Của Xe', 6),
+(35, 'Images/Bien_Bao_Cam/han_che_chieu_dai_oto_keo_moc.jpg', 'Hạn Chế Chiều Dài Otô Kéo Móc', 'Hạn Chế Chiều Dài Otô Kéo Móc', 6),
+(36, 'Images/Bien_Bao_Cam/han_che_chieu_ngang.jpg', 'Hạn Chế Chiều Ngang', 'Hạn Chế Chiều Ngang', 6),
+(37, 'Images/Bien_Bao_Cam/han_che_toc_do_toi_da.jpg', 'Hạn Chế Tốc Độ Tối Đa', 'Hạn Chế Tốc Độ Tối Đa', 6),
+(38, 'Images/Bien_Bao_Cam/han_che_trong_luong.jpg', 'Hạn Chế Trọng Lượng', 'Hạn Chế Trọng Lượng', 6),
+(39, 'Images/Bien_Bao_Cam/han_che_trong_luong_tren_xe.jpg', 'Hạn Chế Trọng Lượng Trên Xe', 'Hạn Chế Trọng Lượng Trên Xe', 6),
+(40, 'Images/Bien_Bao_Cam/het_cam_vuot.jpg', 'Hết Cấm Vượt', 'Hết Cấm Vượt', 6),
+(41, 'Images/Bien_Bao_Cam/het_tat_ca_cac_lenh_cam.jpg', 'Hết Tất Cả Các Lệnh Cấm', 'Hết Tất Cả Các Lệnh Cấm', 6),
+(42, 'Images/Bien_Bao_Cam/kiem_tra.jpg', 'Kiểm Tra', 'Kiểm Tra', 6),
+(43, 'Images/Bien_Bao_Cam/nguoc_chieu.jpg', 'Cấm Đi Ngược Chiều', 'Cấm Đi Ngược Chiều', 6),
+(44, 'Images/Bien_Bao_Cam/nhuong_duong_cho_xe_co_gioi_di.jpg', 'Nhường Đường Cho Xe Cơ Giới', 'Nhường Đường Cho Xe Cơ Giới', 6),
+(45, 'Images/Bien_Bao_Cam/toc_do_toi_da_cho_phep.jpg', 'Tốc Độ Tối Đa Cho Phép', 'Tốc Độ Tối Đa Cho Phép', 6),
+(46, 'Images/Bien_Bao_Chi_Dan/bat_dau_khu_vuc_dong_dan_cu.jpg', 'Bắt Đầu Khu Vực Đông Dân Cư', 'Bắt Đầu Khu Vực Đông Dân Cư', 7),
+(47, 'Images/Bien_Bao_Chi_Dan/ben_xe_buyt.jpg', 'Bến Xe Buýt', 'Bến Xe Buýt', 7),
+(48, 'Images/Bien_Bao_Chi_Dan/benh_vien.jpg', 'Bệnh Viện', 'Bệnh Viện', 7),
+(49, 'Images/Bien_Bao_Chi_Dan/cau_vuot_lien_thong.jpg', 'Cầu Vượt Dành Cho Người Đi Bộ', 'Cầu Vượt Dành Cho Người Đi Bộ', 7),
+(50, 'Images/Bien_Bao_Chi_Dan/cau_vuot_lien_thong_1.jpg', 'Cầu Vượt Dành Cho Người Đi Bộ', 'Cầu Vượt Dành Cho Người Đi Bộ', 7),
+(51, 'Images/Bien_Bao_Chi_Dan/cau_vuot_lien_thong_2.jpg', 'Cầu Vượt Dành Cho Người Đi Bộ', 'Cầu Vượt Dành Cho Người Đi Bộ', 7),
+(52, 'Images/Bien_Bao_Chi_Dan/cau_vuot_lien_thong_3.jpg', 'Cầu Vượt Dành Cho Người Đi Bộ', 'Cầu Vượt Dành Cho Người Đi Bộ', 7),
+(53, 'Images/Bien_Bao_Chi_Dan/cau_vuot_qua_duong_cho_nguoi_di_bo.jpg', 'Cầu Vượt Dành Cho Người Đi Bộ', 'Cầu Vượt Dành Cho Người Đi Bộ', 7),
+(54, 'Images/Bien_Bao_Chi_Dan/cau_vuot_qua_duong_cho_nguoi_di_bo_1.jpg', 'Cầu Vượt Dành Cho Người Đi Bộ', 'Cầu Vượt Dành Cho Người Đi Bộ', 7),
+(55, 'Images/Bien_Bao_Chi_Dan/chi_dan_dia_gioi.jpg', 'Chỉ Dẫn Địa Giới', 'Chỉ Dẫn Địa Giới', 7),
+(56, 'Images/Bien_Bao_Chi_Dan/chi_huong_duong.jpg', 'Chỉ Hướng Đường', 'Chỉ Hướng Đường', 7),
+(57, 'Images/Bien_Bao_Chi_Dan/chi_huong_duong_1.jpg', 'Chỉ Hướng Đường', 'Chỉ Hướng Đường', 7),
+(58, 'Images/Bien_Bao_Chi_Dan/chi_huong_duong_phai_di_cho_tung_loai_loai_xe.jpg', 'Chỉ Hướng Đường Phải Đi Cho Từng Loại Xe', 'Chỉ Hướng Đường Phải Đi Cho Từng Loại Xe', 7),
+(59, 'Images/Bien_Bao_Chi_Dan/chi_huong_duong_phai_di_cho_tung_loai_loai_xe_1.jpg', 'Chỉ Hướng Đường Phải Đi Cho Từng Loại Xe', 'Chỉ Hướng Đường Phải Đi Cho Từng Loại Xe', 7),
+(60, 'Images/Bien_Bao_Chi_Dan/chi_huong_duong_phai_di_cho_tung_loai_loai_xe_2.jpg', 'Chỉ Hướng Đường Phải Đi Cho Từng Loại Xe', 'Chỉ Hướng Đường Phải Đi Cho Từng Loại Xe', 7),
+(61, 'Images/Bien_Bao_Chi_Dan/cho.jpg', 'Chợ', 'Chợ', 7),
+(62, 'Images/Bien_Bao_Chi_Dan/cho_quay_xe.jpg', 'Chỗ Quay Xe', 'Chỗ Quay Xe', 7),
+(63, 'Images/Bien_Bao_Chi_Dan/di_tich_lich_su.jpg', 'Di Tích Lịch Sử', 'Di Tích Lịch Sử', 7),
+(64, 'Images/Bien_Bao_Chi_Dan/dien_thoai.jpg', 'Điện Thoại', 'Điện Thoại', 7),
+(65, 'Images/Bien_Bao_Chi_Dan/doan_duong_uu_tien.jpg', 'Đoạn Đường Ưu Tiên', 'Đoạn Đường Ưu Tiên', 7),
+(66, 'Images/Bien_Bao_Chi_Dan/duoc_uu_tien_qua_duong_hep.jpg', 'Đường Ưu Tiên Qua Đường Hẹp', 'Đường Ưu Tiên Qua Đường Hẹp', 7),
+(67, 'Images/Bien_Bao_Chi_Dan/duong_1_chieu_1.jpg', 'Đường 1 Chiều', 'Đường 1 Chiều', 7),
+(68, 'Images/Bien_Bao_Chi_Dan/duong_1_chieu_2.jpg', 'Đường 1 Chiều', 'Đường 1 Chiều', 7),
+(69, 'Images/Bien_Bao_Chi_Dan/duong_1_chieu_3.jpg', 'Đường 1 Chiều', 'Đường 1 Chiều', 7),
+(70, 'Images/Bien_Bao_Chi_Dan/duong_cao_toc.jpg', 'Đường Cao Tốc', 'Đường Cao Tốc', 7),
+(71, 'Images/Bien_Bao_Chi_Dan/duong_co_lan_duong_danh_cho_ôt_khach.jpg', 'Đường Có Làn Đường Dành Cho Otô Khách', 'Đường Có Làn Đường Dành Cho Otô Khách', 7),
+(72, 'Images/Bien_Bao_Chi_Dan/duong_danh_cho_nguoi_tan_tat.jpg', 'Dường Dành Cho Người Tàn Tật', 'Dường Dành Cho Người Tàn Tật', 7),
+(73, 'Images/Bien_Bao_Chi_Dan/duong_danh_cho_o_to.jpg', 'Đường Dành Cho Otô', 'Đường Dành Cho Otô', 7),
+(74, 'Images/Bien_Bao_Chi_Dan/duong_danh_cho_o_to_vs_xe_may.jpg', 'Đường Dành Cho Otô và Xe Máy', 'Đường Dành Cho Otô và Xe Máy', 7),
+(75, 'Images/Bien_Bao_Chi_Dan/duong_nguoi_di_bo_sang_ngang.jpg', 'Đường Người Đi Bộ Sang Ngang', 'Đường Người Đi Bộ Sang Ngang', 7),
+(76, 'Images/Bien_Bao_Chi_Dan/duong_nguoi_di_bo_sang_ngang_1.jpg', 'Đường Người Đi Bộ Sang Ngang', 'Đường Người Đi Bộ Sang Ngang', 7),
+(77, 'Images/Bien_Bao_Chi_Dan/het_doan_duong_uu_tien.jpg', 'Hết Đoạn Đường Ưu Tiên', 'Hết Đoạn Đường Ưu Tiên', 7),
+(78, 'Images/Bien_Bao_Chi_Dan/het_duong_cao_toc.jpg', 'Hết Đường Cao Tốc', 'Hết Đường Cao Tốc', 7),
+(79, 'Images/Bien_Bao_Chi_Dan/het_duong_danh_cho_xe_o_to.jpg', 'Hết Đường Dành Cho Xe Otô', 'Hết Đường Dành Cho Xe Otô', 7),
+(80, 'Images/Bien_Bao_Chi_Dan/het_duong_danh_cho_xe_o_to_vs_xe_may.jpg', 'Hết Đường Dành Cho Cho Otô Vs Xe Máy', 'Hết Đường Dành Cho Cho Otô Vs Xe Máy', 7),
+(81, 'Images/Bien_Bao_Chi_Dan/het_khu_dong_dan_cu.jpg', 'Hết Khu Vực Dân Cư', 'Hết Khu Vực Dân Cư', 7),
+(82, 'Images/Bien_Bao_Chi_Dan/het_khu_dong_dan_cu_1.jpg', 'Hết Khu Vực Dân Cư', 'Hết Khu Vực Dân Cư', 7),
+(83, 'Images/Bien_Bao_Chi_Dan/huong_di_tren_moi_lan_duong_theo_vach.jpg', 'Hướng Đi Trên Mỗi Làn Đường', 'Hướng Đi Trên Mỗi Làn Đường Theo Vạch', 7),
+(84, 'Images/Bien_Bao_Chi_Dan/khu_vuc_dau_xe.jpg', 'Khu Vực Đậu Xe', 'Khu Vực Đậu Xe', 7),
+(85, 'Images/Bien_Bao_Chi_Dan/khu_vuc_quay_xe.jpg', 'Khu Vực Quay Xe', 'Khu Vực Quay Xe', 7),
+(86, 'Images/Bien_Bao_Chi_Dan/lan_duong_danh_cho_oto_khach.jpg', 'Làn Đường Dành Cho Otô Khách', 'Làn Đường Dành Cho Otô Khách', 7),
+(87, 'Images/Bien_Bao_Chi_Dan/loi_dii_o_nhung_cho_cam_re.jpg', 'Lối Đi Dành Cho Những Chỗ Cấm Rẽ', 'Lối Đi Dành Cho Những Chỗ Cấm Rẽ', 7),
+(88, 'Images/Bien_Bao_Chi_Dan/noi_do_xe.jpg', 'Nơi Đỗ Xe', 'Nơi Đỗ Xe', 7),
+(89, 'Images/Bien_Bao_Chi_Dan/noi_rua_xe.jpg', 'Nơi Rửa Xe', 'Nơi Rửa Xe', 7),
+(90, 'Images/Bien_Bao_Chi_Dan/re_ra_lan_duong_danh_cho_oto_khach.jpg', 'Rẽ Ra Làn Dường Dành Cho Otô', 'Rẽ Ra Làn Dường Dành Cho Oto Khách', 7),
+(91, 'Images/Bien_Bao_Chi_Dan/re_ra_lan_duong_danh_cho_oto_khach_1.jpg', 'Rẽ Ra Làn Dường Dành Cho Oto', 'Rẽ Ra Làn Dường Dành Cho Oto Khách', 7),
+(92, 'Images/Bien_Bao_Chi_Dan/toc_do_cho_phep_chay_tren_duong_cao_toc.jpg', 'Tốc Độ Cho Phép Chạy Trên Đường Cao Tốc', 'Tốc Độ Cho Phép Chạy Trên Đường Cao Tốc', 7),
+(93, 'Images/Bien_Bao_Chi_Dan/tram_cap_cuu.jpg', 'Trạm Cấp Cứu', 'Trạm Cấp Cứu', 7),
+(94, 'Images/Bien_Bao_Chi_Dan/tram_cung_cap_xang.jpg', 'Trạm Cung Cấp Xăng', 'Trạm Cung Cấp Xăng', 7),
+(95, 'Images/Bien_Bao_Chi_Dan/tram_sua_chua.jpg', 'Trạm Sửa Chữa', 'Trạm Sửa Chữa', 7),
+(96, 'Images/Bien_Bao_Hieu_Lenh/an_coi.jpg', 'Ấn Còi', 'Ấn Còi', 8),
+(97, 'Images/Bien_Bao_Hieu_Lenh/cac_xe_chi_duoc_di_thang_va_re_phai.jpg', 'Các Xe Chỉ Dược Đi Thẳng và Rẽ Phải', 'Các Xe Chỉ Dược Đi Thẳng và Rẽ Phải', 8),
+(98, 'Images/Bien_Bao_Hieu_Lenh/cac_xe_chi_duoc_di_thang_va_trai.jpg', 'Các Xe Chỉ Dược Đi Thẳng và Rẽ Trái', 'Các Xe Chỉ Dược Đi Thẳng và Rẽ Trái', 8),
+(99, 'Images/Bien_Bao_Hieu_Lenh/cac_xe_chi_duoc_re_phai.jpg', 'Các Xe Chỉ Được Rẽ Phải', 'Các Xe Chỉ Được Rẽ Phải', 8),
+(100, 'Images/Bien_Bao_Hieu_Lenh/cac_xe_chi_duoc_re_phai_1.jpg', 'Các Xe Chỉ Được Rẽ Phải', 'Các Xe Chỉ Được Rẽ Phải', 8),
+(101, 'Images/Bien_Bao_Hieu_Lenh/cac_xe_chi_duoc_re_trai.jpg', 'Các Xe Chỉ Được Rẽ Trái', 'Các Xe Chỉ Được Rẽ Trái', 8),
+(102, 'Images/Bien_Bao_Hieu_Lenh/cac_xe_chi_duoc_re_trai_1.jpg', 'Các Xe Chỉ Được Rẽ Trái', 'Các Xe Chỉ Được Rẽ Trái', 8),
+(103, 'Images/Bien_Bao_Hieu_Lenh/cac_xe_duoc_di_thang.jpg', 'Các Xe Được Đi Thẳng', 'Các Xe Được Đi Thẳng', 8),
+(104, 'Images/Bien_Bao_Hieu_Lenh/cac_xe_duoc_re_trai_va_re_phai.jpg', 'Các Xe Được Rẽ Trái và Rẽ Phải', 'Các Xe Được Rẽ Trái và Rẽ Phải', 8),
+(105, 'Images/Bien_Bao_Hieu_Lenh/di_thang_hoac_re_phai_tren_cau_vuot.jpg', 'Đi Thẳng Hoặc Rẽ Phải Trên Cầu Vượt', 'Đi Thẳng Hoặc Rẽ Phải Trên Cầu Vượt', 8),
+(106, 'Images/Bien_Bao_Hieu_Lenh/di_thang_hoac_re_trai_tren_cau_vuot.jpg', 'Đi Thẳng Hoặc Rẽ Trái Trên Cầu Vượt', 'Đi Thẳng Hoặc Rẽ Trái Trên Cầu Vượt', 8),
+(107, 'Images/Bien_Bao_Hieu_Lenh/duoc_di_thang_khi_den_do.jpg', 'Được Đi Thẳng Khi Đèn Đỏ', 'Được Đi Thẳng Khi Đèn Đỏ', 8),
+(108, 'Images/Bien_Bao_Hieu_Lenh/duoc_re_phai_khi_den_do.jpg', 'Được Rẽ Phải Khi Đèn Đỏ', 'Được Rẽ Phải Khi Đèn Đỏ', 8),
+(109, 'Images/Bien_Bao_Hieu_Lenh/duong_danh_cho_nguoi_di_bo.jpg', 'Đường Dành Cho Người Đi Bộ', 'Đường Dành Cho Người Đi Bộ', 8),
+(110, 'Images/Bien_Bao_Hieu_Lenh/duong_danh_cho_xe_tho_so.jpg', 'Đường Dành Cho Xe Thô Sơ', 'Đường Dành Cho Xe Thô Sơ', 8),
+(111, 'Images/Bien_Bao_Hieu_Lenh/huong_duong_uu_tien.jpg', 'Hướng Đường Ưu Tiên', 'Hướng Đường Ưu Tiên', 8),
+(112, 'Images/Bien_Bao_Hieu_Lenh/huong_phai_di_vong_chuong_ngai_vat.jpg', 'Hướng Phải Đi Vòng Chướng Ngại Vật', 'Hướng Phải Đi Vòng Chướng Ngại Vật', 8),
+(113, 'Images/Bien_Bao_Hieu_Lenh/huong_tac_dung_cua_bien.jpg', 'Hướng Tác Dụng Của Biển Báo', 'Hướng Tác Dụng Của Biển Báo', 8),
+(114, 'Images/Bien_Bao_Hieu_Lenh/khoang_cach_den_doi_tuong_bao_hieu.jpg', 'Khoảng Cách Tới Đối Tượng Báo Hiệu', 'Khoảng Cách Tới Đối Tượng Báo Hiệu', 8),
+(115, 'Images/Bien_Bao_Hieu_Lenh/lan_duong.jpg', 'Làn Đường', 'Làn Đường', 8),
+(116, 'Images/Bien_Bao_Hieu_Lenh/noi_giao_nhau_chay_theo_vong_xuyen.jpg', 'Nơi Giao Nhau Chay Theo Vòng Xuyến', 'Nơi Giao Nhau Chay Theo Vòng Xuyến', 8),
+(117, 'Images/Bien_Bao_Hieu_Lenh/pham_vi_tac_dung_cua_bien.jpg', 'Phạm Vi Tác Dụng Của Biển Báo', 'Phạm Vi Tác Dụng Của Biển Báo', 8),
+(118, 'Images/Bien_Bao_Hieu_Lenh/toc_do_toi_thieu_cho_phep.jpg', 'Tốc Độ Tối Thiểu Cho Phép ', 'Tốc Độ Tối Thiểu Cho Phép ', 8),
+(119, 'Images/Bien_Bao_Hieu_Lenh/xe_mo_to.jpg', 'Xe MôTô', 'Xe MôTô', 8),
+(120, 'Images/Bien_Bao_Hieu_Lenh/xe_oto.jpg', 'Xe Ôtô', 'Xe Ôtô', 8),
+(121, 'Images/Bien_Bao_Hieu_Lenh/xe_tai.jpg', 'Xe Tải', 'Xe Tải', 8),
+(122, 'Images/Bien_Bao_Hieu_Lenh/han_che_toc_do_toi_thieu.jpg', 'Hạn Chế Tốc Độ Tối Thiểu', 'Hạn Chế Tốc Độ Tối Thiểu', 8),
+(123, 'Images/Bien_Bao_Nguy_Hiem/ben_pha.jpg', 'Bến Phà', 'Bến Phà', 9),
+(124, 'Images/Bien_Bao_Nguy_Hiem/cau_hep.jpg', 'Cầu Hẹp', 'Cầu Hẹp', 9),
+(125, 'Images/Bien_Bao_Nguy_Hiem/cau_tam.jpg', 'Cầu Tạm', 'Cầu Tạm', 9),
+(126, 'Images/Bien_Bao_Nguy_Hiem/cau_vong.jpg', 'Cầu Vồng', 'Cầu Vồng', 9),
+(127, 'Images/Bien_Bao_Nguy_Hiem/cau_xoay_cau_cat.jpg', 'Cầu Xoay Cầu Cất', 'Cầu Xoay Cầu Cất', 9),
+(128, 'Images/Bien_Bao_Nguy_Hiem/cho_ngoat_nguy_hiem_lien_tiep.jpg', 'Chỗ Ngoạt Nguy Hiểm Liên Tiếp', 'Chỗ Ngoạt Nguy Hiểm Liên Tiếp', 9),
+(129, 'Images/Bien_Bao_Nguy_Hiem/cho_ngoat_nguy_hiem_vong_ben_phai.jpg', 'Chỗ Ngoạt Nguy Hiểm Vòng Bên Phải', 'Chỗ Ngoạt Nguy Hiểm Vòng Bên Phải', 9),
+(130, 'Images/Bien_Bao_Nguy_Hiem/cho_ngoat_nguy_hiem_vong_ben_trai.jpg', 'Chỗ Ngoạt Nguy Hiểm Vòng Bên Trái', 'Chỗ Ngoạt Nguy Hiểm Vòng Bên Trái', 9),
+(131, 'Images/Bien_Bao_Nguy_Hiem/chuong_ngai_vat.jpg', 'Chướng Ngại Vật', 'Chướng Ngại Vật', 9),
+(132, 'Images/Bien_Bao_Nguy_Hiem/chuong_ngai_vat_1.jpg', 'Chướng Ngại Vật', 'Chướng Ngại Vật', 9),
+(133, 'Images/Bien_Bao_Nguy_Hiem/chuong_ngai_vat_2.jpg', 'Chướng Ngại Vật', 'Chướng Ngại Vật', 9),
+(134, 'Images/Bien_Bao_Nguy_Hiem/cua_chui.jpg', 'Cửa Chui', 'Cửa Chui', 9),
+(135, 'Images/Bien_Bao_Nguy_Hiem/di_cham.jpg', 'Đi Chậm', 'Đi Chậm', 9),
+(136, 'Images/Bien_Bao_Nguy_Hiem/doan_duong_hay_xay_ra_tai_nan.jpg', 'Đoạn Đường Hay Xảy Ra Tai Nạn', 'Đoạn Đường Hay Xảy Ra Tai Nạn', 9),
+(137, 'Images/Bien_Bao_Nguy_Hiem/duong_bi_hep.jpg', 'Đường Bị Hẹp', 'Đường Bị Hẹp', 9),
+(138, 'Images/Bien_Bao_Nguy_Hiem/duong_bi_hep_ben_phai.jpg', 'Đường Bị Hẹp Bên Phải', 'Đường Bị Hẹp Bên Phải', 9),
+(139, 'Images/Bien_Bao_Nguy_Hiem/duong_bi_hep_ben_trai.jpg', 'Đường Bị Hẹp Bên Trái', 'Đường Bị Hẹp Bên Trái', 9),
+(140, 'Images/Bien_Bao_Nguy_Hiem/duong_cao_toc_phia_truoc.jpg', 'Đường Cao Tốc Phía Trước', 'Đường Cao Tốc Phía Trước', 9),
+(141, 'Images/Bien_Bao_Nguy_Hiem/duong_cap_dien_phia_truoc.jpg', 'Đường Cáp Điện Phía Trước', 'Đường Cáp Điện Phía Trước', 9),
+(142, 'Images/Bien_Bao_Nguy_Hiem/duong_doi.jpg', 'Đường Đôi', 'Đường Đôi', 9),
+(143, 'Images/Bien_Bao_Nguy_Hiem/duong_giao_nhau.jpg', 'Đường Giao Nhau', 'Đường Giao Nhau', 9),
+(144, 'Images/Bien_Bao_Nguy_Hiem/duong_giao_nhau_1.jpg', 'Đường Giao Nhau', 'Đường Giao Nhau', 9),
+(145, 'Images/Bien_Bao_Nguy_Hiem/duong_giao_nhau_2.jpg', 'Đường Giao Nhau', 'Đường Giao Nhau', 9),
+(146, 'Images/Bien_Bao_Nguy_Hiem/duong_giao_nhau_3.jpg', 'Đường Giao Nhau', 'Đường Giao Nhau', 9),
+(147, 'Images/Bien_Bao_Nguy_Hiem/duong_giao_nhau_4.jpg', 'Đường Giao Nhau', 'Đường Giao Nhau', 9),
+(148, 'Images/Bien_Bao_Nguy_Hiem/duong_hai_chieu.jpg', 'Đường Hai Chiều', 'Đường Hai Chiều', 9),
+(149, 'Images/Bien_Bao_Nguy_Hiem/duong_ham.jpg', 'Đường Hầm', 'Đường Hầm', 9),
+(150, 'Images/Bien_Bao_Nguy_Hiem/duong_khong_bang_phang.jpg', 'Đường Không Bằng Phẳng', 'Đường Không Bằng Phẳng', 9),
+(151, 'Images/Bien_Bao_Nguy_Hiem/duong_khong_bang_phang_1.jpg', 'Đường Không Bằng Phẳng', 'Đường Không Bằng Phẳng', 9),
+(152, 'Images/Bien_Bao_Nguy_Hiem/duong_ngam.jpg', 'Đường Ngầm', 'Đường Ngầm', 9),
+(153, 'Images/Bien_Bao_Nguy_Hiem/duong_nguoi_di_bo_cat_ngang.jpg', 'Đường Người Đi Bộ Cắt Ngang', 'Đường Người Đi Bộ Cắt Ngang', 9),
+(154, 'Images/Bien_Bao_Nguy_Hiem/duong_tron.jpg', 'Đường Trơn', 'Đường Trơn', 9),
+(155, 'Images/Bien_Bao_Nguy_Hiem/gia_suc.jpg', 'Gia Súc', 'Gia Súc', 9),
+(156, 'Images/Bien_Bao_Nguy_Hiem/giao_nhau_chay_theo_vong_xuyen.jpg', 'Giao Nhau Chạy Theo Vòng Xuyến', 'Giao Nhau Chạy Theo Vòng Xuyến', 9),
+(157, 'Images/Bien_Bao_Nguy_Hiem/giao_nhau_co_tin_hieu_den.jpg', 'Giao Nhau Có Tín Hiệu Đèn', 'Giao Nhau Có Tín Hiệu Đèn', 9),
+(158, 'Images/Bien_Bao_Nguy_Hiem/giao_nhau_voi_duong_2_chieu.jpg', 'Giao Nhau Với Đường 2 Chiều', 'Giao Nhau Với Đường 2 Chiều', 9),
+(159, 'Images/Bien_Bao_Nguy_Hiem/giao_nhau_voi_duong_khong_uu_tien.jpg', 'Giao Nhau Với Đường Không Ưu Tiên', 'Giao Nhau Với Đường Không Ưu Tiên', 9),
+(160, 'Images/Bien_Bao_Nguy_Hiem/giao_nhau_voi_duong_khong_uu_tien_1.jpg', 'Giao Nhau Với Đường Không Ưu Tiên', 'Giao Nhau Với Đường Không Ưu Tiên', 9),
+(161, 'Images/Bien_Bao_Nguy_Hiem/giao_nhau_voi_duong_sat_co_rao_chan.jpg', 'Giao Nhau Với Đường Sắt Có Rào Chắn', 'Giao Nhau Với Đường Sắt Có Rào Chắn', 9),
+(162, 'Images/Bien_Bao_Nguy_Hiem/giao_nhau_voi_duong_sat_khong_co_rao_chan.jpg', 'Giao Nhau Với Đường Sắt Không Có Rào Chắn', 'Giao Nhau Với Đường Sắt Không Có Rào Chắn', 9),
+(163, 'Images/Bien_Bao_Nguy_Hiem/giao_nhau_voi_duong_sat_khong_co_rao_chan_1.jpg', 'Giao Nhau Với Đường Sắt Không Có Rào Chắn', 'Giao Nhau Với Đường Sắt Không Có Rào Chắn', 9),
+(164, 'Images/Bien_Bao_Nguy_Hiem/giao_nhau_voi_duong_uu_tien.jpg', 'Giao Nhau Với Đường Ưu Tiên', 'Giao Nhau Với Đường Ưu Tiên', 9),
+(165, 'Images/Bien_Bao_Nguy_Hiem/giao_nhau_voi_duong_uu_tien_1.jpg', 'Giao Nhau Với Đường Ưu Tiên', 'Giao Nhau Với Đường Ưu Tiên', 9),
+(166, 'Images/Bien_Bao_Nguy_Hiem/gio_ngang.jpg', 'Gió Ngang', 'Gió Ngang', 9),
+(167, 'Images/Bien_Bao_Nguy_Hiem/het_duong_doi.jpg', 'Hết Đường Đôi', 'Hết Đường Đôi', 9),
+(168, 'Images/Bien_Bao_Nguy_Hiem/nguy_hiem_khac.jpg', 'Nguy Hiểm Khác', 'Nguy Hiểm Khác', 9),
+(169, 'Images/Bien_Bao_Nguy_Hiem/thon_ban.jpg', 'Thôn Bản', 'Thôn Bản', 9);
 
 -- --------------------------------------------------------
 
@@ -558,7 +932,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserName`, `UserID`, `Gender`, `Email`, `Password`, `CreatedTime`) VALUES
-(NULL, 1, 1, 'nkb.bang@gmail.com', 'abc123', '2018-06-12');
+('bangkim', 2, 1, 'dsdf@gmail.com', 'ZmFueXVnaW9oMQ==', '2018-07-09'),
+('datran123', 3, 0, 'vdfdsfsd@gmail.com', 'ZmFueXVnaW9oMQ==', '2018-06-30'),
+('datran1234', 4, 1, 'datran123@gmail.com', 'ZGF0cmFuMTIzNA==', '2018-07-12'),
+('win12345', 6, 0, 'dasdadsd@gmail.com', 'ZmFueXVnaW9oMQ==', '2018-07-09'),
+('datrand', 7, 1, 'fanyudfds@gmail.com', 'ZmFueXVnaW9oMQ==', '2018-07-11'),
+('admin123', 8, 0, 'adada@gmail.com', 'YWRtaW4xMjM=', '2018-07-12'),
+('admin12345', 12, 1, 'admin12345@gmail.com', 'YWRtaW4xMjM0NQ==', '2018-07-12'),
+('dmin1234', 16, 0, 'dmini123@gmi.com', 'ZG1pbjEyMw==', '2018-07-12'),
+('admin1234', 17, 0, 'admi@gmail.com', 'YWRtaW4xMjM=', '2018-07-12');
 
 --
 -- Indexes for dumped tables
@@ -635,25 +1017,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `AnswerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=241;
+  MODIFY `AnswerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `examdetails`
 --
 ALTER TABLE `examdetails`
-  MODIFY `ExamDetailID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ExamDetailID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `exams`
 --
 ALTER TABLE `exams`
-  MODIFY `ExamID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ExamID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `images`
@@ -665,19 +1047,25 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `laws`
 --
 ALTER TABLE `laws`
-  MODIFY `LawID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `LawID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `QuestionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `QuestionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+
+--
+-- AUTO_INCREMENT for table `trafficsigns`
+--
+ALTER TABLE `trafficsigns`
+  MODIFY `TrafficSignID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
